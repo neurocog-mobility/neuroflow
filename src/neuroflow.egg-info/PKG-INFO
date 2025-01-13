@@ -1,0 +1,27 @@
+Metadata-Version: 2.2
+Name: neuroflow
+Version: 0.11
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: ipython>=8.10
+Requires-Dist: jupyterlab>=3.0
+Requires-Dist: notebook
+Requires-Dist: kedro[jupyter]~=0.19.10
+Requires-Dist: kedro-datasets[matplotlib-matplotlibwriter,pandas-csvdataset,pandas-exceldataset,pandas-parquetdataset,plotly-jsondataset,plotly-plotlydataset]>=3.0
+Requires-Dist: kedro-viz>=6.7.0
+Requires-Dist: scikit-learn~=1.5.1
+Requires-Dist: seaborn~=0.12.1
+Provides-Extra: docs
+Requires-Dist: docutils<0.21; extra == "docs"
+Requires-Dist: sphinx<7.3,>=5.3; extra == "docs"
+Requires-Dist: sphinx_rtd_theme==2.0.0; extra == "docs"
+Requires-Dist: nbsphinx==0.8.1; extra == "docs"
+Requires-Dist: sphinx-autodoc-typehints==1.20.2; extra == "docs"
+Requires-Dist: sphinx_copybutton==0.5.2; extra == "docs"
+Requires-Dist: ipykernel<7.0,>=5.3; extra == "docs"
+Requires-Dist: Jinja2<3.2.0; extra == "docs"
+Requires-Dist: myst-parser<2.1,>=1.0; extra == "docs"
+
+# Neuroflow
+Toolbox for building and running multi-modal pipelines
