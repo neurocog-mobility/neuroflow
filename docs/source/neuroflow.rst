@@ -13,7 +13,8 @@ Subpackages
    :maxdepth: 4
 
    neuroflow.datasets
-   neuroflow.pipelines
+   neuroflow.nodes
+   neuroflow.pipes
    neuroflow.utils
 
 Submodules

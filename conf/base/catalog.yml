@@ -1,10 +1,14 @@
-axivity_dataset:
-  type: partitions.IncrementalDataset
-  path: /home/abdulzaf/Documents/data/neurocog-lab/neuroflow-test/01_raw/axivity
+input_axivity_dataset:
   dataset: neuroflow.datasets.axivity_dataset.AxivityDataset
-
-output_plot:
-  type: matplotlib.MatplotlibWriter
-  filepath: data/08_reporting/
-  save_args:
-    format: png
+  path: /home/abdulzaf/Documents/test/data/raw/axivity
+  type: partitions.IncrementalDataset
+input_nimbal_pushoff:
+  filepath: data/nimbal_pushoff.csv
+  type: kedro_datasets.pandas.CSVDataset
+input_sync_dataset:
+  dataset: kedro_datasets.pandas.CSVDataset
+  path: /home/abdulzaf/Documents/test/data/raw/sync
+  type: partitions.IncrementalDataset
+output_axivity_stepsummary:
+  filepath: /home/abdulzaf/Documents/test/data/processed/output_axivity_stepsummary/axivity_step_summary.csv
+  type: kedro_datasets.pandas.CSVDataset

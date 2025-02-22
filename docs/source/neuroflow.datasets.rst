@@ -17,6 +17,14 @@ neuroflow.datasets.axivity\_dataset module
    :undoc-members:
    :show-inheritance:
 
+neuroflow.datasets.bittium\_dataset module
+------------------------------------------
+
+.. automodule:: neuroflow.datasets.bittium_dataset
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 neuroflow.datasets.opal\_dataset module
 ---------------------------------------
 

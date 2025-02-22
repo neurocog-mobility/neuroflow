@@ -7,6 +7,7 @@ from typing import Any
 
 from kedro.framework.cli.utils import find_run_command
 from kedro.framework.project import configure_project
+from neuroflow.utils.setup import _main
 
 
 def main(*args, **kwargs) -> Any:
@@ -17,6 +18,8 @@ def main(*args, **kwargs) -> Any:
     kwargs["standalone_mode"] = not interactive
 
     run = find_run_command(package_name)
+
+    _main(*args, **kwargs)
     return run(*args, **kwargs)
 
 

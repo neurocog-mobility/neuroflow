@@ -32,3 +32,11 @@ neuroflow.utils.sensor module
    :members:
    :undoc-members:
    :show-inheritance:
+
+neuroflow.utils.setup module
+----------------------------
+
+.. automodule:: neuroflow.utils.setup
+   :members:
+   :undoc-members:
+   :show-inheritance:

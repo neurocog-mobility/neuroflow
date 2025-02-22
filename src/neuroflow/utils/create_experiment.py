@@ -11,6 +11,8 @@ folderpath : str
 import os
 import shutil
 import sys
+import nbformat
+import textwrap
 
 def _create_experiment(folderpath: str):
     # make folder path absolute
@@ -33,11 +35,47 @@ def _create_experiment(folderpath: str):
     # create experiment folder
     if is_valid:
         os.mkdir(folderpath)
-        os.mkdir(os.path.join(folderpath, "01_raw"))
-        os.mkdir(os.path.join(folderpath, "02_processed"))
-        os.mkdir(os.path.join(folderpath, "03_output"))
+        os.mkdir(os.path.join(folderpath, "catalogs"))
+        os.mkdir(os.path.join(folderpath, "data"))
+        os.mkdir(os.path.join(folderpath, "data", "raw"))
+        os.mkdir(os.path.join(folderpath, "data", "processed"))
 
-        print("Experiment folder created successfully: " + folderpath)
+        print("--> Project folder created successfully: " + folderpath)
+
+
+def configure_notebook_templates(notebook_path):
+    """Configures Jupyter Notebook templates.
+
+    Args:
+        notebook_path: Path to the Jupyter Notebook file (.ipynb).
+    """
+
+    try:
+        with open(notebook_path, 'r') as f:
+            nb = nbformat.read(f, as_version=4) # Important to specify version 4
+
+        # Set path definitions
+        neuroflow_root = \
+            os.path.dirname(
+                os.path.dirname(
+                    os.path.dirname(
+                        os.path.dirname(__file__))))
+        cell_content = f'''
+        # SET PATH DEFINITIONS
+        NEUROFLOW_ROOT = "{neuroflow_root}"
+        PROJECT_ROOT = "{os.path.dirname(notebook_path)}"
+        print("Path definitions set.")
+        '''
+        
+        nb.cells[0].source = textwrap.dedent(cell_content)    
+
+        with open(notebook_path, 'w') as f:
+            nbformat.write(nb, f)
+
+    except FileNotFoundError:
+        print(f"Error: Notebook file not found at {notebook_path}")
+    except Exception as e:
+        print(f"An error occurred: {e}")
 
 
 if __name__ == "__main__":

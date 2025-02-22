@@ -15,13 +15,38 @@ sub_dir (optional): str
     The subdirectory within the experiment/01_raw to copy files into.
 
 """
-
 import pandas as pd
 import os
 import glob
 from functools import reduce
 import sys
 import shutil
+from neuroflow.utils.create_experiment import configure_notebook_templates
+
+def _copy_notebook_templates(target_dir: str):
+    curpath = os.path.dirname(__file__)
+    path_nb = "neuroflow_template.ipynb"
+    path_nb_dev = "neuroflow_template_dev.ipynb"
+
+    print("--> Creating notebook templates...")
+    shutil.copyfile(
+        os.path.join(curpath, "res", path_nb),
+        os.path.join(target_dir,
+                     "neuroflow_template.ipynb"))
+    shutil.copyfile(
+        os.path.join(curpath, "res", path_nb_dev),
+        os.path.join(target_dir,
+                     "neuroflow_template_dev.ipynb"))
+    print("--> Successfully created Jupyter notebooks.")
+
+    configure_notebook_templates(
+        os.path.join(target_dir, path_nb)
+        )
+    configure_notebook_templates(
+        os.path.join(target_dir, path_nb_dev)
+        )
+    print(f"--> Notebook configured successfully.")
+
 
 def adjust_name(filepath, filename):
     prefix = os.path.basename(filepath)
@@ -44,7 +69,7 @@ def _copy_matching_files(source_dir: str, target_dir: str, filepattern: str,
                                 os.path.join(target_dir, file))
 
 
-def _collect(source_dir : str, target_dir : str, filepattern : str, sub_dir : str = None,
+def _collect(source_dir : str, target_dir : str, sub_dir : str = None, filepattern : str = "*.*",
              expand = False):
     # make path absolute
     source_dir = os.path.realpath(os.path.expanduser(source_dir))
@@ -59,8 +84,8 @@ def _collect(source_dir : str, target_dir : str, filepattern : str, sub_dir : st
         sys.exit(1)
 
     # check if target folder was root of experiment folder
-    if "01_raw" in os.listdir(target_dir):
-        target_dir_raw = os.path.join(target_dir, "01_raw")
+    if "raw" in os.listdir(target_dir):
+        target_dir_raw = os.path.join(target_dir, "raw")
         if sub_dir:
             target_dir_raw = os.path.join(target_dir_raw, sub_dir)
 
