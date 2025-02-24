@@ -2,15 +2,18 @@
 
    <a href="https://www.python.org/downloads/" target="_blank">Python.org</a>
 
+.. |checking_python| raw:: html
+
+    <a href="useful-info.html#checking-python-version">Checking Python version</a>
+
 Python setup
 =====================
 
 .. important::
 
     Installing multiple versions of Python on a system can raise several errors.
-    If you already have Python installed, skip this section.
-    You can check whether Python is installed by typing ``python`` or ``python3`` into a
-    terminal. Some systems may have Python installed by default.
+    If you already have Python 3+ installed, skip this section.
+    To check what version of Python you have installed before proceeding, have a look at |checking_python|.
 
 A Python 3+ installation is required to run NeuroFlow.
 

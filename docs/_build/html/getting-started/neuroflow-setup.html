@@ -50,7 +50,7 @@
     <link rel="icon" href="../_static/neuroflow-dark.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="NeuroFlow Overview" href="../overview/overview.html" />
+    <link rel="next" title="Useful Information" href="useful-info.html" />
     <link rel="prev" title="Python setup" href="python-setup.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -160,6 +160,7 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="getting-started.html">Getting started</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="python-setup.html">Python setup</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">NeuroFlow setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="useful-info.html">Useful Information</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../overview/overview.html">NeuroFlow Overview</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -342,7 +343,6 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-neuroflow">Downloading NeuroFlow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-neuroflow">Installing NeuroFlow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initializing-neuroflow">Initializing NeuroFlow</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-launching-jupyter-on-windows">(Optional) Launching Jupyter on Windows</a></li>
 </ul>
             </nav>
         </div>
@@ -361,8 +361,7 @@
 <p>To download NeuroFlow:</p>
 <ol class="arabic">
 <li><p>Navigate to the NeuroFlow <a href="https://github.com/neurocog-mobility/neuroflow" target="_blank">Github</a> page.</p></li>
-<li><p>Click the <code class="docutils literal notranslate"><span class="pre">&lt;&gt;</span> <span class="pre">Code</span></code> menu button.</p></li>
-<li><p>Click <code class="docutils literal notranslate"><span class="pre">Download</span> <span class="pre">ZIP</span></code> to download the source files.</p>
+<li><p>Click the <code class="docutils literal notranslate"><span class="pre">&lt;&gt;</span> <span class="pre">Code</span></code> dropdown button and then select <code class="docutils literal notranslate"><span class="pre">Download</span> <span class="pre">ZIP</span></code> to download the source files.</p>
 <img alt="../_images/nf_github.png" src="../_images/nf_github.png" />
 </li>
 <li><p>Extract the <strong>neuroflow-main.zip</strong> folder to your preferred installation location.</p></li>
@@ -424,44 +423,10 @@ enter the following command:</p>
 <p>The terminal will start a server, then open a browser window with the <a href="https://jupyter.org/" target="_blank">Jupyter</a> file explorer
 in the NeuroFlow root folder:</p>
 <img alt="../_images/nf_jupyter.png" src="../_images/nf_jupyter.png" />
-<p>You can close the browser window and stop the server in the terminal window using <code class="docutils literal notranslate"><span class="pre">Ctrl-C</span></code>.</p>
-<p>If you have already used Jupyter notebooks on your system, you are ready to run your first pipeline!
-Proceed to <a class="reference internal" href="../tutorials/tutorials.html"><span class="doc">Tutorials</span></a>.</p>
-<p>Optionally, you can follow the guide below if needed on how to launch Jupyter notebooks for Windows systems.</p>
-</section>
-<section id="optional-launching-jupyter-on-windows">
-<h2>(Optional) Launching Jupyter on Windows<a class="headerlink" href="#optional-launching-jupyter-on-windows" title="Link to this heading">#</a></h2>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The following steps are to setup how Jupyter Notebooks are started on your system.
-If you can already open Jupyter Notebooks on your system
-(by double-clicking <strong>.ipynb</strong> files or by using the terminal), you can skip these steps!</p>
-</div>
-<p>If Windows does not recognize the <strong>.ipynb</strong> file type, then you have two options to launch Notebooks:</p>
-<ul>
-<li><dl>
-<dt><strong>Option A:</strong></dt><dd><p>If you want to launch a Notebook by double-clicking on the file:</p>
-<ol class="arabic">
-<li><p>Open a terminal and enter the following command:</p>
-<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">-m</span> <span class="n">nbopen</span><span class="p">.</span><span class="n">install_win</span>
-</pre></div>
-</div>
-</li>
-<li><p>Back in the <strong>neuroflow-main</strong> folder, you should now be able to double-click on <strong>nf-test.ipynb</strong> to open it.</p></li>
-</ol>
-</dd>
-</dl>
-</li>
-<li><dl>
-<dt><strong>Option B:</strong></dt><dd><p>You can also launch Notebooks using terminal commands. Open a terminal in the folder containing the Notebook (in this case the <strong>neuroflow-main</strong> folder) and enter the following command:</p>
-<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span> <span class="n">notebook</span> <span class="n">nf-test</span><span class="p">.</span><span class="n">ipynb</span>
-</pre></div>
-</div>
-<p>In general, replace <code class="docutils literal notranslate"><span class="pre">nf-test.ipynb</span></code> with the name of the Notebook you want to open.</p>
-</dd>
-</dl>
-</li>
-</ul>
+<p>You can now shutdown the Notebook by clicking <em>File &gt; Shut Down</em> and close the browser window.</p>
+<p>You are now ready to use NeuroFlow on your system!
+Proceed to <a class="reference internal" href="../overview/overview.html"><span class="doc">NeuroFlow Overview</span></a> to learn more about the components of NeuroFlow or
+check out the <a class="reference internal" href="../tutorials/tutorials.html"><span class="doc">Tutorials</span></a> to learn how to run your first pipeline.</p>
 </section>
 </section>
 
@@ -486,11 +451,11 @@ If you can already open Jupyter Notebooks on your system
       </div>
     </a>
     <a class="right-next"
-       href="../overview/overview.html"
+       href="useful-info.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">NeuroFlow Overview</p>
+        <p class="prev-next-title">Useful Information</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -514,7 +479,6 @@ If you can already open Jupyter Notebooks on your system
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-neuroflow">Downloading NeuroFlow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-neuroflow">Installing NeuroFlow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initializing-neuroflow">Initializing NeuroFlow</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-launching-jupyter-on-windows">(Optional) Launching Jupyter on Windows</a></li>
 </ul>
   </nav></div>
 

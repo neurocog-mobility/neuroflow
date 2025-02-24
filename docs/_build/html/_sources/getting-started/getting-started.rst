@@ -7,9 +7,11 @@ as well as how to install and configure NeuroFlow itself.  Let's get started!
 
 * **Python setup**: Learn how to install Python and set up your environment for development.
 * **NeuroFlow setup**: Get NeuroFlow up and running by following these installation instructions.
+* **Useful Information**: General reference information.
 
 .. toctree::
    :maxdepth: 1
 
    python-setup
    neuroflow-setup
+   useful-info

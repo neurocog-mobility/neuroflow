@@ -16,14 +16,11 @@ To download NeuroFlow:
 
 1.  Navigate to the NeuroFlow |neuroflow_link| page.
 
-2.  Click the ``<> Code`` menu button.
-
-3.
-    Click ``Download ZIP`` to download the source files.
+2.  Click the ``<> Code`` dropdown button and then select ``Download ZIP`` to download the source files.
 
     .. image:: static/nf_github.png
 
-4. Extract the **neuroflow-main.zip** folder to your preferred installation location.
+3. Extract the **neuroflow-main.zip** folder to your preferred installation location.
 
 .. note::
 
@@ -97,42 +94,8 @@ in the NeuroFlow root folder:
 .. image:: static/nf_jupyter.png
 
 
-You can close the browser window and stop the server in the terminal window using ``Ctrl-C``.
+You can now shutdown the Notebook by clicking *File > Shut Down* and close the browser window.
 
-If you have already used Jupyter notebooks on your system, you are ready to run your first pipeline!
-Proceed to :doc:`../tutorials/tutorials`.
-
-Optionally, you can follow the guide below if needed on how to launch Jupyter notebooks for Windows systems.
-
-(Optional) Launching Jupyter on Windows
----------------------------------------
-
-.. note::
-
-    The following steps are to setup how Jupyter Notebooks are started on your system.
-    If you can already open Jupyter Notebooks on your system
-    (by double-clicking **.ipynb** files or by using the terminal), you can skip these steps!
-
-If Windows does not recognize the **.ipynb** file type, then you have two options to launch Notebooks:
-
-* **Option A:**
-    If you want to launch a Notebook by double-clicking on the file:
-
-    1.
-        Open a terminal and enter the following command:
-
-        .. code-block:: powershell
-
-            python -m nbopen.install_win
-
-    2.
-        Back in the **neuroflow-main** folder, you should now be able to double-click on **nf-test.ipynb** to open it.
-
-* **Option B:**
-    You can also launch Notebooks using terminal commands. Open a terminal in the folder containing the Notebook (in this case the **neuroflow-main** folder) and enter the following command:
-
-    .. code-block:: powershell
-
-        jupyter notebook nf-test.ipynb
-
-    In general, replace ``nf-test.ipynb`` with the name of the Notebook you want to open.
+You are now ready to use NeuroFlow on your system!
+Proceed to :doc:`../overview/overview` to learn more about the components of NeuroFlow or
+check out the :doc:`../tutorials/tutorials` to learn how to run your first pipeline.
