@@ -38,7 +38,7 @@ Installing NeuroFlow
 2. Open a terminal in the folder (e.g. by right-clicking in the folder and selecting *Open in terminal*).
 
 3.
-    Enter the following command into the terminal:
+    Enter the following command into the terminal - note the space and period (**'-e .'**) at the end!:
     
     .. code-block:: powershell
         
