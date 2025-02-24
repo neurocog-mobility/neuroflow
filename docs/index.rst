@@ -19,7 +19,7 @@ Welcome to NeuroFlow
 =======================
 
 NeuroFlow is an open-source package from the |ncm_lab_link|
-for running analytics pipelines on experimental data built on the |kedro_link| framework.
+for running analytics pipelines on experimental data, and is built on the |kedro_link| framework.
 
 The NeuroFlow documentation serves to:
 
