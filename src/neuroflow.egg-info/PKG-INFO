@@ -6,6 +6,7 @@ Description-Content-Type: text/markdown
 License-File: LICENSE
 Requires-Dist: ipython>=8.10
 Requires-Dist: jupyterlab>=3.0
+Requires-Dist: nbopen
 Requires-Dist: notebook
 Requires-Dist: kedro[jupyter]~=0.19.10
 Requires-Dist: kedro-datasets[matplotlib-matplotlibwriter,pandas-csvdataset,pandas-exceldataset,pandas-parquetdataset,plotly-jsondataset,plotly-plotlydataset]>=3.0

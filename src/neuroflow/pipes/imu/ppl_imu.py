@@ -37,7 +37,6 @@ def ppl_export_raw_axivity(**kwargs) -> Pipeline:
                 name="export_raw_data",
             ),
         ],
-        tags="process_raw"
     )
 
 
@@ -78,7 +77,6 @@ def ppl_detect_steps_axivity(**kwargs) -> Pipeline:
                 name="split_into_steps",
             ),
         ],
-        tags="detect_steps"
     )
 
 
@@ -101,7 +99,6 @@ def ppl_process_steps_axivity(**kwargs) -> Pipeline:
                 name="export_step_data",
             ),
         ],
-        tags="segment_steps"
     )
 
 
@@ -124,5 +121,4 @@ def ppl_summarize_steps_axivity(**kwargs) -> Pipeline:
                 name="compile_step_info",
             ),
         ],
-        tags="summarize_steps"
     )

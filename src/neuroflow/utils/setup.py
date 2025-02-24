@@ -5,12 +5,12 @@ import click
 from IPython import get_ipython
 from neuroflow.utils.create_experiment import _create_experiment
 from neuroflow.utils.collect import _copy_notebook_templates
-from neuroflow.definitions import define_catalog
-from neuroflow.input_registry import register_inputs
-from neuroflow.output_registry import register_outputs
-from neuroflow.param_registry import register_params
+from neuroflow.definitions import _define_catalog
+from neuroflow.catalog.inputs.input_registry import _register_inputs, _get_input_registry
+from neuroflow.catalog.inputs.intermediate_registry import _register_intermed, _get_inter_registry
+from neuroflow.catalog.outputs.output_registry import _register_outputs, _get_output_registry
+from neuroflow.catalog.parameters.param_registry import _register_params, _get_param_registry
 from neuroflow.utils.utils import _format_text
-from neuroflow.pipeline_registry import get_pipeline_registry
 import numpy as np
 from IPython.display import clear_output
 import shutil
@@ -18,6 +18,11 @@ import shutil
 ipython = get_ipython()
 
 def initialize_catalogs(pipeline_name, project_root, neuroflow_root):
+    """
+    
+    :meta private:
+    
+    """
     config_path = os.path.join(project_root, "catalogs", pipeline_name)
 
     if os.path.exists(config_path):
@@ -42,19 +47,23 @@ def initialize_catalogs(pipeline_name, project_root, neuroflow_root):
         print("Reloaded config files.")
 
 
-
 def generate_catalogs(pipeline_name, project_root, neuroflow_root):
+    """
+    
+    :meta private:
+    
+    """
     clear_output(wait=False)
-    print(_format_text("\n~~~ Generating data registry ~~~", bold=True, underline=True))
-    input_registry = register_inputs(pipeline_name, project_root)
-    output_registry = register_outputs(pipeline_name, project_root)
+    input_registry = _register_inputs(pipeline_name, project_root)
+    output_registry = _register_outputs(pipeline_name, project_root)
+    inter_registry = _register_intermed(pipeline_name)
     
     clear_output(wait=False)
-    param_registry = register_params(pipeline_name, input_registry)
+    param_registry = _register_params(pipeline_name, input_registry)
     
     clear_output(wait=False)
     print(_format_text("\n~~~ Creating catalogs ~~~", bold=True, underline=True))
-    catalog_data, catalog_params = define_catalog(input_registry, output_registry, param_registry)
+    catalog_data, catalog_params = _define_catalog(input_registry, inter_registry, output_registry, param_registry)
 
     # write local project catalog
     config_path = os.path.join(project_root, "catalogs", pipeline_name)
@@ -73,6 +82,11 @@ def generate_catalogs(pipeline_name, project_root, neuroflow_root):
 
 
 def update_catalog(neuroflow_path, dict_catalog, dict_parameters):
+    """
+    
+    :meta private:
+    
+    """
     config_path = os.path.join(neuroflow_path, "conf", "base")
 
     catalog_path = os.path.join(config_path, "catalog.yml")
@@ -90,25 +104,21 @@ def update_catalog(neuroflow_path, dict_catalog, dict_parameters):
 
 def initialize_neuroflow(neuroflow_path):
     """
+
+    :meta private:
+
     """ 
     # RESET+UPDATE CATALOG & PARAMETERS
-    pipeline_registry = get_pipeline_registry()
+    inputs = _get_input_registry()
+    outputs = _get_output_registry()
+    intermeds = _get_inter_registry()
+    params = _get_param_registry()
 
-    inputs = []
-    outputs = []
-    params = []
-    for key, val in pipeline_registry.items():
-        inputs += val["input"]
-        params += val["params"]
-        outputs += val["output"]
-
-    inputs = list(np.unique(inputs))
-    params = list(np.unique(params))
-    outputs = list(np.unique(outputs))
-
-    catalog_data = {str(key): {"type": "pandas.CSVDataset", "filepath": ""} for key in inputs + outputs}
-    catalog_params = {str(key): "placeholder" for key in params}
-    print(catalog_data, catalog_params)
+    catalog_inputs = {str(key): info["catalog"] for key, info in inputs.items()}
+    catalog_outputs = {str(key): info["catalog"] for key, info in outputs.items()}
+    catalog_intermed = {str(key): info["catalog"] for key, info in intermeds.items()}
+    catalog_data = {**catalog_inputs, **catalog_outputs, **catalog_intermed}
+    catalog_params = {str(key): info["catalog"] for key, info in params.items()}
     update_catalog(neuroflow_path, catalog_data, catalog_params)
 
     print("-----------------------------------")

@@ -3,9 +3,7 @@ README.md
 pyproject.toml
 src/neuroflow/__init__.py
 src/neuroflow/__main__.py
-src/neuroflow/input_registry.py
-src/neuroflow/output_registry.py
-src/neuroflow/param_registry.py
+src/neuroflow/definitions.py
 src/neuroflow/pipeline_registry.py
 src/neuroflow/settings.py
 src/neuroflow.egg-info/PKG-INFO
@@ -34,6 +32,7 @@ src/neuroflow/pipes/imu/ppl_imu.py
 src/neuroflow/utils/__init__.py
 src/neuroflow/utils/collect.py
 src/neuroflow/utils/create_experiment.py
-src/neuroflow/utils/sensor.py
+src/neuroflow/utils/display.py
 src/neuroflow/utils/setup.py
+src/neuroflow/utils/test.py
 src/neuroflow/utils/utils.py

@@ -5,7 +5,6 @@ Link to nimbalwear github repository: <https://github.com/nimbal/nimbalwear>
 from typing import Any, Callable, Dict, List
 import pandas as pd
 import numpy as np
-from tqdm import tqdm
 from scipy.signal import find_peaks, peak_widths
 from scipy import ndimage
 from neuroflow.nodes.utils.parse import _get_sample_rate

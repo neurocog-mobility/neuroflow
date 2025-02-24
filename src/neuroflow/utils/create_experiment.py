@@ -1,18 +1,7 @@
-"""
-Module to create template experiment folder for running pipeline analysis. \n
-
-Parameters
-----------
-folderpath : str
-    The path to create the root experiment directory in.
-
-"""
-
 import os
 import shutil
 import sys
 import nbformat
-import textwrap
 
 def _create_experiment(folderpath: str):
     # make folder path absolute
@@ -44,30 +33,57 @@ def _create_experiment(folderpath: str):
 
 
 def configure_notebook_templates(notebook_path):
-    """Configures Jupyter Notebook templates.
+    """
+    
+    :meta private:
+    
+    Configures Jupyter Notebook templates.
 
     Args:
         notebook_path: Path to the Jupyter Notebook file (.ipynb).
     """
 
     try:
-        with open(notebook_path, 'r') as f:
-            nb = nbformat.read(f, as_version=4) # Important to specify version 4
-
-        # Set path definitions
         neuroflow_root = \
             os.path.dirname(
                 os.path.dirname(
                     os.path.dirname(
                         os.path.dirname(__file__))))
-        cell_content = f'''
-        # SET PATH DEFINITIONS
-        NEUROFLOW_ROOT = "{neuroflow_root}"
-        PROJECT_ROOT = "{os.path.dirname(notebook_path)}"
-        print("Path definitions set.")
-        '''
+        project_root = os.path.dirname(notebook_path)
+        with open(notebook_path, 'r') as f:
+            nb = nbformat.read(f, as_version=4) # Important to specify version 4
+
+        # find first code cell
+        cell_type = [cell["cell_type"] for cell in nb["cells"]]
+        cell_init_idx = cell_type.index("code")
+        cell_init = nb["cells"][cell_init_idx]
+
+        source_init = cell_init["source"]
+
+        # find ROOT substrings
+        source_lines = source_init.split("\n")
+        nf_sub = "NEUROFLOW_ROOT = "
+        line_nf = [nf_sub in line for line in source_lines]
+        line_nf = [i for i, x in enumerate(line_nf) if x][0]
+
+        pr_sub = "PROJECT_ROOT = "
+        line_pr = [pr_sub in line for line in source_lines]
+        line_pr = [i for i, x in enumerate(line_pr) if x][0]
+
+        # update ROOT substrings
+        source_lines[line_nf] = f'{nf_sub}"{neuroflow_root}"'
+        source_lines[line_pr] = f'{pr_sub}"{project_root}"'
+
+        source_new = "\n".join(source_lines)
         
-        nb.cells[0].source = textwrap.dedent(cell_content)    
+        nb.cells[cell_init_idx].source = source_new
+
+        # reset all code outputs
+        for c, cell in enumerate(nb["cells"]):
+            if cell["cell_type"] == "code":
+                cell["outputs"] = []
+
+                nb["cells"][c] = cell
 
         with open(notebook_path, 'w') as f:
             nbformat.write(nb, f)

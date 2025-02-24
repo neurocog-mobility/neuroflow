@@ -1,5 +1,6 @@
 ipython>=8.10
 jupyterlab>=3.0
+nbopen
 notebook
 kedro[jupyter]~=0.19.10
 kedro-datasets[matplotlib-matplotlibwriter,pandas-csvdataset,pandas-exceldataset,pandas-parquetdataset,plotly-jsondataset,plotly-plotlydataset]>=3.0

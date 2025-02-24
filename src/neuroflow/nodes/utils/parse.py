@@ -1,10 +1,10 @@
 from typing import Dict, List
 from pathlib import Path
 import numpy as np
-from neuroflow.definitions import define_filepattern
+from neuroflow.definitions import _define_filepattern
 
 def _get_metadata_indices_from_filepattern(filepattern: str):
-    filepattern_fields = define_filepattern()
+    filepattern_fields = _define_filepattern()
     fileparts = Path(filepattern).stem.split("_")
 
     metadata_index = {}

@@ -39,7 +39,7 @@ templates_path = ['_templates']
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'source/neuroflow.datasets.rst', 'source/neuroflow.utils.rst']
 
 
 # -- Options for HTML output -------------------------------------------------
@@ -49,6 +49,7 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 #
 html_theme = 'sphinx_book_theme'
 html_title = "NeuroFlow"
+html_favicon = "_static/neuroflow-dark.png"
 html_theme_options = {
     "home_page_in_toc": True,
     "logo": {

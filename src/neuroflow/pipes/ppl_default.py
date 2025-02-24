@@ -4,6 +4,11 @@ from neuroflow.nodes.template_node import node_template
 
 
 def ppl_default(**kwargs) -> Pipeline:
+    """
+    
+    :meta private:
+    
+    """
     return pipeline(
         [
             node(

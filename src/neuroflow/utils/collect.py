@@ -1,20 +1,3 @@
-"""
-
-Module to collect all files matching a filepattern from an experiment directory
-into a single data folder for loading into a Kedro catalog. \n
-
-Parameters
-----------
-source_dir : str
-    The source directory to search for data files.
-target_dir : str
-    The target experiment root directory.
-filepattern : str
-    The filepattern to match data files with.
-sub_dir (optional): str
-    The subdirectory within the experiment/01_raw to copy files into.
-
-"""
 import pandas as pd
 import os
 import glob
@@ -25,18 +8,18 @@ from neuroflow.utils.create_experiment import configure_notebook_templates
 
 def _copy_notebook_templates(target_dir: str):
     curpath = os.path.dirname(__file__)
-    path_nb = "neuroflow_template.ipynb"
-    path_nb_dev = "neuroflow_template_dev.ipynb"
+    path_nb = "neuroflow_project.ipynb"
+    path_nb_dev = "neuroflow_dev.ipynb"
 
     print("--> Creating notebook templates...")
     shutil.copyfile(
         os.path.join(curpath, "res", path_nb),
         os.path.join(target_dir,
-                     "neuroflow_template.ipynb"))
+                     path_nb))
     shutil.copyfile(
         os.path.join(curpath, "res", path_nb_dev),
         os.path.join(target_dir,
-                     "neuroflow_template_dev.ipynb"))
+                     path_nb_dev))
     print("--> Successfully created Jupyter notebooks.")
 
     configure_notebook_templates(
@@ -49,6 +32,11 @@ def _copy_notebook_templates(target_dir: str):
 
 
 def adjust_name(filepath, filename):
+    """
+    
+    :meta private:
+    
+    """
     prefix = os.path.basename(filepath)
 
     return f"{prefix}_{filename}"
