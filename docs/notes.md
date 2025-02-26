@@ -22,3 +22,8 @@
             - "pip install nbopen"
             - "python -m nbopen.install_win"
             * otherwise give instructions for how to run Jupyter notebooks: "jupyter notebook neuroflow_template.ipynb"
+            
+1. Go to git/downloads
+2. download for your system
+3. Install with administrator privileges
+4. Leave defaults, install and exit

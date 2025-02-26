@@ -12,6 +12,14 @@ src/neuroflow.egg-info/dependency_links.txt
 src/neuroflow.egg-info/entry_points.txt
 src/neuroflow.egg-info/requires.txt
 src/neuroflow.egg-info/top_level.txt
+src/neuroflow/catalog/__init__.py
+src/neuroflow/catalog/inputs/__init__.py
+src/neuroflow/catalog/inputs/input_registry.py
+src/neuroflow/catalog/inputs/intermediate_registry.py
+src/neuroflow/catalog/outputs/__init__.py
+src/neuroflow/catalog/outputs/output_registry.py
+src/neuroflow/catalog/parameters/__init__.py
+src/neuroflow/catalog/parameters/param_registry.py
 src/neuroflow/datasets/__init__.py
 src/neuroflow/datasets/axivity_dataset.py
 src/neuroflow/datasets/bittium_dataset.py
@@ -34,5 +42,4 @@ src/neuroflow/utils/collect.py
 src/neuroflow/utils/create_experiment.py
 src/neuroflow/utils/display.py
 src/neuroflow/utils/setup.py
-src/neuroflow/utils/test.py
 src/neuroflow/utils/utils.py

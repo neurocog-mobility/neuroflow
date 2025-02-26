@@ -71,8 +71,8 @@ def configure_notebook_templates(notebook_path):
         line_pr = [i for i, x in enumerate(line_pr) if x][0]
 
         # update ROOT substrings
-        source_lines[line_nf] = f'{nf_sub}"{neuroflow_root}"'
-        source_lines[line_pr] = f'{pr_sub}"{project_root}"'
+        source_lines[line_nf] = f'{nf_sub}r"{neuroflow_root}"'
+        source_lines[line_pr] = f'{pr_sub}r"{project_root}"'
 
         source_new = "\n".join(source_lines)
         

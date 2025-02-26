@@ -13,6 +13,8 @@ Requires-Dist: kedro-datasets[matplotlib-matplotlibwriter,pandas-csvdataset,pand
 Requires-Dist: kedro-viz>=6.7.0
 Requires-Dist: scikit-learn~=1.5.1
 Requires-Dist: seaborn~=0.12.1
+Requires-Dist: h5py
+Requires-Dist: openmovement@ git+https://github.com/digitalinteraction/openmovement-python.git#egg=openmovement
 Provides-Extra: docs
 Requires-Dist: docutils<0.21; extra == "docs"
 Requires-Dist: sphinx<7.3,>=5.3; extra == "docs"
@@ -26,3 +28,5 @@ Requires-Dist: myst-parser<2.1,>=1.0; extra == "docs"
 
 # Neuroflow
 Toolbox for building and running multi-modal pipelines
+
+Documentation: https://neurocog-mobility.github.io/neuroflow/index.html
