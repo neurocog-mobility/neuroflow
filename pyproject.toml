@@ -18,7 +18,6 @@ dependencies = [
     "scikit-learn~=1.5.1",
     "seaborn~=0.12.1",
     "h5py",
-    "pyEDFlib",
     "openmovement @ git+https://github.com/digitalinteraction/openmovement-python.git#egg=openmovement"
 ]
 
