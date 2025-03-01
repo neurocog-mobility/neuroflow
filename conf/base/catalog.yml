@@ -8,14 +8,14 @@ input_axivity_dataset:
   metadata:
     kedro-viz:
       layer: input
-  path: /home/abdulzaf/Documents/test-naps/data/raw/axivity
+  path: /home/abdulzaf/Documents/test_naps_2/data/raw/axivity
   type: partitions.IncrementalDataset
 input_sync_dataset:
   dataset: kedro_datasets.pandas.CSVDataset
   metadata:
     kedro-viz:
       layer: input
-  path: /home/abdulzaf/Documents/test-naps/data/raw/sync
+  path: /home/abdulzaf/Documents/test_naps_2/data/raw/sync
   type: partitions.IncrementalDataset
 output_axivity_rawdata:
   dataset: pandas.CSVDataset
@@ -23,10 +23,10 @@ output_axivity_rawdata:
   metadata:
     kedro-viz:
       layer: output
-  path: /home/abdulzaf/Documents/test-naps/data/processed/output_axivity_rawdata
+  path: /home/abdulzaf/Documents/test_naps_2/data/processed/output_axivity_rawdata
   type: partitions.IncrementalDataset
 output_axivity_rawplots:
-  filepath: /home/abdulzaf/Documents/test-naps/data/processed/output_axivity_rawplots
+  filepath: /home/abdulzaf/Documents/test_naps_2/data/processed/output_axivity_rawplots
   metadata:
     kedro-viz:
       layer: output

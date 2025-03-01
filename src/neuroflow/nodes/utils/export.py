@@ -14,7 +14,7 @@ def plot_partitions(data_partitions: Dict[str, Callable[[], Any]],
     plots_dict = {}
     for partition_key, partition_value in sorted(data_partitions.items()):
         partition_data = partition_value["data"]
-        print(partition_key)
+        # print(partition_key)
 
         if not plot_params:
             data_columns = [col for col in partition_value["data"].columns if col != "time"]
@@ -47,7 +47,7 @@ def export_partitions(data_partitions: Dict[str, Callable[[], Any]]) -> Dict:
     data_dict = {}
     for partition_key, partition_value in sorted(data_partitions.items()):
         partition_data = partition_value["data"]
-        print(partition_key)
+        # print(partition_key)
 
         data_dict[f"{Path(partition_key).stem}"] = partition_data
 

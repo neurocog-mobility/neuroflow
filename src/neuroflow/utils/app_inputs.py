@@ -234,10 +234,11 @@ def app_register_inputs(pipeline_name, project_root, neuroflow_root):
 def register_data_catalog(project_root, neuroflow_root, pipeline_name):
     # check if catalog exists in project
     config_path = os.path.join(project_root, "catalogs", pipeline_name)
+    catalog_path = os.path.join(config_path, "catalog.yml")
 
-    if os.path.exists(config_path):
+    if Path(catalog_path).is_file():
         print(f"A data catalog for the {pipeline_name} pipeline already exists.")
-        is_overwrite = input("Would you like to overwrite the catalogs? (y/n) [n]: ") or "n"
+        is_overwrite = input("Would you like to overwrite the data catalog? (y/n) [n]: ") or "n"
     else:
         is_overwrite = "y"
 

@@ -5,6 +5,7 @@ from IPython import get_ipython
 import os
 import yaml
 import shutil
+from pathlib import Path
 
 def app_register_params(project_root, neuroflow_root, pipeline_name):
     param_registry = _register_params(pipeline_name, neuroflow_root)
@@ -30,10 +31,11 @@ def app_register_params(project_root, neuroflow_root, pipeline_name):
 def register_params(project_root, neuroflow_root, pipeline_name):
     # check if catalog exists in project
     config_path = os.path.join(project_root, "catalogs", pipeline_name)
+    param_path = os.path.join(config_path, "parameters.yml")
 
-    if os.path.exists(config_path):
-        print(f"A data catalog for the {pipeline_name} pipeline already exists.")
-        is_overwrite = input("Would you like to overwrite the catalogs? (y/n) [n]: ") or "n"
+    if Path(param_path).is_file():
+        print(f"A parameter catalog for the {pipeline_name} pipeline already exists.")
+        is_overwrite = input("Would you like to overwrite the parameter catalog? (y/n) [n]: ") or "n"
     else:
         is_overwrite = "y"
 
