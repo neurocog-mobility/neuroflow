@@ -171,10 +171,12 @@ def project_group() -> None:  # pragma: no cover
 @click.option('--create', '-cr', help='Create a new NeuroFlow project in the given directory. Example: neuroflow --create [DIRECTORY] where [DIRECTORY] is the project directory')
 def _main(create):
     """Create a new project."""
-    print(f"-> Creating project: {create}")
+    # make folder path absolute
+    folderpath = os.path.realpath(os.path.expanduser(create))
+    print(f"-> Creating project: {folderpath}")
 
-    _create_experiment(create)
-    _copy_notebook_templates(create)
+    _create_experiment(folderpath)
+    _copy_notebook_templates(folderpath)
 
 
 if __name__ == "__main__":

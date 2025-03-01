@@ -4,9 +4,6 @@ import sys
 import nbformat
 
 def _create_experiment(folderpath: str):
-    # make folder path absolute
-    folderpath = os.path.realpath(os.path.expanduser(folderpath))
-
     print(folderpath)
 
     # check if experiment folder exists
