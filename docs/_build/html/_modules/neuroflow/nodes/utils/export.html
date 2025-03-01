@@ -313,7 +313,7 @@
     <span class="n">plots_dict</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="k">for</span> <span class="n">partition_key</span><span class="p">,</span> <span class="n">partition_value</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">data_partitions</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
         <span class="n">partition_data</span> <span class="o">=</span> <span class="n">partition_value</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">partition_key</span><span class="p">)</span>
+        <span class="c1"># print(partition_key)</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">plot_params</span><span class="p">:</span>
             <span class="n">data_columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">partition_value</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">col</span> <span class="o">!=</span> <span class="s2">&quot;time&quot;</span><span class="p">]</span>
@@ -349,7 +349,7 @@
     <span class="n">data_dict</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="k">for</span> <span class="n">partition_key</span><span class="p">,</span> <span class="n">partition_value</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">data_partitions</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
         <span class="n">partition_data</span> <span class="o">=</span> <span class="n">partition_value</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">partition_key</span><span class="p">)</span>
+        <span class="c1"># print(partition_key)</span>
 
         <span class="n">data_dict</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">Path</span><span class="p">(</span><span class="n">partition_key</span><span class="p">)</span><span class="o">.</span><span class="n">stem</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">partition_data</span>
 
