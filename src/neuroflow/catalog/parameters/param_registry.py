@@ -110,7 +110,7 @@ def _load_data_catalog(neuroflow_root):
     catalog_path = os.path.join(config_path, "catalog.yml")
 
     with open(catalog_path) as catalogfile:
-        dict_catalog = yaml.load(catalogfile)
+        dict_catalog = yaml.safe_load(catalogfile)
 
     return dict_catalog
 

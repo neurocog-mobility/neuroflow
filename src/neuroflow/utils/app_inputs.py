@@ -33,7 +33,7 @@ class SelectFilesButton(widgets.Button):
         self.icon = "square-o"
         self.style.button_color = "orange"
         self.layout = widgets.Layout(width='auto', height='40px')
-        self.rootdir = Path("/home/abdulzaf/Documents/data/neurocog-lab/test-data/naps-multi") #Path.home()
+        self.rootdir = Path.home()
         self.filetypes = filetypes
         # Set on click behavior.
         self.on_click(self.select_files)
@@ -86,7 +86,7 @@ class SelectFolderButton(widgets.Button):
             self.description = "Select folder"
         self.icon = "square-o"
         self.style.button_color = "orange"
-        self.rootdir = Path("/home/abdulzaf/Documents/data/neurocog-lab/test-data/naps-multi") #Path.home()
+        self.rootdir = Path.home()
         self.layout = widgets.Layout(width='auto', height='40px')
         self.folder = None
         # Set on click behavior.
