@@ -59,7 +59,7 @@ def generate_catalogs(pipeline_name, project_root, neuroflow_root):
     inter_registry = _register_intermed(pipeline_name)
     
     clear_output(wait=False)
-    param_registry = _register_params(pipeline_name, input_registry)
+    param_registry = _register_params(pipeline_name, neuroflow_root)
     
     clear_output(wait=False)
     print(_format_text("\n~~~ Creating catalogs ~~~", bold=True, underline=True))
@@ -100,6 +100,40 @@ def update_catalog(neuroflow_path, dict_catalog, dict_parameters):
     
     ipython.run_line_magic("reload_kedro", f"{neuroflow_path}")
     print("Updated config files.")
+
+
+def update_data_catalog(neuroflow_path, dict_catalog):
+    """
+    
+    :meta private:
+    
+    """
+    config_path = os.path.join(neuroflow_path, "conf", "base")
+
+    catalog_path = os.path.join(config_path, "catalog.yml")
+    
+    with open(catalog_path, 'w') as catalogfile:
+        yaml.dump(dict_catalog, catalogfile, default_flow_style=False)
+    
+    ipython.run_line_magic("reload_kedro", f"{neuroflow_path}")
+    print("Updated data config files.")
+    
+
+def update_parameter_catalog(neuroflow_path, dict_parameters):
+    """
+    
+    :meta private:
+    
+    """
+    config_path = os.path.join(neuroflow_path, "conf", "base")
+
+    parameters_path = os.path.join(config_path, "parameters.yml")
+    
+    with open(parameters_path, 'w') as parametersfile:
+        yaml.dump(dict_parameters, parametersfile, default_flow_style=False)
+    
+    ipython.run_line_magic("reload_kedro", f"{neuroflow_path}")
+    print("Updated parameter config files.")
 
 
 def initialize_neuroflow(neuroflow_path):

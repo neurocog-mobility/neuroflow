@@ -1,8 +1,10 @@
 from neuroflow.pipeline_registry import _get_pipeline_registry
 from neuroflow.utils.utils import _format_text
 from neuroflow.utils.collect import _collect
-from IPython.display import clear_output
+from neuroflow.utils.folder_select import SelectFolderButton
+from IPython.display import clear_output, display
 import os
+import ipywidgets as widgets
 
 def input_axivity_dataset():
     """ Axivity dataset.
@@ -95,6 +97,7 @@ def _display_input_registry_header(input_registry, i):
                 print(_format_text(f"\t{j+1}: {jkey}", bold=False, color='blue'))
     print("____________________________")
 
+            
 def _register_inputs(pipeline_name: str, project_root: str):
     input_registry = _get_input_registry(pipeline_name)
     

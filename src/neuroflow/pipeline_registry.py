@@ -30,7 +30,7 @@ def _get_pipeline_registry():
             "pipeline": ppl_imu.ppl_export_raw_axivity(),
             "input": ["input_axivity_dataset", "input_sync_dataset"],
             "params": ["axivity_filepattern", "sync_filepattern", "plot_imu"],
-            "output": ["output_axivity_rawdata", "out_axivity_rawplots"],
+            "output": ["output_axivity_rawdata", "output_axivity_rawplots"],
             "intermed": ["axivity_data_trials"]
         },
         "process_step_data": {

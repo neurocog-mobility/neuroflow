@@ -5,6 +5,7 @@ from IPython.display import clear_output
 from neuroflow.utils.utils import _format_text
 from neuroflow.pipeline_registry import _get_pipeline_registry
 from neuroflow.definitions import _define_filepattern
+import yaml
 
 def params_axivity_filepattern():
     """
@@ -104,46 +105,62 @@ def _get_integer_input(prompt, list_fields):
             print("Invalid input. Please enter an integer.")
 
 
-def _generate_filepattern(dataset: str, input_registry: Dict[str, Any], param_registry, i):
+def _load_data_catalog(neuroflow_root):
+    config_path = os.path.join(neuroflow_root, "conf", "base")
+    catalog_path = os.path.join(config_path, "catalog.yml")
+
+    with open(catalog_path) as catalogfile:
+        dict_catalog = yaml.load(catalogfile)
+
+    return dict_catalog
+
+
+def _generate_filepattern(dataset: str, param_registry, neuroflow_root, i):
     filepattern_fields = {"misc": "[misc]", **_define_filepattern()}
-    sample_file_raw = os.listdir(input_registry[dataset]["catalog"]["path"])[0]
-    sample_file = Path(sample_file_raw).stem
-    
-    field_string = ""
-    for f, field in enumerate(filepattern_fields.keys()):
-        field_string += f"{f}: {field} \t"
-    
-    sample_parts = sample_file.split("_")
-    pattern = sample_file
-    
-    # create prompt
-    list_prompt = []
-    for f, field in enumerate(sample_parts):
-        list_prompt.append(field)
-    
-    for p, part in enumerate(sample_parts):
-        _display_param_registry_header(param_registry, i)
-        print(f"\nGenerating file pattern for {_format_text(dataset, bold=True, color='blue', underline=True)}\n")
-        print(_format_text("File pattern key:", bold=True))
-        print(field_string)
-        print("")
-
-        prompt = list_prompt.copy()
-        for f, field in enumerate(list_prompt):
-            if f < p:
-                prompt[f] = f"{_format_text(field, bold=True, color='green')}"
-            elif f == p:
-                prompt[f] = f"{_format_text(field, bold=True, underline=True, color='blue')}"
-        prompt = "_".join(prompt)
+    try:
+        input_catalog = _load_data_catalog(neuroflow_root)
+        sample_file_raw = os.listdir(input_catalog[dataset]["path"])[0]
+        sample_file = Path(sample_file_raw).stem
         
-        print(prompt)
-        input_prompt = f"--> Label the highighted field [0-{len(filepattern_fields.keys())}]?"
-        key_val = _get_integer_input(input_prompt, list(filepattern_fields.keys()))
-        print("")
+        field_string = ""
+        for f, field in enumerate(filepattern_fields.keys()):
+            field_string += f"{f}: {field} \t"
         
-        list_prompt[p] = f"[{key_val}]"
+        sample_parts = sample_file.split("_")
+        pattern = sample_file
+        
+        # create prompt
+        list_prompt = []
+        for f, field in enumerate(sample_parts):
+            list_prompt.append(field)
+        
+        for p, part in enumerate(sample_parts):
+            _display_param_registry_header(param_registry, i)
+            print(f"\nGenerating file pattern for {_format_text(dataset, bold=True, color='blue', underline=True)}\n")
+            print(_format_text("File pattern key:", bold=True))
+            print(field_string)
+            print("")
 
-    generated_filepattern = "_".join(list_prompt) + os.path.splitext(sample_file_raw)[1]
+            prompt = list_prompt.copy()
+            for f, field in enumerate(list_prompt):
+                if f < p:
+                    prompt[f] = f"{_format_text(field, bold=True, color='green')}"
+                elif f == p:
+                    prompt[f] = f"{_format_text(field, bold=True, underline=True, color='blue')}"
+            prompt = "_".join(prompt)
+            
+            print(prompt)
+            input_prompt = f"--> Label the highighted field [0-{len(filepattern_fields.keys())}]?"
+            key_val = _get_integer_input(input_prompt, list(filepattern_fields.keys()))
+            print("")
+            
+            list_prompt[p] = f"[{key_val}]"
+
+        generated_filepattern = "_".join(list_prompt) + os.path.splitext(sample_file_raw)[1]
+
+    except:
+        print("Please register valid inputs before parameter registration.")
+        generated_filepattern = ""
 
     return generated_filepattern
 
@@ -190,14 +207,14 @@ def _display_param_registry_header(param_registry, i):
     print("____________________________")
 
 
-def _register_params(pipeline_name: str, input_registry):
+def _register_params(pipeline_name: str, neuroflow_root):
     param_registry = _get_param_registry(pipeline_name)
     
     for i, (ikey, imeta) in enumerate(param_registry.items()):
         _display_param_registry_header(param_registry, i)
         if imeta["requires_input"]:
             if imeta["type"] == "filepattern":
-                imeta["catalog"]["pattern"] = _generate_filepattern(imeta["catalog"]["dataset"], input_registry, param_registry, i)
+                imeta["catalog"]["pattern"] = _generate_filepattern(imeta["catalog"]["dataset"], param_registry, neuroflow_root, i)
             elif imeta["type"] == "dict":
                 imeta["catalog"] = _validate_dict(ikey, imeta["catalog"], param_registry, i)
             elif imeta["type"] == "list":

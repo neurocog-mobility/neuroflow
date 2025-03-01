@@ -1,8 +1,3 @@
-axivity_data_steps:
-  metadata:
-    kedro-viz:
-      layer: process-steps
-  type: MemoryDataset
 axivity_data_trials:
   metadata:
     kedro-viz:
@@ -15,12 +10,6 @@ input_axivity_dataset:
       layer: input
   path: /home/abdulzaf/Documents/test-naps/data/raw/axivity
   type: partitions.IncrementalDataset
-input_nimbal_pushoff:
-  filepath: data/nimbal_pushoff.csv
-  metadata:
-    kedro-viz:
-      layer: detect-steps
-  type: kedro_datasets.pandas.CSVDataset
 input_sync_dataset:
   dataset: kedro_datasets.pandas.CSVDataset
   metadata:
@@ -28,24 +17,19 @@ input_sync_dataset:
       layer: input
   path: /home/abdulzaf/Documents/test-naps/data/raw/sync
   type: partitions.IncrementalDataset
-output_axivity_stepsummary:
-  filepath: /home/abdulzaf/Documents/test-naps/data/processed/output_axivity_stepsummary/axivity_step_summary.csv
+output_axivity_rawdata:
+  dataset: pandas.CSVDataset
+  filename_suffix: .csv
   metadata:
     kedro-viz:
       layer: output
-  type: kedro_datasets.pandas.CSVDataset
-step_state_data:
+  path: /home/abdulzaf/Documents/test-naps/data/processed/output_axivity_rawdata
+  type: partitions.IncrementalDataset
+output_axivity_rawplots:
+  filepath: /home/abdulzaf/Documents/test-naps/data/processed/output_axivity_rawplots
   metadata:
     kedro-viz:
-      layer: detect-steps
-  type: MemoryDataset
-table_step_summaries:
-  metadata:
-    kedro-viz:
-      layer: process-steps
-  type: MemoryDataset
-table_step_times:
-  metadata:
-    kedro-viz:
-      layer: detect-steps
-  type: MemoryDataset
+      layer: output
+  save_args:
+    format: png
+  type: matplotlib.MatplotlibWriter

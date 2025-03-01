@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>NeuroFlow setup &#8212; NeuroFlow</title>
+    <title>Git setup &#8212; NeuroFlow</title>
   
   
   
@@ -45,13 +45,13 @@
     <script src="../_static/js/p5.js?v=f105ae07"></script>
     <script src="../_static/js/truchet.js?v=eb096cf2"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'getting-started/neuroflow-setup';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'getting-started/git-setup';</script>
     <script src="../_static/js/truchet.js?v=eb096cf2"></script>
     <link rel="icon" href="../_static/neuroflow-dark.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Useful Information" href="useful-info.html" />
-    <link rel="prev" title="Git setup" href="git-setup.html" />
+    <link rel="next" title="NeuroFlow setup" href="neuroflow-setup.html" />
+    <link rel="prev" title="Python setup" href="python-setup.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -159,8 +159,8 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="getting-started.html">Getting started</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="python-setup.html">Python setup</a></li>
-<li class="toctree-l2"><a class="reference internal" href="git-setup.html">Git setup</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">NeuroFlow setup</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Git setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="neuroflow-setup.html">NeuroFlow setup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="useful-info.html">Useful Information</a></li>
 </ul>
 </details></li>
@@ -255,7 +255,7 @@
       
       
       
-      <li><a href="../_sources/getting-started/neuroflow-setup.rst" target="_blank"
+      <li><a href="../_sources/getting-started/git-setup.rst" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -331,7 +331,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>NeuroFlow setup</h1>
+    <h1>Git setup</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -341,9 +341,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-neuroflow">Downloading NeuroFlow</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-neuroflow">Installing NeuroFlow</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initializing-neuroflow">Initializing NeuroFlow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-git">Downloading Git</a></li>
 </ul>
             </nav>
         </div>
@@ -355,79 +353,31 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="neuroflow-setup">
-<h1>NeuroFlow setup<a class="headerlink" href="#neuroflow-setup" title="Link to this heading">#</a></h1>
-<section id="downloading-neuroflow">
-<h2>Downloading NeuroFlow<a class="headerlink" href="#downloading-neuroflow" title="Link to this heading">#</a></h2>
-<p>To download NeuroFlow:</p>
+  <section id="git-setup">
+<h1>Git setup<a class="headerlink" href="#git-setup" title="Link to this heading">#</a></h1>
+<p>Git is a version control system that tracks changes to files,
+enabling collaboration, history management, and efficient software development.
+Some Python packages are only hosted on GitHub and so NeuroFlow requires a Git
+installation in order to access those packages. A GitHub account is <strong>not</strong> required.</p>
+<section id="downloading-git">
+<h2>Downloading Git<a class="headerlink" href="#downloading-git" title="Link to this heading">#</a></h2>
+<p>Start by downloading the official installer for your system:</p>
 <ol class="arabic">
-<li><p>Navigate to the NeuroFlow <a href="https://github.com/neurocog-mobility/neuroflow" target="_blank">Github</a> page.</p></li>
-<li><p>Click the <code class="docutils literal notranslate"><span class="pre">&lt;&gt;</span> <span class="pre">Code</span></code> dropdown button and then select <code class="docutils literal notranslate"><span class="pre">Download</span> <span class="pre">ZIP</span></code> to download the source files.</p>
-<img alt="../_images/nf_github.png" src="../_images/nf_github.png" />
-</li>
-<li><p>Extract the <strong>neuroflow-main.zip</strong> folder to your preferred installation location.</p></li>
+<li><p>Navigate to the official Git downloads page, and select your system: <a href="https://git-scm.com/downloads" target="_blank">git-scm.com</a>.</p></li>
+<li><ul>
+<li><p><strong>Mac/Linux</strong>: Follow the instructions provided on the Git website to install using your system’s package manager</p></li>
+<li><p><strong>Windows</strong>:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Download the standalone installer for your system.</p></li>
+<li><p>Double-click on the downloaded installer (and accept to run with administrator privileges if applicable)</p></li>
+<li><p>Leave the default options selected, click “Install”, and exit the installer once complete.</p></li>
 </ol>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Alternatively, you can clone the source files directly using git commands:</p>
-<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="nv">@github</span><span class="p">.</span><span class="n">com</span><span class="p">:</span><span class="n">neurocog-mobility</span><span class="p">/</span><span class="n">neuroflow</span><span class="p">.</span><span class="n">git</span>
-</pre></div>
-</div>
-</div>
-</section>
-<section id="installing-neuroflow">
-<h2>Installing NeuroFlow<a class="headerlink" href="#installing-neuroflow" title="Link to this heading">#</a></h2>
-<ol class="arabic">
-<li><p>Navigate to extracted folder (default <strong>neuroflow-main</strong>).</p></li>
-<li><p>Open a terminal in the folder (e.g. by right-clicking in the folder and selecting <em>Open in terminal</em>).</p></li>
-<li><p>Enter the following command into the terminal - note the space and period (<strong>‘-e .’</strong>) at the end!:</p>
-<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">-vvv</span> <span class="n">install</span> <span class="n">-e</span> <span class="p">.</span>
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>If you have a fresh Python installation, this may take some time.</p>
-</div>
-<p>Once complete, the terminal should say <code class="docutils literal notranslate"><span class="pre">Successfully</span> <span class="pre">installed</span> <span class="pre">neuroflow</span></code>.</p>
+</div></blockquote>
 </li>
-<li><p>To test the installation enter the following command into the terminal:</p>
-<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">-m</span> <span class="n">neuroflow</span> <span class="p">-</span><span class="n">-help</span>
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Some systems may use <code class="docutils literal notranslate"><span class="pre">python3</span></code> instead of <code class="docutils literal notranslate"><span class="pre">python</span></code>. If you get a message <code class="docutils literal notranslate"><span class="pre">Command</span> <span class="pre">'python'</span> <span class="pre">not</span> <span class="pre">found.</span></code>
-then try again using: <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">neuroflow</span> <span class="pre">--help</span></code>.</p>
-</div>
-<p>The response should be:</p>
-<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="n">Usage</span><span class="p">:</span> <span class="n">python</span> <span class="n">-m</span> <span class="n">neuroflow</span> <span class="no">[OPTIONS]</span>
-
-<span class="n">Create</span> <span class="n">a</span> <span class="n">new</span> <span class="n">project</span><span class="p">.</span>
-
-<span class="n">Options</span><span class="p">:</span>
-<span class="n">-cr</span><span class="p">,</span> <span class="p">-</span><span class="n">-create</span> <span class="n">TEXT</span>  <span class="n">Create</span> <span class="n">a</span> <span class="n">new</span> <span class="n">NeuroFlow</span> <span class="n">project</span> <span class="k">in</span> <span class="n">the</span> <span class="n">given</span> <span class="n">directory</span><span class="p">.</span>
-                    <span class="n">Example</span><span class="p">:</span> <span class="n">neuroflow</span> <span class="p">-</span><span class="n">-create</span> <span class="no">[DIRECTORY]</span> <span class="nb">where</span>
-                    <span class="no">[DIRECTORY]</span> <span class="n">is</span> <span class="n">the</span> <span class="n">project</span> <span class="n">directory</span>
-<span class="p">-</span><span class="n">-help</span>              <span class="n">Show</span> <span class="n">this</span> <span class="n">message</span> <span class="n">and</span> <span class="n">exit</span><span class="p">.</span>
-</pre></div>
-</div>
+</ul>
 </li>
 </ol>
-</section>
-<section id="initializing-neuroflow">
-<h2>Initializing NeuroFlow<a class="headerlink" href="#initializing-neuroflow" title="Link to this heading">#</a></h2>
-<p>With a terminal open in the NeuroFlow root folder (i.e. the installation folder from above, default <strong>neuroflow-main</strong>),
-enter the following command:</p>
-<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="n">kedro</span> <span class="n">jupyter</span> <span class="n">notebook</span>
-</pre></div>
-</div>
-<p>The terminal will start a server, then open a browser window with the <a href="https://jupyter.org/" target="_blank">Jupyter</a> file explorer
-in the NeuroFlow root folder:</p>
-<img alt="../_images/nf_jupyter.png" src="../_images/nf_jupyter.png" />
-<p>You can now shutdown the Notebook by clicking <em>File &gt; Shut Down</em> and close the browser window.</p>
-<p>You are now ready to use NeuroFlow on your system!
-Proceed to <a class="reference internal" href="../overview/overview.html"><span class="doc">NeuroFlow Overview</span></a> to learn more about the components of NeuroFlow or
-check out the <a class="reference internal" href="../tutorials/tutorials.html"><span class="doc">Tutorials</span></a> to learn how to run your first pipeline.</p>
 </section>
 </section>
 
@@ -443,20 +393,20 @@ check out the <a class="reference internal" href="../tutorials/tutorials.html"><
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="git-setup.html"
+       href="python-setup.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Git setup</p>
+        <p class="prev-next-title">Python setup</p>
       </div>
     </a>
     <a class="right-next"
-       href="useful-info.html"
+       href="neuroflow-setup.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Useful Information</p>
+        <p class="prev-next-title">NeuroFlow setup</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -477,9 +427,7 @@ check out the <a class="reference internal" href="../tutorials/tutorials.html"><
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-neuroflow">Downloading NeuroFlow</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-neuroflow">Installing NeuroFlow</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initializing-neuroflow">Initializing NeuroFlow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-git">Downloading Git</a></li>
 </ul>
   </nav></div>
 

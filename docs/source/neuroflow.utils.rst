@@ -10,6 +10,24 @@ Submodules
 ----------
 
 
+.. automodule:: neuroflow.utils.app_inputs
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+.. automodule:: neuroflow.utils.app_params
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+.. automodule:: neuroflow.utils.app_pipeline
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
 .. automodule:: neuroflow.utils.collect
    :members:
    :undoc-members:
@@ -23,6 +41,24 @@ Submodules
 
 
 .. automodule:: neuroflow.utils.display
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+.. automodule:: neuroflow.utils.file_select
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+.. automodule:: neuroflow.utils.folder_select
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+.. automodule:: neuroflow.utils.interface
    :members:
    :undoc-members:
    :show-inheritance:
