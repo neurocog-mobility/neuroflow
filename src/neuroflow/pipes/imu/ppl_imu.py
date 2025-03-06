@@ -1,11 +1,11 @@
 from kedro.pipeline import Pipeline, node, pipeline
 from neuroflow.nodes.template_node import node_template
-from neuroflow.nodes.utils.sync import split_axivity_by_trial_timestamps
+from neuroflow.nodes.utils.axivity import parse_axivity
 from neuroflow.nodes.utils.export import plot_partitions, export_partitions
 from neuroflow.nodes.imu.step_detection import detect_steps_nimbal
 from neuroflow.nodes.imu.gait_analysis import (
     extract_steps, split_axivity_into_steps,
-    summarize_steps, compile_step_summary)
+    summarize_steps, compile_step_summary, create_step_profiles)
 
 
 def ppl_export_raw_axivity(**kwargs) -> Pipeline:
@@ -14,14 +14,14 @@ def ppl_export_raw_axivity(**kwargs) -> Pipeline:
     return pipeline(
         [
             node(
-                func=split_axivity_by_trial_timestamps,
+                func=parse_axivity,
                 inputs=["input_axivity_dataset",
                         "input_sync_dataset",
                         "params:axivity_filepattern",
                         "params:sync_filepattern"
                         ],
                 outputs="axivity_data_trials",
-                name="split_into_trials",
+                name="parse_axivity",
             ),
             node(
                 func=plot_partitions,
@@ -46,14 +46,14 @@ def ppl_detect_steps_axivity(**kwargs) -> Pipeline:
     return pipeline(
         [
             node(
-                func=split_axivity_by_trial_timestamps,
+                func=parse_axivity,
                 inputs=["input_axivity_dataset",
                         "input_sync_dataset",
                         "params:axivity_filepattern",
                         "params:sync_filepattern"
                         ],
                 outputs="axivity_data_trials",
-                name="split_into_trials",
+                name="parse_axivity",
             ),
             node(
                 func=detect_steps_nimbal,
@@ -97,6 +97,13 @@ def ppl_process_steps_axivity(**kwargs) -> Pipeline:
                 inputs="axivity_data_steps",
                 outputs="output_axivity_stepdata",
                 name="export_step_data",
+            ),
+            node(
+                func=create_step_profiles,
+                inputs=["table_step_times",
+                        "axivity_data_steps"],
+                outputs="output_axivity_stepprofiles",
+                name="create_step_profiles",
             ),
         ],
     )

@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>neuroflow.nodes.utils.sync &#8212; NeuroFlow</title>
+    <title>neuroflow.nodes.utils.axivity &#8212; NeuroFlow</title>
   
   
   
@@ -44,7 +44,7 @@
     <script src="../../../../_static/js/p5.js?v=f105ae07"></script>
     <script src="../../../../_static/js/truchet.js?v=eb096cf2"></script>
     <script src="../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/neuroflow/nodes/utils/sync';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/neuroflow/nodes/utils/axivity';</script>
     <script src="../../../../_static/js/truchet.js?v=eb096cf2"></script>
     <link rel="icon" href="../../../../_static/neuroflow-dark.png"/>
     <link rel="index" title="Index" href="../../../../genindex.html" />
@@ -170,8 +170,12 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../../tutorials/tutorials.html">Tutorials</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../../tutorials/first-project/first-project.html">Running your first NeuroFlow project</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/first-project/tutorial-data.html">Tutorial data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/first-project/create-a-project.html">Initializing a NeuroFlow project</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/first-project/exploring-pipelines.html">Exploring the pipelines</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/first-project/catalog-configuration.html">Configuring the catalog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/first-project/data-catalog.html">Configuring the Data Catalog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/first-project/parameter-catalog.html">Configuring the Parameter Catalog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/first-project/run-pipeline.html">Running the pipeline</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/dev-notebook/dev-notebook.html">Developing using NeuroFlow</a></li>
@@ -294,7 +298,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <h1>Source code for neuroflow.nodes.utils.sync</h1><div class="highlight"><pre>
+  <h1>Source code for neuroflow.nodes.utils.axivity</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
@@ -309,9 +313,9 @@
     <span class="k">return</span> <span class="n">datetime_object</span>
 
 
-<div class="viewcode-block" id="split_axivity_by_trial_timestamps">
-<a class="viewcode-back" href="../../../../source/neuroflow.nodes.utils.html#neuroflow.nodes.utils.sync.split_axivity_by_trial_timestamps">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">split_axivity_by_trial_timestamps</span><span class="p">(</span><span class="n">data_axivity</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Callable</span><span class="p">[[],</span> <span class="n">Any</span><span class="p">]],</span>
+<div class="viewcode-block" id="parse_axivity">
+<a class="viewcode-back" href="../../../../source/neuroflow.nodes.utils.html#neuroflow.nodes.utils.axivity.parse_axivity">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">parse_axivity</span><span class="p">(</span><span class="n">data_axivity</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Callable</span><span class="p">[[],</span> <span class="n">Any</span><span class="p">]],</span>
                                       <span class="n">data_sync</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Callable</span><span class="p">[[],</span> <span class="n">Any</span><span class="p">]],</span>
                                       <span class="n">axivity_filepattern</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span>
                                       <span class="n">sync_filepattern</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">],)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Callable</span><span class="p">[[],</span> <span class="n">Any</span><span class="p">]]:</span>
@@ -333,39 +337,47 @@
     
         <span class="c1"># get partition metadata</span>
         <span class="n">partition_metadata</span> <span class="o">=</span> <span class="n">_get_metadata_from_filename</span><span class="p">(</span><span class="n">partition_key</span><span class="p">,</span> <span class="n">metadata_index</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">data_sync</span><span class="p">:</span>
+            <span class="c1"># get corresponding sync file</span>
+            <span class="n">found_sync_file</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">for</span> <span class="n">s</span><span class="p">,</span> <span class="p">(</span><span class="n">sync_key</span><span class="p">,</span> <span class="n">sync_data</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">data_sync</span><span class="o">.</span><span class="n">items</span><span class="p">())):</span>
+                <span class="n">sync_metadata_index</span> <span class="o">=</span> <span class="n">_get_metadata_indices_from_filepattern</span><span class="p">(</span><span class="n">sync_filepattern</span><span class="p">[</span><span class="s2">&quot;pattern&quot;</span><span class="p">])</span>
+                <span class="n">sync_metadata</span> <span class="o">=</span> <span class="n">_get_metadata_from_filename</span><span class="p">(</span><span class="n">sync_key</span><span class="p">,</span> <span class="n">sync_metadata_index</span><span class="p">)</span>
+                <span class="n">subset_partition_meta</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">partition_metadata</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">sync_metadata</span><span class="o">.</span><span class="n">keys</span><span class="p">())}</span>
         
-        <span class="c1"># get corresponding sync file</span>
-        <span class="n">found_sync_file</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="k">for</span> <span class="n">s</span><span class="p">,</span> <span class="p">(</span><span class="n">sync_key</span><span class="p">,</span> <span class="n">sync_data</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">data_sync</span><span class="o">.</span><span class="n">items</span><span class="p">())):</span>
-            <span class="n">sync_metadata_index</span> <span class="o">=</span> <span class="n">_get_metadata_indices_from_filepattern</span><span class="p">(</span><span class="n">sync_filepattern</span><span class="p">[</span><span class="s2">&quot;pattern&quot;</span><span class="p">])</span>
-            <span class="n">sync_metadata</span> <span class="o">=</span> <span class="n">_get_metadata_from_filename</span><span class="p">(</span><span class="n">sync_key</span><span class="p">,</span> <span class="n">sync_metadata_index</span><span class="p">)</span>
-            <span class="n">subset_partition_meta</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">partition_metadata</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">sync_metadata</span><span class="o">.</span><span class="n">keys</span><span class="p">())}</span>
+                <span class="k">if</span> <span class="n">sync_metadata</span> <span class="o">==</span> <span class="n">subset_partition_meta</span><span class="p">:</span>
+                    <span class="n">found_sync_file</span> <span class="o">=</span> <span class="kc">True</span>
+                    <span class="c1"># proceed to split intp trials</span>
+                    <span class="n">sync_data</span><span class="p">[</span><span class="s2">&quot;datetime&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sync_data</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">_timestring_to_datetime</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+                    <span class="n">sync_data</span><span class="p">[</span><span class="s2">&quot;datetime&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">sync_data</span><span class="p">[</span><span class="s2">&quot;datetime&quot;</span><span class="p">])</span>
+                    
+                    <span class="k">for</span> <span class="n">t</span><span class="p">,</span> <span class="n">tnum</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">sync_data</span><span class="p">[</span><span class="s2">&quot;trial&quot;</span><span class="p">])[:]):</span>
+                        <span class="n">trial_timestamp</span> <span class="o">=</span> <span class="n">sync_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sync_data</span><span class="p">[</span><span class="s2">&quot;trial&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">tnum</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+                        <span class="n">time_start</span> <span class="o">=</span> <span class="n">trial_timestamp</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">trial_timestamp</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;start&quot;</span><span class="p">,</span> <span class="s2">&quot;datetime&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                        <span class="n">time_stop</span> <span class="o">=</span> <span class="n">trial_timestamp</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">trial_timestamp</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;stop&quot;</span><span class="p">,</span> <span class="s2">&quot;datetime&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        
+                        <span class="n">mask_trial</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span>
+                            <span class="n">partition_data</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">time_start</span><span class="p">,</span>
+                            <span class="n">partition_data</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">time_stop</span><span class="p">,</span>
+                        <span class="p">)</span>
+                        <span class="n">partition_trial</span> <span class="o">=</span> <span class="n">partition_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mask_trial</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        
+                        <span class="n">processed_key</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">Path</span><span class="p">(</span><span class="n">partition_key</span><span class="p">)</span><span class="o">.</span><span class="n">stem</span><span class="si">}</span><span class="s2">_Trial</span><span class="si">{</span><span class="n">tnum</span><span class="si">}{</span><span class="n">Path</span><span class="p">(</span><span class="n">partition_key</span><span class="p">)</span><span class="o">.</span><span class="n">suffix</span><span class="si">}</span><span class="s2">&quot;</span>
+        
+                        <span class="n">processed_metadata</span> <span class="o">=</span> <span class="n">partition_metadata</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+                        <span class="n">processed_metadata</span><span class="p">[</span><span class="s2">&quot;trial&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tnum</span>
+        
+                        <span class="n">data_processed</span><span class="p">[</span><span class="n">processed_key</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;metadata&quot;</span><span class="p">:</span> <span class="n">processed_metadata</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">partition_trial</span> <span class="p">}</span>
+
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Axivity loading and split into trials complete.&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">processed_metadata</span> <span class="o">=</span> <span class="n">partition_metadata</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="n">processed_metadata</span><span class="p">[</span><span class="s2">&quot;trial&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">data_processed</span><span class="p">[</span><span class="n">partition_key</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;metadata&quot;</span><span class="p">:</span> <span class="n">processed_metadata</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">partition_data</span> <span class="p">}</span>
+
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Axivity loading complete.&quot;</span><span class="p">)</span>
     
-            <span class="k">if</span> <span class="n">sync_metadata</span> <span class="o">==</span> <span class="n">subset_partition_meta</span><span class="p">:</span>
-                <span class="n">found_sync_file</span> <span class="o">=</span> <span class="kc">True</span>
-                <span class="c1"># proceed to split intp trials</span>
-                <span class="n">sync_data</span><span class="p">[</span><span class="s2">&quot;datetime&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sync_data</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">_timestring_to_datetime</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-                <span class="n">sync_data</span><span class="p">[</span><span class="s2">&quot;datetime&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">sync_data</span><span class="p">[</span><span class="s2">&quot;datetime&quot;</span><span class="p">])</span>
-                
-                <span class="k">for</span> <span class="n">t</span><span class="p">,</span> <span class="n">tnum</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">sync_data</span><span class="p">[</span><span class="s2">&quot;trial&quot;</span><span class="p">])[:]):</span>
-                    <span class="n">trial_timestamp</span> <span class="o">=</span> <span class="n">sync_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sync_data</span><span class="p">[</span><span class="s2">&quot;trial&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">tnum</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-                    <span class="n">time_start</span> <span class="o">=</span> <span class="n">trial_timestamp</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">trial_timestamp</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;start&quot;</span><span class="p">,</span> <span class="s2">&quot;datetime&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-                    <span class="n">time_stop</span> <span class="o">=</span> <span class="n">trial_timestamp</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">trial_timestamp</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;stop&quot;</span><span class="p">,</span> <span class="s2">&quot;datetime&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    
-                    <span class="n">mask_trial</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span>
-                        <span class="n">partition_data</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">time_start</span><span class="p">,</span>
-                        <span class="n">partition_data</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">time_stop</span><span class="p">,</span>
-                    <span class="p">)</span>
-                    <span class="n">partition_trial</span> <span class="o">=</span> <span class="n">partition_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mask_trial</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-    
-                    <span class="n">processed_key</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">Path</span><span class="p">(</span><span class="n">partition_key</span><span class="p">)</span><span class="o">.</span><span class="n">stem</span><span class="si">}</span><span class="s2">_Trial</span><span class="si">{</span><span class="n">tnum</span><span class="si">}{</span><span class="n">Path</span><span class="p">(</span><span class="n">partition_key</span><span class="p">)</span><span class="o">.</span><span class="n">suffix</span><span class="si">}</span><span class="s2">&quot;</span>
-    
-                    <span class="n">processed_metadata</span> <span class="o">=</span> <span class="n">partition_metadata</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-                    <span class="n">processed_metadata</span><span class="p">[</span><span class="s2">&quot;trial&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tnum</span>
-    
-                    <span class="n">data_processed</span><span class="p">[</span><span class="n">processed_key</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;metadata&quot;</span><span class="p">:</span> <span class="n">processed_metadata</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">partition_trial</span> <span class="p">}</span>
-    
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Split into trials complete.&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">data_processed</span></div>
 
 </pre></div>

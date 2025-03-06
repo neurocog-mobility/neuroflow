@@ -4,29 +4,33 @@ import glob
 from functools import reduce
 import sys
 import shutil
+from pathlib import Path
 from neuroflow.utils.create_experiment import configure_notebook_templates
 
 def _copy_notebook_templates(target_dir: str):
     curpath = os.path.dirname(__file__)
+    target_project_name = Path(target_dir).stem
     path_nb = "neuroflow_project.ipynb"
     path_nb_dev = "neuroflow_dev.ipynb"
+    target_nb = f"{target_project_name}.ipynb"
+    target_nb_dev = f"{target_project_name}_dev.ipynb"
 
     print("--> Creating notebook templates...")
     shutil.copyfile(
         os.path.join(curpath, "res", path_nb),
         os.path.join(target_dir,
-                     path_nb))
+                     target_nb))
     shutil.copyfile(
         os.path.join(curpath, "res", path_nb_dev),
         os.path.join(target_dir,
-                     path_nb_dev))
+                     target_nb_dev))
     print("--> Successfully created Jupyter notebooks.")
 
     configure_notebook_templates(
-        os.path.join(target_dir, path_nb)
+        os.path.join(target_dir, target_nb)
         )
     configure_notebook_templates(
-        os.path.join(target_dir, path_nb_dev)
+        os.path.join(target_dir, target_nb_dev)
         )
     print(f"--> Notebook configured successfully.")
 

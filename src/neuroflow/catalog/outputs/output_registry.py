@@ -56,6 +56,19 @@ def output_axivity_stepplots():
         },
     }
 
+def output_axivity_stepprofiles():
+    """ Step profile axivity plots.
+    """
+    return {
+        "type": "path",
+        "catalog": {
+            "type": "matplotlib.MatplotlibWriter",
+            "filepath": "",
+            "save_args": { "format": "png" },
+            "metadata": { "kedro-viz": {"layer": "output"} }
+        },
+    }
+
 def output_axivity_stepsummary():
     """ Step axivity summaries.
     """
@@ -75,6 +88,7 @@ def _get_output_registry(pipeline_name: str = None):
         "output_axivity_rawplots": output_axivity_rawplots(),
         "output_axivity_stepdata": output_axivity_stepdata(),
         "output_axivity_stepplots": output_axivity_stepplots(),
+        "output_axivity_stepprofiles": output_axivity_stepprofiles(),
         "output_axivity_stepsummary": output_axivity_stepsummary(),
     }
 

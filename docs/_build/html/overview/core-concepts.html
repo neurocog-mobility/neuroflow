@@ -171,8 +171,12 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../tutorials/tutorials.html">Tutorials</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../tutorials/first-project/first-project.html">Running your first NeuroFlow project</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/first-project/tutorial-data.html">Tutorial data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/first-project/create-a-project.html">Initializing a NeuroFlow project</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/first-project/exploring-pipelines.html">Exploring the pipelines</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../tutorials/first-project/catalog-configuration.html">Configuring the catalog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/first-project/data-catalog.html">Configuring the Data Catalog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/first-project/parameter-catalog.html">Configuring the Parameter Catalog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/first-project/run-pipeline.html">Running the pipeline</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../tutorials/dev-notebook/dev-notebook.html">Developing using NeuroFlow</a></li>
@@ -318,7 +322,9 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -334,6 +340,21 @@
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-catalog">Data Catalog</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameter-catalog">Parameter Catalog</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#file-patterns">File patterns</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parameter-value-pairs">Parameter-value pairs</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nodes">Nodes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipes">Pipes</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -345,6 +366,85 @@
                   
   <section id="core-concepts">
 <h1>Core Concepts<a class="headerlink" href="#core-concepts" title="Link to this heading">#</a></h1>
+<p>NeuroFlow pipelines are designed for modularity and scaleability, and are built upon four fundamental
+core components:
+the <strong>Data Catalog</strong>, the <strong>Parameter Catalog</strong>, <strong>Nodes</strong>, and <strong>Pipes</strong>.
+These components provide a structured approach to data processing and analysis, as outlined below.</p>
+<figure class="align-default">
+<img alt="../_images/components.png" src="../_images/components.png" />
+</figure>
+<section id="data-catalog">
+<h2>Data Catalog<a class="headerlink" href="#data-catalog" title="Link to this heading">#</a></h2>
+<p>The Data Catalog serves as the central repository for defining and managing all data sources used within the pipeline.
+It acts as a comprehensive map, outlining the structure, location, and metadata of both input and output datasets.</p>
+<p>Key information stored in the data catalog:</p>
+<ul class="simple">
+<li><p><strong>Data role</strong>: Defines whether the data is an input to the pipeline or an output produced by it.</p></li>
+<li><p><strong>Requires configuration</strong>: Determines whether the user needs to configure details about the data (e.g. its location).</p></li>
+<li><p><strong>Data modality</strong>: Defines the data format, which is used to determine how to load or export the data.</p></li>
+<li><p><strong>Data type</strong>: Defines whether the data is a single file or a folder of multiple files to be iterated over.</p></li>
+<li><p><strong>Data extension</strong>: Defines the file extension for the data to help locate relevant files (in the case of a data folder than contains several filetypes).</p></li>
+</ul>
+</section>
+<section id="parameter-catalog">
+<h2>Parameter Catalog<a class="headerlink" href="#parameter-catalog" title="Link to this heading">#</a></h2>
+<p>The Parameter Catalog allows users to control the pipeline’s behavior at runtime.
+It stores all configurable parameters for an analysis, allowing for dynamic adjustments
+without requiring code modifications. Parameter types include file patterns and parameter-value pairs:</p>
+<section id="file-patterns">
+<h3>File patterns<a class="headerlink" href="#file-patterns" title="Link to this heading">#</a></h3>
+<p>A <strong>file pattern</strong> is a structured way of organizing information within the name of a file.
+It is a convention that allows you to embed key pieces of metadata directly into the filename itself.
+This allows for the organization of large numbers of files and making them easier to sort, search, and manage.</p>
+<p>File pattern <em>elements</em> are the individual pieces of metadata and the NeuroFlow convention is to separate elements by
+an underscore (<code class="docutils literal notranslate"><span class="pre">_</span></code>). Examples of elements that are recognized by NeuroFlow are:</p>
+<ul class="simple">
+<li><p><strong>site</strong>: The site at which the data collection occurred.</p></li>
+<li><p><strong>subject</strong>: The subject identifier.</p></li>
+<li><p><strong>session</strong>: The data collection session identifier.</p></li>
+<li><p><strong>trial</strong>: The trial number.</p></li>
+<li><p><strong>sensor</strong>: The unique sensor identifier or worn sensor location (for multi-set sensors like IMUs).</p></li>
+</ul>
+<p>For example, a data file named <code class="docutils literal notranslate"><span class="pre">siteUW_sub001_IMUChest.cwa</span></code> would have a corresponding file pattern of <code class="docutils literal notranslate"><span class="pre">[site]_[subject]_[sensor].cwa</span></code>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>As a rule of thumb when setting a filenaming convention for your project, include the necessary elements
+so that if <strong>all</strong> the data was placed in a <strong>single</strong> folder, the contents of each file could still be easily
+and uniquely identified.</p>
+<p>In the example above, it can be assumed that multiple sites, subjects, and sensors were involved in the data
+collection - hence the need for those elements in the filename.</p>
+</div>
+<p>When dealing with input data folders, NeuroFlow will expect a file pattern for each data type to help uniquely
+identify data files and match across different data modalities as needed. During parameter configuration, you
+will be asked to identify each element in the corresponding filename.</p>
+</section>
+<section id="parameter-value-pairs">
+<h3>Parameter-value pairs<a class="headerlink" href="#parameter-value-pairs" title="Link to this heading">#</a></h3>
+<p>Parameter-value pairs is a setting that controls some aspect of a processing pipeline.
+For example, filter cutoff frequencies, thresholds for step detection, or a True/False toggle
+for normalizing data.</p>
+<p>When setting parameter-value pairs, NeuroFlow will prompt you with the use of default values or
+to override defaults by setting your own values.</p>
+</section>
+</section>
+<section id="nodes">
+<h2>Nodes<a class="headerlink" href="#nodes" title="Link to this heading">#</a></h2>
+<p>Nodes represent individual, self-contained processing functions within the pipeline.
+Each node performs a specific task, such as data parsing, filtering, aggregation, or exporting.
+Nodes are designed to be modular and reusable, promoting code maintainability and efficiency.</p>
+<p>The source code for nodes can be either be found in the <a class="reference internal" href="../source/neuroflow.html"><span class="doc">neuroflow package</span></a> documentation or
+by using the interactive <code class="docutils literal notranslate"><span class="pre">Viz</span></code> tool (see <a href="../tutorials/first-project/exploring-pipelines.html#using-the-viz-tool:">Using the Viz tool</a> for details).</p>
+</section>
+<section id="pipes">
+<h2>Pipes<a class="headerlink" href="#pipes" title="Link to this heading">#</a></h2>
+<p>Pipes are defined by a sequence of individual node operations
+that transform input data into desired outputs.</p>
+<p>Each node in the pipe interacts with the Data/Parameter Catalog as well as the preceding node
+to receive inputs and then produce outputs which are passed onto the next node.</p>
+<p>Now that you have an understanding of the overall NeuroFlow structure and terminology, feel free
+to get started by creating your first project or look over the <a class="reference internal" href="../tutorials/tutorials.html"><span class="doc">Tutorials</span></a> section for
+step-by-step examples on how to use NeuroFlow.</p>
+</section>
 </section>
 
 
@@ -382,6 +482,29 @@
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-catalog">Data Catalog</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameter-catalog">Parameter Catalog</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#file-patterns">File patterns</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parameter-value-pairs">Parameter-value pairs</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nodes">Nodes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipes">Pipes</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

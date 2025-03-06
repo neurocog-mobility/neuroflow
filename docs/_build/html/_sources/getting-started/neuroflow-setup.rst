@@ -94,7 +94,7 @@ in the NeuroFlow root folder:
 .. image:: static/nf_jupyter.png
 
 
-You can now shutdown the Notebook by clicking *File > Shut Down* and close the browser window.
+You can now shutdown the Notebook by clicking ``File > Shut Down`` and close the browser window.
 
 You are now ready to use NeuroFlow on your system!
 Proceed to :doc:`../overview/overview` to learn more about the components of NeuroFlow or

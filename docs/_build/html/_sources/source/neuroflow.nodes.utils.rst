@@ -10,6 +10,12 @@ Submodules
 ----------
 
 
+.. automodule:: neuroflow.nodes.utils.axivity
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
 .. automodule:: neuroflow.nodes.utils.export
    :members:
    :undoc-members:
@@ -17,12 +23,6 @@ Submodules
 
 
 .. automodule:: neuroflow.nodes.utils.parse
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-
-.. automodule:: neuroflow.nodes.utils.sync
    :members:
    :undoc-members:
    :show-inheritance:

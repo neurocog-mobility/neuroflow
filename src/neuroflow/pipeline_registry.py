@@ -39,7 +39,7 @@ def _get_pipeline_registry():
             ppl_imu.ppl_process_steps_axivity(),
             "input": ["input_axivity_dataset", "input_sync_dataset", "input_nimbal_pushoff"],
             "params": ["axivity_filepattern", "sync_filepattern", "step_parameters", "plot_imu"],
-            "output": ["output_axivity_stepdata", "output_axivity_stepplots"],
+            "output": ["output_axivity_stepdata", "output_axivity_stepplots", "output_axivity_stepprofiles"],
             "intermed": ["axivity_data_trials",
                          "step_state_data", "table_step_times", "axivity_data_steps"]
         },
@@ -63,7 +63,7 @@ def _get_pipeline_registry():
             "input": ["input_axivity_dataset", "input_sync_dataset", "input_nimbal_pushoff"],
             "params": ["axivity_filepattern", "sync_filepattern", "step_parameters", "plot_imu"],
             "output": ["output_axivity_rawdata", "output_axivity_rawplots",
-                       "output_axivity_stepdata", "output_axivity_stepplots",
+                       "output_axivity_stepdata", "output_axivity_stepplots", "output_axivity_stepprofiles",
                        "output_axivity_stepsummary"],
             "intermed": ["axivity_data_trials",
                          "step_state_data", "table_step_times", "axivity_data_steps",

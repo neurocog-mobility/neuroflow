@@ -32,9 +32,11 @@ The NeuroFlow documentation serves to:
 
 Quickstart
 ----------
-Detailed instructions for getting set up can be found in the :doc:`getting-started/getting-started` section.
+If you're already familiar with NeuroFlow (and have Github setup on your system),
+you can quickly start using NeuroFlow using the instructions below.
 
-To quickly start using NeuroFlow:
+For more detailed instructions on getting set up (or for first time installation),
+see the :doc:`getting-started/getting-started` section.
 
 1. Clone the NeuroFlow repository from |neuroflow_link|.
 

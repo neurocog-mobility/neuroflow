@@ -170,8 +170,12 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../../tutorials/tutorials.html">Tutorials</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../../tutorials/first-project/first-project.html">Running your first NeuroFlow project</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/first-project/tutorial-data.html">Tutorial data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/first-project/create-a-project.html">Initializing a NeuroFlow project</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/first-project/exploring-pipelines.html">Exploring the pipelines</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/first-project/catalog-configuration.html">Configuring the catalog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/first-project/data-catalog.html">Configuring the Data Catalog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/first-project/parameter-catalog.html">Configuring the Parameter Catalog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/first-project/run-pipeline.html">Running the pipeline</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/dev-notebook/dev-notebook.html">Developing using NeuroFlow</a></li>
@@ -300,6 +304,7 @@
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
 <div class="viewcode-block" id="extract_steps">
 <a class="viewcode-back" href="../../../../source/neuroflow.nodes.imu.html#neuroflow.nodes.imu.gait_analysis.extract_steps">[docs]</a>
@@ -512,6 +517,69 @@
 
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Step summary compilation complete.&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">compiled_summary</span></div>
+
+
+
+<div class="viewcode-block" id="create_step_profiles">
+<a class="viewcode-back" href="../../../../source/neuroflow.nodes.imu.html#neuroflow.nodes.imu.gait_analysis.create_step_profiles">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_step_profiles</span><span class="p">(</span><span class="n">data_step_times</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Callable</span><span class="p">[[],</span> <span class="n">Any</span><span class="p">]],</span>
+                         <span class="n">data_steps</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Callable</span><span class="p">[[],</span> <span class="n">Any</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+    <span class="n">plots_dict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">data_step_times</span><span class="o">.</span><span class="n">items</span><span class="p">())[:]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+    
+        <span class="n">norm_time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+        <span class="n">list_norm_steps</span> <span class="o">=</span> <span class="p">[[],</span> <span class="p">[],</span> <span class="p">[]]</span>
+    
+        <span class="n">fig_raw</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">plots_dict</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">Path</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="o">.</span><span class="n">stem</span><span class="si">}</span><span class="s2">_rawprofiles.png&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fig_raw</span>
+        <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;step_number&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">():</span>
+            <span class="n">data_step</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;step_number&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">s</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    
+            <span class="n">step_key</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">Path</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="o">.</span><span class="n">stem</span><span class="si">}</span><span class="s2">_Step</span><span class="si">{</span><span class="n">s</span><span class="si">}{</span><span class="n">Path</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="o">.</span><span class="n">suffix</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="n">raw_step</span> <span class="o">=</span> <span class="n">data_steps</span><span class="p">[</span><span class="n">step_key</span><span class="p">][</span><span class="s2">&quot;data&quot;</span><span class="p">]</span>
+    
+            <span class="n">raw_norm_time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">raw_step</span><span class="p">))</span>
+    
+            <span class="n">norm_step_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">norm_time</span><span class="p">,</span> <span class="n">raw_norm_time</span><span class="p">,</span> <span class="n">raw_step</span><span class="p">[</span><span class="s2">&quot;accel_x&quot;</span><span class="p">])</span>
+            <span class="n">norm_step_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">norm_time</span><span class="p">,</span> <span class="n">raw_norm_time</span><span class="p">,</span> <span class="n">raw_step</span><span class="p">[</span><span class="s2">&quot;accel_y&quot;</span><span class="p">])</span>
+            <span class="n">norm_step_z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">norm_time</span><span class="p">,</span> <span class="n">raw_norm_time</span><span class="p">,</span> <span class="n">raw_step</span><span class="p">[</span><span class="s2">&quot;accel_z&quot;</span><span class="p">])</span>
+    
+            <span class="n">list_norm_steps</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">norm_step_x</span><span class="p">)</span>
+            <span class="n">list_norm_steps</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">norm_step_y</span><span class="p">)</span>
+            <span class="n">list_norm_steps</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">norm_step_z</span><span class="p">)</span>
+    
+            <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">norm_time</span><span class="p">,</span> <span class="n">norm_step_x</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Step </span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">norm_time</span><span class="p">,</span> <span class="n">norm_step_y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Step </span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">norm_time</span><span class="p">,</span> <span class="n">norm_step_z</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Step </span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Step accelerations: X&quot;</span><span class="p">)</span>
+            <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Step accelerations: Y&quot;</span><span class="p">)</span>
+            <span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Step accelerations: Z&quot;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+                <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Acceleration (m/s^2)&quot;</span><span class="p">)</span>
+                <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Normalized time (%)&quot;</span><span class="p">)</span>
+    
+        <span class="n">fig_raw</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    
+        <span class="n">fig_sum</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">plots_dict</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">Path</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="o">.</span><span class="n">stem</span><span class="si">}</span><span class="s2">_summaryprofiles.png&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fig_sum</span>
+        <span class="n">dimensions</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="s2">&quot;Y&quot;</span><span class="p">,</span> <span class="s2">&quot;Z&quot;</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+            <span class="n">norm_steps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">list_norm_steps</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="n">mean_step</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">norm_steps</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">std_step</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanstd</span><span class="p">(</span><span class="n">norm_steps</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    
+            <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">norm_time</span><span class="p">,</span> <span class="n">mean_step</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">norm_time</span><span class="p">,</span> <span class="n">mean_step</span> <span class="o">-</span> <span class="n">std_step</span><span class="p">,</span> <span class="n">mean_step</span> <span class="o">+</span> <span class="n">std_step</span><span class="p">,</span>
+                             <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Step acceleration profile: </span><span class="si">{</span><span class="n">dimensions</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Acceleration (m/s^2)&quot;</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Normalized time (%)&quot;</span><span class="p">)</span>
+    
+        <span class="n">fig_sum</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">plots_dict</span></div>
 
 </pre></div>
 

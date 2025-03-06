@@ -3,6 +3,7 @@ from scipy import ndimage
 import numpy as np
 import pandas as pd
 from pathlib import Path
+import matplotlib.pyplot as plt
 
 def extract_steps(data_step_state: Dict[str, Callable[[], Any]]) -> Dict[str, Callable[[], Any]]:
     """Extracts step phases from state array into a table.
@@ -204,3 +205,63 @@ def compile_step_summary(data_step_summaries: Dict[str, Callable[[], Any]]) -> p
 
     print("Step summary compilation complete.")
     return compiled_summary
+
+
+def create_step_profiles(data_step_times: Dict[str, Callable[[], Any]],
+                         data_steps: Dict[str, Callable[[], Any]]) -> Dict:
+    plots_dict = {}
+    for key, data in sorted(data_step_times.items())[:]:
+        print(key)
+    
+        norm_time = np.linspace(0, 100, 1000)
+        list_norm_steps = [[], [], []]
+    
+        fig_raw, axes = plt.subplots(3, 1, sharex=True)
+        plots_dict[f"{Path(key).stem}_rawprofiles.png"] = fig_raw
+        for s in data["step_number"].unique():
+            data_step = data.loc[data["step_number"] == s].copy()
+    
+            step_key = f"{Path(key).stem}_Step{s}{Path(key).suffix}"
+            raw_step = data_steps[step_key]["data"]
+    
+            raw_norm_time = np.linspace(0, 100, len(raw_step))
+    
+            norm_step_x = np.interp(norm_time, raw_norm_time, raw_step["accel_x"])
+            norm_step_y = np.interp(norm_time, raw_norm_time, raw_step["accel_y"])
+            norm_step_z = np.interp(norm_time, raw_norm_time, raw_step["accel_z"])
+    
+            list_norm_steps[0].append(norm_step_x)
+            list_norm_steps[1].append(norm_step_y)
+            list_norm_steps[2].append(norm_step_z)
+    
+            axes[0].plot(norm_time, norm_step_x, label=f"Step {s}")
+            axes[1].plot(norm_time, norm_step_y, label=f"Step {s}")
+            axes[2].plot(norm_time, norm_step_z, label=f"Step {s}")
+            axes[0].set_title(f"Step accelerations: X")
+            axes[1].set_title(f"Step accelerations: Y")
+            axes[2].set_title(f"Step accelerations: Z")
+            for i in range(3):
+                axes[i].set_ylabel("Acceleration (m/s^2)")
+                axes[i].set_xlabel("Normalized time (%)")
+    
+        fig_raw.tight_layout()
+    
+        fig_sum, axes = plt.subplots(3, 1, sharex=True)
+        plots_dict[f"{Path(key).stem}_summaryprofiles.png"] = fig_sum
+        dimensions = ["X", "Y", "Z"]
+        for i in range(3):
+            norm_steps = np.array(list_norm_steps[i])
+            mean_step = np.nanmean(norm_steps, axis=0)
+            std_step = np.nanstd(norm_steps, axis=0)
+    
+            ax = axes[i]
+            ax.plot(norm_time, mean_step)
+            ax.fill_between(norm_time, mean_step - std_step, mean_step + std_step,
+                             alpha=0.1)
+            ax.set_title(f"Step acceleration profile: {dimensions[i]}")
+            ax.set_ylabel("Acceleration (m/s^2)")
+            ax.set_xlabel("Normalized time (%)")
+    
+        fig_sum.tight_layout()
+
+    return plots_dict

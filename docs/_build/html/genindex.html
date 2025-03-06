@@ -170,8 +170,12 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="tutorials/tutorials.html">Tutorials</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="tutorials/first-project/first-project.html">Running your first NeuroFlow project</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/first-project/tutorial-data.html">Tutorial data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/first-project/create-a-project.html">Initializing a NeuroFlow project</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tutorials/first-project/exploring-pipelines.html">Exploring the pipelines</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorials/first-project/catalog-configuration.html">Configuring the catalog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/first-project/data-catalog.html">Configuring the Data Catalog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/first-project/parameter-catalog.html">Configuring the Parameter Catalog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/first-project/run-pipeline.html">Running the pipeline</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorials/dev-notebook/dev-notebook.html">Developing using NeuroFlow</a></li>
@@ -315,6 +319,10 @@
       <li><a href="source/neuroflow.nodes.imu.html#neuroflow.nodes.imu.gait_analysis.compile_step_summary">compile_step_summary() (in module neuroflow.nodes.imu.gait_analysis)</a>
 </li>
   </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="source/neuroflow.nodes.imu.html#neuroflow.nodes.imu.gait_analysis.create_step_profiles">create_step_profiles() (in module neuroflow.nodes.imu.gait_analysis)</a>
+</li>
+  </ul></td>
 </tr></table>
 
 <h2 id="D">D</h2>
@@ -390,11 +398,11 @@
 </li>
         <li><a href="source/neuroflow.nodes.utils.html#module-neuroflow.nodes.utils">neuroflow.nodes.utils</a>
 </li>
+        <li><a href="source/neuroflow.nodes.utils.html#module-neuroflow.nodes.utils.axivity">neuroflow.nodes.utils.axivity</a>
+</li>
         <li><a href="source/neuroflow.nodes.utils.html#module-neuroflow.nodes.utils.export">neuroflow.nodes.utils.export</a>
 </li>
         <li><a href="source/neuroflow.nodes.utils.html#module-neuroflow.nodes.utils.parse">neuroflow.nodes.utils.parse</a>
-</li>
-        <li><a href="source/neuroflow.nodes.utils.html#module-neuroflow.nodes.utils.sync">neuroflow.nodes.utils.sync</a>
 </li>
         <li><a href="source/neuroflow.html#module-neuroflow.pipeline_registry">neuroflow.pipeline_registry</a>
 </li>
@@ -530,6 +538,13 @@
 </li>
       </ul></li>
       <li>
+    neuroflow.nodes.utils.axivity
+
+      <ul>
+        <li><a href="source/neuroflow.nodes.utils.html#module-neuroflow.nodes.utils.axivity">module</a>
+</li>
+      </ul></li>
+      <li>
     neuroflow.nodes.utils.export
 
       <ul>
@@ -541,13 +556,6 @@
 
       <ul>
         <li><a href="source/neuroflow.nodes.utils.html#module-neuroflow.nodes.utils.parse">module</a>
-</li>
-      </ul></li>
-      <li>
-    neuroflow.nodes.utils.sync
-
-      <ul>
-        <li><a href="source/neuroflow.nodes.utils.html#module-neuroflow.nodes.utils.sync">module</a>
 </li>
       </ul></li>
       <li>
@@ -602,11 +610,13 @@
 </li>
       <li><a href="source/neuroflow.catalog.outputs.html#neuroflow.catalog.outputs.output_registry.output_axivity_rawplots">output_axivity_rawplots() (in module neuroflow.catalog.outputs.output_registry)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="source/neuroflow.catalog.outputs.html#neuroflow.catalog.outputs.output_registry.output_axivity_stepdata">output_axivity_stepdata() (in module neuroflow.catalog.outputs.output_registry)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="source/neuroflow.catalog.outputs.html#neuroflow.catalog.outputs.output_registry.output_axivity_stepplots">output_axivity_stepplots() (in module neuroflow.catalog.outputs.output_registry)</a>
+</li>
+      <li><a href="source/neuroflow.catalog.outputs.html#neuroflow.catalog.outputs.output_registry.output_axivity_stepprofiles">output_axivity_stepprofiles() (in module neuroflow.catalog.outputs.output_registry)</a>
 </li>
       <li><a href="source/neuroflow.catalog.outputs.html#neuroflow.catalog.outputs.output_registry.output_axivity_stepsummary">output_axivity_stepsummary() (in module neuroflow.catalog.outputs.output_registry)</a>
 </li>
@@ -618,12 +628,14 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="source/neuroflow.catalog.parameters.html#neuroflow.catalog.parameters.param_registry.params_step_parameters">params_step_parameters() (in module neuroflow.catalog.parameters.param_registry)</a>
 </li>
-      <li><a href="source/neuroflow.nodes.utils.html#neuroflow.nodes.utils.export.plot_partitions">plot_partitions() (in module neuroflow.nodes.utils.export)</a>
+      <li><a href="source/neuroflow.nodes.utils.html#neuroflow.nodes.utils.axivity.parse_axivity">parse_axivity() (in module neuroflow.nodes.utils.axivity)</a>
 </li>
-      <li><a href="source/neuroflow.pipes.imu.html#neuroflow.pipes.imu.ppl_imu.ppl_detect_steps_axivity">ppl_detect_steps_axivity() (in module neuroflow.pipes.imu.ppl_imu)</a>
+      <li><a href="source/neuroflow.nodes.utils.html#neuroflow.nodes.utils.export.plot_partitions">plot_partitions() (in module neuroflow.nodes.utils.export)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="source/neuroflow.pipes.imu.html#neuroflow.pipes.imu.ppl_imu.ppl_detect_steps_axivity">ppl_detect_steps_axivity() (in module neuroflow.pipes.imu.ppl_imu)</a>
+</li>
       <li><a href="source/neuroflow.pipes.imu.html#neuroflow.pipes.imu.ppl_imu.ppl_export_raw_axivity">ppl_export_raw_axivity() (in module neuroflow.pipes.imu.ppl_imu)</a>
 </li>
       <li><a href="source/neuroflow.pipes.imu.html#neuroflow.pipes.imu.ppl_imu.ppl_process_steps_axivity">ppl_process_steps_axivity() (in module neuroflow.pipes.imu.ppl_imu)</a>
@@ -636,12 +648,10 @@
 <h2 id="S">S</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="source/neuroflow.nodes.utils.html#neuroflow.nodes.utils.sync.split_axivity_by_trial_timestamps">split_axivity_by_trial_timestamps() (in module neuroflow.nodes.utils.sync)</a>
+      <li><a href="source/neuroflow.nodes.imu.html#neuroflow.nodes.imu.gait_analysis.split_axivity_into_steps">split_axivity_into_steps() (in module neuroflow.nodes.imu.gait_analysis)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="source/neuroflow.nodes.imu.html#neuroflow.nodes.imu.gait_analysis.split_axivity_into_steps">split_axivity_into_steps() (in module neuroflow.nodes.imu.gait_analysis)</a>
-</li>
       <li><a href="source/neuroflow.nodes.imu.html#neuroflow.nodes.imu.gait_analysis.summarize_steps">summarize_steps() (in module neuroflow.nodes.imu.gait_analysis)</a>
 </li>
   </ul></td>

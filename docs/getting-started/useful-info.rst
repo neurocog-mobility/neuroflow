@@ -15,13 +15,16 @@ Closing the terminal window will also stop any processes currently running in th
 To open a terminal in a specific folder, you can:
 
 * **Option A:**
-    Use the command: ``cd [PATH_TO_FOLDER]``
+    Use the command: ``cd <path_to_folder>``
 
-    Where you can replace ``[PATH_TO_FOLDER]`` with the folder path you would like to execute terminal commands in.
+    Where you can replace ``<path_to_folder>`` with the folder path you would like to execute terminal commands in.
 
 * **Option B:**
     Open the folder using File Explorer, then right-click in the folder and select **Open in Terminal**.
 
+
+When copying/pasting text into the terminal, you can use the keyboard shortcuts
+``Ctrl + Shift + C`` / ``Ctrl + Shift + V`` for copy/paste, respectively.
 
 .. _checking_python:
 
@@ -68,6 +71,9 @@ If Windows does not recognize the **.ipynb** file type, then you have two option
 
     .. code-block:: powershell
 
-        jupyter notebook [notebook.ipynb]
+        jupyter notebook <notebook.ipynb>
 
-    In general, replace ``[notebook.ipynb]`` with the name of the Notebook you want to open.
+    In general, replace ``<notebook.ipynb>`` with the name of the Notebook you want to open.
+
+When closing a Jupyter Notebook, it is important to also close the Jupyter server being run with the Notebook.
+| The simplest way to do so is to click ``File > Shut Down`` from the navigation menu.

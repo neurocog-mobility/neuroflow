@@ -171,8 +171,12 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../tutorials/tutorials.html">Tutorials</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../tutorials/first-project/first-project.html">Running your first NeuroFlow project</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/first-project/tutorial-data.html">Tutorial data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/first-project/create-a-project.html">Initializing a NeuroFlow project</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/first-project/exploring-pipelines.html">Exploring the pipelines</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../tutorials/first-project/catalog-configuration.html">Configuring the catalog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/first-project/data-catalog.html">Configuring the Data Catalog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/first-project/parameter-catalog.html">Configuring the Parameter Catalog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/first-project/run-pipeline.html">Running the pipeline</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../tutorials/dev-notebook/dev-notebook.html">Developing using NeuroFlow</a></li>
@@ -364,15 +368,16 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="neuroflow.catalog.parameters.param_registry.params_step_parameters">
 <span class="sig-prename descclassname"><span class="pre">neuroflow.catalog.parameters.param_registry.</span></span><span class="sig-name descname"><span class="pre">params_step_parameters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/neuroflow/catalog/parameters/param_registry.html#params_step_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#neuroflow.catalog.parameters.param_registry.params_step_parameters" title="Link to this definition">#</a></dt>
-<dd><p>Nimbal detector step parameter values.</p>
+<dd><p>Nimbal detector step parameter values.
+See &lt;<a class="github reference external" href="https://github.com/nimbal/nimbalwear/">nimbal/nimbalwear</a>&gt; for more details.</p>
 <dl class="simple">
 <dt>Default values:</dt><dd><ul class="simple">
-<li><p>pushoff_threshold: 0.75</p></li>
-<li><p>pushoff_time: 0.4</p></li>
-<li><p>swing_phase_time: 0.2</p></li>
-<li><p>heel_strike_detect_time: 0.5</p></li>
-<li><p>heel_strike_threshold: -5</p></li>
-<li><p>foot_down_time: 0.05</p></li>
+<li><p>pushoff_threshold: 0.75, the correlation coefficient threshold for detecting similarity to the template pushoff.</p></li>
+<li><p>pushoff_time: 0.4, time window in seconds for pushoff detection.</p></li>
+<li><p>swing_phase_time: 0.2, time window in seconds to check for swing.</p></li>
+<li><p>heel_strike_detect_time: 0.5, time window in seconds to check for heelstrike.</p></li>
+<li><p>heel_strike_threshold: -5, acceleration threshold for heelstrike detection.</p></li>
+<li><p>foot_down_time: 0.05, time window in seconds post-heelstrike.</p></li>
 </ul>
 </dd>
 </dl>

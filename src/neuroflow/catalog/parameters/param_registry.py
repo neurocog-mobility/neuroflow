@@ -41,14 +41,15 @@ def params_sync_filepattern():
 
 def params_step_parameters():
     """ Nimbal detector step parameter values.
+    See <https://github.com/nimbal/nimbalwear/> for more details.
     
     Default values:
-        * pushoff_threshold: 0.75
-        * pushoff_time: 0.4
-        * swing_phase_time: 0.2
-        * heel_strike_detect_time: 0.5
-        * heel_strike_threshold: -5
-        * foot_down_time: 0.05
+        * pushoff_threshold: 0.75, the correlation coefficient threshold for detecting similarity to the template pushoff.
+        * pushoff_time: 0.4, time window in seconds for pushoff detection.
+        * swing_phase_time: 0.2, time window in seconds to check for swing.
+        * heel_strike_detect_time: 0.5, time window in seconds to check for heelstrike.
+        * heel_strike_threshold: -5, acceleration threshold for heelstrike detection.
+        * foot_down_time: 0.05, time window in seconds post-heelstrike.
     """
     return {
         "requires_input": True,

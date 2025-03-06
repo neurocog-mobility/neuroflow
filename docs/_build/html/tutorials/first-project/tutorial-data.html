@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Configuring the catalog &#8212; NeuroFlow</title>
+    <title>Tutorial data &#8212; NeuroFlow</title>
   
   
   
@@ -45,13 +45,13 @@
     <script src="../../_static/js/p5.js?v=f105ae07"></script>
     <script src="../../_static/js/truchet.js?v=eb096cf2"></script>
     <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'tutorials/first-project/catalog-configuration';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tutorials/first-project/tutorial-data';</script>
     <script src="../../_static/js/truchet.js?v=eb096cf2"></script>
     <link rel="icon" href="../../_static/neuroflow-dark.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Developing using NeuroFlow" href="../dev-notebook/dev-notebook.html" />
-    <link rel="prev" title="Exploring the pipelines" href="exploring-pipelines.html" />
+    <link rel="next" title="Initializing a NeuroFlow project" href="create-a-project.html" />
+    <link rel="prev" title="Running your first NeuroFlow project" href="first-project.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -171,8 +171,12 @@
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../tutorials.html">Tutorials</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="first-project.html">Running your first NeuroFlow project</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Tutorial data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="create-a-project.html">Initializing a NeuroFlow project</a></li>
 <li class="toctree-l3"><a class="reference internal" href="exploring-pipelines.html">Exploring the pipelines</a></li>
-<li class="toctree-l3 current active"><a class="current reference internal" href="#">Configuring the catalog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="data-catalog.html">Configuring the Data Catalog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parameter-catalog.html">Configuring the Parameter Catalog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="run-pipeline.html">Running the pipeline</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../dev-notebook/dev-notebook.html">Developing using NeuroFlow</a></li>
@@ -255,7 +259,7 @@
       
       
       
-      <li><a href="../../_sources/tutorials/first-project/catalog-configuration.rst" target="_blank"
+      <li><a href="../../_sources/tutorials/first-project/tutorial-data.rst" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -329,7 +333,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Configuring the catalog</h1>
+    <h1>Tutorial data</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -343,8 +347,43 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="configuring-the-catalog">
-<h1>Configuring the catalog<a class="headerlink" href="#configuring-the-catalog" title="Link to this heading">#</a></h1>
+  <section id="tutorial-data">
+<h1>Tutorial data<a class="headerlink" href="#tutorial-data" title="Link to this heading">#</a></h1>
+<div class="line-block">
+<div class="line">To get started, first let’s download the accelerometry data for this tutorial: <a class="reference download internal" download="" href="../../_downloads/e41a96c2cb014c430bd1252cdeafd87d/tutorial_data_walking.zip"><code class="xref download docutils literal notranslate"><span class="pre">tutorial_data_walking.zip</span></code></a></div>
+<div class="line">Extract the data to any location on your computer.</div>
+</div>
+<p>Before diving into NeuroFlow, let’s have a quick look at the data we’ll be using.
+In the main folder, there are 4 subfolders:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>tutorial_data_walking
+├── meta
+├── sub002
+│   ├── axivity
+│   │   ├── NAPS_UW_001_Visit#01_AXV6_leftankle.cwa
+│   │   ├── NAPS_UW_001_Visit#01_AXV6_rightankle.cwa
+│   │   └── NAPS_UW_001_Visit#01_AXV6_waist.cwa
+│   └── sync
+│       └── NAPS_UW_001_Visit#01_sync.csv
+├── sub002
+│   ├── axivity
+│   └── sync
+├── sub002
+│   ├── axivity
+│   └── sync
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">meta</span></code> contains a file with the trial labels (e.g. “Fast walking”, “Timed up-and-go”, etc.).</p></li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">sub001</span></code>, <code class="docutils literal notranslate"><span class="pre">sub002</span></code>, <code class="docutils literal notranslate"><span class="pre">sub003</span></code> contain the data folders for subjects 1 to 3, which each contain:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">axivity</span></code> which have the waist and ankle accelerometry data files for the subject.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sync</span></code> which has the recorded trial timestamps for the session.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Now that we have our data ready, we can create our first NeuroFlow project.</p>
 </section>
 
 
@@ -359,20 +398,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="exploring-pipelines.html"
+       href="first-project.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Exploring the pipelines</p>
+        <p class="prev-next-title">Running your first NeuroFlow project</p>
       </div>
     </a>
     <a class="right-next"
-       href="../dev-notebook/dev-notebook.html"
+       href="create-a-project.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Developing using NeuroFlow</p>
+        <p class="prev-next-title">Initializing a NeuroFlow project</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

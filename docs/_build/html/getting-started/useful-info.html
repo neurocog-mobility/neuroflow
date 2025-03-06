@@ -171,8 +171,12 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../tutorials/tutorials.html">Tutorials</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../tutorials/first-project/first-project.html">Running your first NeuroFlow project</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/first-project/tutorial-data.html">Tutorial data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/first-project/create-a-project.html">Initializing a NeuroFlow project</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/first-project/exploring-pipelines.html">Exploring the pipelines</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../tutorials/first-project/catalog-configuration.html">Configuring the catalog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/first-project/data-catalog.html">Configuring the Data Catalog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/first-project/parameter-catalog.html">Configuring the Parameter Catalog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/first-project/run-pipeline.html">Running the pipeline</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../tutorials/dev-notebook/dev-notebook.html">Developing using NeuroFlow</a></li>
@@ -366,8 +370,8 @@ Closing the terminal window will also stop any processes currently running in th
 <p>To open a terminal in a specific folder, you can:</p>
 <ul>
 <li><dl>
-<dt><strong>Option A:</strong></dt><dd><p>Use the command: <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">[PATH_TO_FOLDER]</span></code></p>
-<p>Where you can replace <code class="docutils literal notranslate"><span class="pre">[PATH_TO_FOLDER]</span></code> with the folder path you would like to execute terminal commands in.</p>
+<dt><strong>Option A:</strong></dt><dd><p>Use the command: <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">&lt;path_to_folder&gt;</span></code></p>
+<p>Where you can replace <code class="docutils literal notranslate"><span class="pre">&lt;path_to_folder&gt;</span></code> with the folder path you would like to execute terminal commands in.</p>
 </dd>
 </dl>
 </li>
@@ -377,6 +381,8 @@ Closing the terminal window will also stop any processes currently running in th
 </dl>
 </li>
 </ul>
+<p>When copying/pasting text into the terminal, you can use the keyboard shortcuts
+<code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">C</span></code> / <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">V</span></code> for copy/paste, respectively.</p>
 </section>
 <section id="checking-python-version">
 <span id="checking-python"></span><h2>Checking Python version<a class="headerlink" href="#checking-python-version" title="Link to this heading">#</a></h2>
@@ -413,14 +419,16 @@ If you can already open Jupyter Notebooks on your system
 </li>
 <li><dl>
 <dt><strong>Option B:</strong></dt><dd><p>You can also launch Notebooks using terminal commands. Open a terminal in the folder containing the Notebook (in this case the <strong>neuroflow-main</strong> folder) and enter the following command:</p>
-<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span> <span class="n">notebook</span> <span class="no">[notebook.ipynb]</span>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span> <span class="n">notebook</span> <span class="p">&lt;</span><span class="n">notebook</span><span class="p">.</span><span class="n">ipynb</span><span class="p">&gt;</span>
 </pre></div>
 </div>
-<p>In general, replace <code class="docutils literal notranslate"><span class="pre">[notebook.ipynb]</span></code> with the name of the Notebook you want to open.</p>
+<p>In general, replace <code class="docutils literal notranslate"><span class="pre">&lt;notebook.ipynb&gt;</span></code> with the name of the Notebook you want to open.</p>
 </dd>
 </dl>
 </li>
 </ul>
+<p>When closing a Jupyter Notebook, it is important to also close the Jupyter server being run with the Notebook.
+| The simplest way to do so is to click <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Shut</span> <span class="pre">Down</span></code> from the navigation menu.</p>
 </section>
 </section>
 

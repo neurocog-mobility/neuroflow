@@ -147,7 +147,14 @@ def on_inputs_registered(btn, output,
             if imeta["pathtype"] == "file":
                 input_registry[ikey]["catalog"]["filepath"] = input_buttons[ikey].file
             elif imeta["pathtype"] == "directory":
-                input_registry[ikey]["catalog"]["path"] = input_buttons[ikey].folder
+                if input_buttons[ikey].folder:
+                    input_registry[ikey]["catalog"]["path"] = input_buttons[ikey].folder
+                else:
+                    input_registry[ikey]["catalog"]["path"] = os.path.realpath(
+                        os.path.expanduser(
+                            os.path.join(project_root, "data", "processed", imeta["modality"])
+                        )
+                    )
 
     try:
         # collect files

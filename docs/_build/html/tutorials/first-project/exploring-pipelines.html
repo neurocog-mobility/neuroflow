@@ -50,8 +50,8 @@
     <link rel="icon" href="../../_static/neuroflow-dark.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Configuring the catalog" href="catalog-configuration.html" />
-    <link rel="prev" title="Running your first NeuroFlow project" href="first-project.html" />
+    <link rel="next" title="Configuring the Data Catalog" href="data-catalog.html" />
+    <link rel="prev" title="Initializing a NeuroFlow project" href="create-a-project.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -171,8 +171,12 @@
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../tutorials.html">Tutorials</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="first-project.html">Running your first NeuroFlow project</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="tutorial-data.html">Tutorial data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="create-a-project.html">Initializing a NeuroFlow project</a></li>
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">Exploring the pipelines</a></li>
-<li class="toctree-l3"><a class="reference internal" href="catalog-configuration.html">Configuring the catalog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="data-catalog.html">Configuring the Data Catalog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parameter-catalog.html">Configuring the Parameter Catalog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="run-pipeline.html">Running the pipeline</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../dev-notebook/dev-notebook.html">Developing using NeuroFlow</a></li>
@@ -318,7 +322,9 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -334,6 +340,15 @@
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-viz-tool">Using the <code class="docutils literal notranslate"><span class="pre">Viz</span></code> tool</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-a-pipeline">Selecting a pipeline</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -345,6 +360,50 @@
                   
   <section id="exploring-the-pipelines">
 <h1>Exploring the pipelines<a class="headerlink" href="#exploring-the-pipelines" title="Link to this heading">#</a></h1>
+<div class="line-block">
+<div class="line">Begin by selecting the code cell under <strong>2. Select a processing pipeline</strong> and running it.</div>
+<div class="line">NeuroFlow will begin to load in all the available pipeline information - wait until you see an <code class="docutils literal notranslate"><span class="pre">Open</span> <span class="pre">Kedro-Viz</span></code> appear in the cell output before proceeding.</div>
+</div>
+<figure class="align-default">
+<img alt="../../_images/out_2.png" src="../../_images/out_2.png" />
+</figure>
+<section id="using-the-viz-tool">
+<h2>Using the <code class="docutils literal notranslate"><span class="pre">Viz</span></code> tool<a class="headerlink" href="#using-the-viz-tool" title="Link to this heading">#</a></h2>
+<p>Once ready, click on the <code class="docutils literal notranslate"><span class="pre">Open</span> <span class="pre">Kedro-Viz</span></code> link. A new browser tab should open with the following user interface:</p>
+<figure class="align-default">
+<img alt="../../_images/viz_1.png" src="../../_images/viz_1.png" />
+</figure>
+<ol class="arabic simple">
+<li><p>The dropdown menu in the top-left allows you to select any one of the available pipelines for inspection.</p></li>
+<li><p>Blocks at the top of the pipeline (labeled as <code class="docutils literal notranslate"><span class="pre">Input</span> <span class="pre">...</span></code>) show the input data needed for the pipeline.</p></li>
+<li><p>Blocks with a cursive <strong>f</strong> icon show the pipeline <em>nodes</em> (i.e. functions).</p></li>
+<li><p>Blocks at the bottom of the pipeline (labeled as <code class="docutils literal notranslate"><span class="pre">Output</span> <span class="pre">...</span></code>) show the output data produced by the pipeline.</p></li>
+</ol>
+<p>Pipeline nodes can be further inspected by clicking on the block to select it, then toggling <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">Code</span></code>:</p>
+<figure class="align-default">
+<img alt="../../_images/viz_2.png" src="../../_images/viz_2.png" />
+</figure>
+<p>Take your time to explore the different pipelines and their structures - we’ll be running the <code class="docutils literal notranslate"><span class="pre">Project</span> <span class="pre">Naps</span></code>
+pipeline for our tutorial. When you’re ready, head back to the Jupyter Notebook.</p>
+</section>
+<section id="selecting-a-pipeline">
+<h2>Selecting a pipeline<a class="headerlink" href="#selecting-a-pipeline" title="Link to this heading">#</a></h2>
+<p>In Jupyter, above the <code class="docutils literal notranslate"><span class="pre">Open</span> <span class="pre">Kedro-Viz</span></code> link, there is also a dropdown to set the pipeline we want to run.
+Select <code class="docutils literal notranslate"><span class="pre">project_naps</span></code> from the menu and you should see the cell output update to the following:</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="n">NAPS</span> <span class="n">project</span> <span class="n">pipeline</span><span class="p">.</span>
+    <span class="n">Processes</span> <span class="n">Axivity</span> <span class="n">IMU</span> <span class="n">data</span><span class="p">,</span> <span class="n">extracts</span> <span class="n">steps</span><span class="p">,</span> <span class="n">and</span> <span class="n">creates</span> <span class="n">a</span> <span class="n">step</span> <span class="n">summary</span><span class="p">.</span>
+    <span class="n">Inputs</span><span class="p">:</span>  <span class="p">[</span><span class="s1">&#39;input_axivity_dataset&#39;</span><span class="p">,</span> <span class="s1">&#39;input_sync_dataset&#39;</span><span class="p">,</span> <span class="s1">&#39;input_nimbal_pushoff&#39;</span><span class="p">]</span>
+    <span class="n">Parameters</span><span class="p">:</span>  <span class="p">[</span><span class="s1">&#39;axivity_filepattern&#39;</span><span class="p">,</span> <span class="s1">&#39;sync_filepattern&#39;</span><span class="p">,</span> <span class="s1">&#39;step_parameters&#39;</span><span class="p">,</span> <span class="s1">&#39;plot_imu&#39;</span><span class="p">]</span>
+    <span class="n">Outputs</span><span class="p">:</span>  <span class="p">[</span><span class="s1">&#39;output_axivity_rawdata&#39;</span><span class="p">,</span> <span class="s1">&#39;output_axivity_rawplots&#39;</span><span class="p">,</span> <span class="s1">&#39;output_axivity_stepdata&#39;</span><span class="p">,</span> <span class="s1">&#39;output_axivity_stepplots&#39;</span><span class="p">,</span> <span class="s1">&#39;output_axivity_stepprofiles&#39;</span><span class="p">,</span> <span class="s1">&#39;output_axivity_stepsummary&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Here we see the name of the pipeline along with a brief description of what it will do.</div>
+<div class="line">Underneath, there is a list of the inputs and parameters needed by the pipeline, as well as the outputs it will produce.</div>
+</div>
+<p>Click the <code class="docutils literal notranslate"><span class="pre">Set</span> <span class="pre">pipeline</span></code> button, which should then turn green and read: <code class="docutils literal notranslate"><span class="pre">Selected:</span> <span class="pre">project_naps</span></code>.</p>
+<p>With our pipeline set, we’re now ready to configure the data input catalogs.</p>
+</section>
 </section>
 
 
@@ -359,20 +418,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="first-project.html"
+       href="create-a-project.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Running your first NeuroFlow project</p>
+        <p class="prev-next-title">Initializing a NeuroFlow project</p>
       </div>
     </a>
     <a class="right-next"
-       href="catalog-configuration.html"
+       href="data-catalog.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Configuring the catalog</p>
+        <p class="prev-next-title">Configuring the Data Catalog</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -382,6 +441,23 @@
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-viz-tool">Using the <code class="docutils literal notranslate"><span class="pre">Viz</span></code> tool</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-a-pipeline">Selecting a pipeline</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

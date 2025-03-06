@@ -17,7 +17,7 @@ def _window_correlate(sig1, sig2):
     sig = max([sig1, sig2], key=len)
     window = min([sig1, sig2], key=len)
 
-    engine = 'cython' if len(sig) < 100000 else 'numba'
+    engine = 'cython'# if len(sig) < 100000 else 'numba'
     cc = pd.Series(sig).rolling(window=len(window)).apply(lambda x: np.corrcoef(x, window)[0, 1], raw=True,
                                                           engine=engine).shift(-len(window) + 1).fillna(0).to_numpy()
 
