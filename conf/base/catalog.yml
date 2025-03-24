@@ -13,7 +13,7 @@ input_axivity_dataset:
   metadata:
     kedro-viz:
       layer: input
-  path: /home/abdulzaf/Documents/tutorial_pipeline/data/raw/axivity
+  path: ''
   type: partitions.IncrementalDataset
 input_nimbal_pushoff:
   filepath: data/nimbal_pushoff.csv
@@ -26,7 +26,7 @@ input_sync_dataset:
   metadata:
     kedro-viz:
       layer: input
-  path: /home/abdulzaf/Documents/tutorial_pipeline/data/raw/sync
+  path: ''
   type: partitions.IncrementalDataset
 output_axivity_rawdata:
   dataset: pandas.CSVDataset
@@ -34,10 +34,10 @@ output_axivity_rawdata:
   metadata:
     kedro-viz:
       layer: output
-  path: /home/abdulzaf/Documents/tutorial_pipeline/data/processed/output_axivity_rawdata
+  path: ''
   type: partitions.IncrementalDataset
 output_axivity_rawplots:
-  filepath: /home/abdulzaf/Documents/tutorial_pipeline/data/processed/output_axivity_rawplots
+  filepath: ''
   metadata:
     kedro-viz:
       layer: output
@@ -50,10 +50,10 @@ output_axivity_stepdata:
   metadata:
     kedro-viz:
       layer: output
-  path: /home/abdulzaf/Documents/tutorial_pipeline/data/processed/output_axivity_stepdata
+  path: ''
   type: partitions.IncrementalDataset
 output_axivity_stepplots:
-  filepath: /home/abdulzaf/Documents/tutorial_pipeline/data/processed/output_axivity_stepplots
+  filepath: ''
   metadata:
     kedro-viz:
       layer: output
@@ -61,7 +61,7 @@ output_axivity_stepplots:
     format: png
   type: matplotlib.MatplotlibWriter
 output_axivity_stepprofiles:
-  filepath: /home/abdulzaf/Documents/tutorial_pipeline/data/processed/output_axivity_stepprofiles
+  filepath: ''
   metadata:
     kedro-viz:
       layer: output
@@ -69,7 +69,7 @@ output_axivity_stepprofiles:
     format: png
   type: matplotlib.MatplotlibWriter
 output_axivity_stepsummary:
-  filepath: /home/abdulzaf/Documents/tutorial_pipeline/data/processed/output_axivity_stepsummary/axivity_step_summary.csv
+  filepath: ''
   metadata:
     kedro-viz:
       layer: output

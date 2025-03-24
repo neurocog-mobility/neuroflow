@@ -29,4 +29,4 @@ Requires-Dist: myst-parser<2.1,>=1.0; extra == "docs"
 # Neuroflow
 Toolbox for building and running multi-modal pipelines
 
-Documentation: https://neurocog-mobility.github.io/neuroflow/index.html
+Documentation: https://neurocog-mobility.github.io/neuroflow/
