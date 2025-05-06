@@ -1,5 +1,5 @@
 [build-system]
-requires = [ "setuptools",]
+requires = [ "setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -36,6 +36,12 @@ example_pipeline = "False"
 source_dir = "src"
 
 [project.entry-points."kedro.hooks"]
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.package-data]
+"data" = ["*"]
 
 [tool.setuptools.dynamic.version]
 attr = "neuroflow.__version__"

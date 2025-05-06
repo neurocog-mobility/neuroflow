@@ -22,6 +22,22 @@ def input_axivity_dataset():
         },
     }
 
+def input_bittium_dataset():
+    """ Bittium dataset.
+    """
+    return {
+        "requires_input": True,
+        "pathtype": "directory",
+        "modality": "bittium",
+        "filepattern": "*.EDF",
+        "catalog": {
+            "type": "partitions.IncrementalDataset",
+            "path": "",
+            "dataset": "neuroflow.datasets.bittium_dataset.BittiumDataset",
+            "metadata": { "kedro-viz": {"layer": "input"} }
+        },
+    }
+
 def input_sync_dataset():
     """ Sync dataset.
     """
@@ -53,6 +69,7 @@ def input_nimbal_pushoff():
 def _get_input_registry(pipeline_name: str = None):
     dict_inputs = {
         "input_axivity_dataset": input_axivity_dataset(),
+        "input_bittium_dataset": input_bittium_dataset(),
         "input_sync_dataset": input_sync_dataset(),
         "input_nimbal_pushoff": input_nimbal_pushoff(),
     }

@@ -29,6 +29,60 @@ def output_axivity_rawplots():
         },
     }
 
+def output_bittium_rawdata():
+    """ Raw bittium dataset.
+    """
+    return {
+        "type": "path",
+        "catalog": {
+            "type": "partitions.IncrementalDataset",
+            "path": "",
+            "dataset": "pandas.CSVDataset",
+            "filename_suffix": ".csv",
+            "metadata": { "kedro-viz": {"layer": "output"} }
+        },
+    }
+
+def output_bittium_rawplots():
+    """ Raw bittium plots.
+    """
+    return {
+        "type": "path",
+        "catalog": {
+            "type": "matplotlib.MatplotlibWriter",
+            "filepath": "",
+            "save_args": { "format": "png" },
+            "metadata": { "kedro-viz": {"layer": "output"} }
+        },
+    }
+
+def output_rr_data():
+    """ Bittium RR dataset.
+    """
+    return {
+        "type": "path",
+        "catalog": {
+            "type": "partitions.IncrementalDataset",
+            "path": "",
+            "dataset": "pandas.CSVDataset",
+            "filename_suffix": ".csv",
+            "metadata": { "kedro-viz": {"layer": "output"} }
+        },
+    }
+
+def output_rr_plots():
+    """ Bittium RR plots.
+    """
+    return {
+        "type": "path",
+        "catalog": {
+            "type": "matplotlib.MatplotlibWriter",
+            "filepath": "",
+            "save_args": { "format": "png" },
+            "metadata": { "kedro-viz": {"layer": "output"} }
+        },
+    }
+
 def output_axivity_stepdata():
     """ Step axivity dataset.
     """
@@ -86,6 +140,10 @@ def _get_output_registry(pipeline_name: str = None):
     dict_outputs = {
         "output_axivity_rawdata": output_axivity_rawdata(),
         "output_axivity_rawplots": output_axivity_rawplots(),
+        "output_bittium_rawdata": output_bittium_rawdata(),
+        "output_bittium_rawplots": output_bittium_rawplots(),
+        "output_rr_data": output_rr_data(),
+        "output_rr_plots": output_rr_plots(),
         "output_axivity_stepdata": output_axivity_stepdata(),
         "output_axivity_stepplots": output_axivity_stepplots(),
         "output_axivity_stepprofiles": output_axivity_stepprofiles(),

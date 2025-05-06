@@ -1,10 +1,9 @@
 from pathlib import PurePosixPath
 from typing import Any, Dict
-
-import pyedflib
 import numpy as np
 
 import fsspec
+import mne
 import os
 from kedro.io import AbstractDataset
 from kedro.io.core import get_filepath_str, get_protocol_and_path
@@ -31,31 +30,16 @@ class BittiumDataset(AbstractDataset[np.ndarray, np.ndarray]):
         self._fs = fsspec.filesystem(self._protocol)
 
     def load(self) -> dict:
-        """Loads data from the .cwa file.
+        """Loads data from the .edf file.
 
         Returns:
-            Data from the .wa file as a pandas dataframe.
+            Data from the .edf file as a pandas dataframe.
         """
         load_path = get_filepath_str(self._filepath, self._protocol)
-        f = pyedflib.EdfReader(load_path)
+        print(load_path)
+        f = mne.io.read_raw_edf(load_path)
 
-        signal_labels = f.getSignalLabels()
-        idx_ecg = [i for i, lbl in enumerate(signal_labels) if "ECG" in lbl]
-        ecg = np.zeros((len(idx_ecg), f.getNSamples()[idx_ecg[0]]))
-        for i, idx in enumerate(idx_ecg):
-            ecg[i, :] = f.readSignal(idx)
-        start_time = f.getHeader()["startdate"]
-        fs = f.getSampleFrequency(idx_ecg[0])
-
-        # create time index
-        seconds = np.linspace(0, len(ecg), len(ecg)) / fs
-
-        ecg_data = {"start_time": start_time,
-                    "ecg": ecg,
-                    "seconds": seconds}
-        
-
-        return ecg_data
+        return f
 
     def save(self, data: dict) -> None:
         """Saves .edf data to the specified filepath"""

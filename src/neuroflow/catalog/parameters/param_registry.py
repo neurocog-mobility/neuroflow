@@ -23,6 +23,22 @@ def params_axivity_filepattern():
         },
     }
 
+def params_bittium_filepattern():
+    """
+    
+    :meta private:
+    
+    Bittium dataset filepattern.
+    """
+    return {
+        "requires_input": True,
+        "type": "filepattern",
+        "catalog": {
+            "dataset": "input_bittium_dataset",
+            "pattern": ""
+        },
+    }
+
 def params_sync_filepattern():
     """
     
@@ -71,13 +87,26 @@ def _params_plot_imu():
         },
     }
 
+def _params_plot_ecg():
+    """ Columns for ECG plotting.
+    """
+    return {
+        "requires_input": False,
+        "type": "list",
+        "catalog": {
+            "columns": ["voltage"]
+        },
+    }
+
 
 def _get_param_registry(pipeline_name: str = None):
     dict_params = {
         "axivity_filepattern": params_axivity_filepattern(),
+        "bittium_filepattern": params_bittium_filepattern(),
         "sync_filepattern": params_sync_filepattern(),
         "step_parameters": params_step_parameters(),
         "plot_imu": _params_plot_imu(),
+        "plot_ecg": _params_plot_ecg(),
     }
 
     if pipeline_name:
@@ -174,7 +203,7 @@ def _validate_dict(dict_name, dict_params, param_registry, i):
     accept_vals = input("Accept default values? (y/n) [y]: ") or "y"
     
     if accept_vals == "n":
-        clear_output(wait=False)
+        # clear_output(wait=False)
         
         for pkey, pval in dict_params.items():
             _display_param_registry_header(param_registry, i)
@@ -187,14 +216,14 @@ def _validate_dict(dict_name, dict_params, param_registry, i):
             new_val = input(f"--> New value: ")
             dict_params[pkey] = float(new_val)
             
-            clear_output(wait=False)
-    clear_output(wait=False)
+            # clear_output(wait=False)
+    # clear_output(wait=False)
     
     return dict_params
 
 
 def _display_param_registry_header(param_registry, i):
-    clear_output(wait=False)
+    # clear_output(wait=False)
     print(_format_text("\nGenerating parameter registry", bold=True, underline=True))
     print(_format_text("Setting parameters for: ", bold=True))
     for j, (jkey, jmeta) in enumerate(param_registry.items()):

@@ -14,6 +14,7 @@ from neuroflow.utils.utils import _format_text
 import numpy as np
 from IPython.display import clear_output
 import shutil
+from pathlib import Path
 
 ipython = get_ipython()
 
@@ -108,6 +109,7 @@ def update_data_catalog(neuroflow_path, dict_catalog):
     :meta private:
     
     """
+    
     config_path = os.path.join(neuroflow_path, "conf", "base")
 
     catalog_path = os.path.join(config_path, "catalog.yml")
@@ -153,13 +155,20 @@ def initialize_neuroflow(neuroflow_path):
     catalog_intermed = {str(key): info["catalog"] for key, info in intermeds.items()}
     catalog_data = {**catalog_inputs, **catalog_outputs, **catalog_intermed}
     catalog_params = {str(key): info["catalog"] for key, info in params.items()}
+
+    # check if conf path exists -> if not, create it
+    if not Path(neuroflow_path).is_dir():
+        config_path = os.path.join(neuroflow_path, "conf", "base")
+        config_path_obj = Path(config_path)
+        config_path_obj.mkdir()
+    
     update_catalog(neuroflow_path, catalog_data, catalog_params)
 
-    print("-----------------------------------")
-    print("-----------------------------------")
-    print("Neuroflow loaded successfully.")
-    print("-----------------------------------")
-    print("-----------------------------------")
+    # print("-----------------------------------")
+    # print("-----------------------------------")
+    # print("Neuroflow loaded successfully.")
+    # print("-----------------------------------")
+    # print("-----------------------------------")
 
 
 @click.group(name="Neuroflow")
@@ -167,17 +176,22 @@ def project_group() -> None:  # pragma: no cover
     pass
 
 
-@project_group.command()  # 'create' subcommand
-@click.option('--create', '-cr', help='Create a new NeuroFlow project in the given directory. Example: neuroflow --create [DIRECTORY] where [DIRECTORY] is the project directory')
-def _main(create):
-    """Create a new project."""
-    # make folder path absolute
-    folderpath = os.path.realpath(os.path.expanduser(create))
-    print(f"-> Creating project: {folderpath}")
+@click.command()  # 'create' subcommand
+@click.option('--create', 'action', flag_value='create', help='Create a new NeuroFlow project in the given directory. Example: neuroflow --create [DIRECTORY] where [DIRECTORY] is the project directory')
+@click.option('--initialize', 'action', flag_value='init', help='Initialize Jupyter kernel for development.')
+@click.option('--name', required=False, help='Name of the project folder.')
+def _main(action, name):
+    """NeuroFlow command list."""
+    if action=="create":
+        # make folder path absolute
+        folderpath = os.path.realpath(os.path.expanduser(name))
+        print(f"-> Creating project: {folderpath}")
 
-    _create_experiment(folderpath)
-    _copy_notebook_templates(folderpath)
-
+        _create_experiment(folderpath)
+        _copy_notebook_templates(folderpath)
+    elif action=="init":
+        print("Initializing Kedro kernel.")
+    
 
 if __name__ == "__main__":
     _main()

@@ -2,6 +2,7 @@ from kedro.framework.project import find_pipelines
 from kedro.pipeline import Pipeline
 import neuroflow.pipes.ppl_default as ppl
 import neuroflow.pipes.imu.ppl_imu as ppl_imu
+import neuroflow.pipes.ecg.ppl_ecg as ppl_ecg
 from neuroflow.utils.utils import _format_text
 
 
@@ -68,6 +69,22 @@ def _get_pipeline_registry():
             "intermed": ["axivity_data_trials",
                          "step_state_data", "table_step_times", "axivity_data_steps",
                          "table_step_summaries"]
+        },
+        "process_raw_bittium": {
+            "description": "Exports raw data from Bittium ECG data.",
+            "pipeline": ppl_ecg.ppl_export_raw_bittium(),
+            "input": ["input_bittium_dataset", "input_sync_dataset"],
+            "params": ["bittium_filepattern", "sync_filepattern", "plot_ecg"],
+            "output": ["output_bittium_rawdata", "output_bittium_rawplots"],
+            "intermed": ["bittium_data_trials"]
+        },
+        "detect_rr": {
+            "description": "Exports RR data from Bittium ECG data.",
+            "pipeline": ppl_ecg.ppl_detect_rr(),
+            "input": ["input_bittium_dataset", "input_sync_dataset"],
+            "params": ["bittium_filepattern", "sync_filepattern"],
+            "output": ["output_rr_data", "output_rr_plots"],
+            "intermed": ["bittium_data_trials", "bittium_processed_trials", "table_rr_peaks"]
         },
     }
 

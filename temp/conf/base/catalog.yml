@@ -8,29 +8,12 @@ axivity_data_trials:
     kedro-viz:
       layer: process-raw
   type: MemoryDataset
-bittium_data_trials:
-  metadata:
-    kedro-viz:
-      layer: process-raw
-  type: MemoryDataset
-bittium_processed_trials:
-  metadata:
-    kedro-viz:
-      layer: process-rr
-  type: MemoryDataset
 input_axivity_dataset:
   dataset: neuroflow.datasets.axivity_dataset.AxivityDataset
   metadata:
     kedro-viz:
       layer: input
-  path: ''
-  type: partitions.IncrementalDataset
-input_bittium_dataset:
-  dataset: neuroflow.datasets.bittium_dataset.BittiumDataset
-  metadata:
-    kedro-viz:
-      layer: input
-  path: ''
+  path: /home/abdulzaf/Documents/tutorial_pipeline/data/raw/axivity
   type: partitions.IncrementalDataset
 input_nimbal_pushoff:
   filepath: data/nimbal_pushoff.csv
@@ -43,7 +26,7 @@ input_sync_dataset:
   metadata:
     kedro-viz:
       layer: input
-  path: ''
+  path: /home/abdulzaf/Documents/tutorial_pipeline/data/raw/sync
   type: partitions.IncrementalDataset
 output_axivity_rawdata:
   dataset: pandas.CSVDataset
@@ -51,10 +34,10 @@ output_axivity_rawdata:
   metadata:
     kedro-viz:
       layer: output
-  path: ''
+  path: /home/abdulzaf/Documents/tutorial_pipeline/data/processed/output_axivity_rawdata
   type: partitions.IncrementalDataset
 output_axivity_rawplots:
-  filepath: ''
+  filepath: /home/abdulzaf/Documents/tutorial_pipeline/data/processed/output_axivity_rawplots
   metadata:
     kedro-viz:
       layer: output
@@ -67,10 +50,10 @@ output_axivity_stepdata:
   metadata:
     kedro-viz:
       layer: output
-  path: ''
+  path: /home/abdulzaf/Documents/tutorial_pipeline/data/processed/output_axivity_stepdata
   type: partitions.IncrementalDataset
 output_axivity_stepplots:
-  filepath: ''
+  filepath: /home/abdulzaf/Documents/tutorial_pipeline/data/processed/output_axivity_stepplots
   metadata:
     kedro-viz:
       layer: output
@@ -78,7 +61,7 @@ output_axivity_stepplots:
     format: png
   type: matplotlib.MatplotlibWriter
 output_axivity_stepprofiles:
-  filepath: ''
+  filepath: /home/abdulzaf/Documents/tutorial_pipeline/data/processed/output_axivity_stepprofiles
   metadata:
     kedro-viz:
       layer: output
@@ -86,52 +69,15 @@ output_axivity_stepprofiles:
     format: png
   type: matplotlib.MatplotlibWriter
 output_axivity_stepsummary:
-  filepath: ''
+  filepath: /home/abdulzaf/Documents/tutorial_pipeline/data/processed/output_axivity_stepsummary/axivity_step_summary.csv
   metadata:
     kedro-viz:
       layer: output
   type: kedro_datasets.pandas.CSVDataset
-output_bittium_rawdata:
-  dataset: pandas.CSVDataset
-  filename_suffix: .csv
-  metadata:
-    kedro-viz:
-      layer: output
-  path: ''
-  type: partitions.IncrementalDataset
-output_bittium_rawplots:
-  filepath: ''
-  metadata:
-    kedro-viz:
-      layer: output
-  save_args:
-    format: png
-  type: matplotlib.MatplotlibWriter
-output_rr_data:
-  dataset: pandas.CSVDataset
-  filename_suffix: .csv
-  metadata:
-    kedro-viz:
-      layer: output
-  path: ''
-  type: partitions.IncrementalDataset
-output_rr_plots:
-  filepath: ''
-  metadata:
-    kedro-viz:
-      layer: output
-  save_args:
-    format: png
-  type: matplotlib.MatplotlibWriter
 step_state_data:
   metadata:
     kedro-viz:
       layer: detect-steps
-  type: MemoryDataset
-table_rr_peaks:
-  metadata:
-    kedro-viz:
-      layer: process-rr
   type: MemoryDataset
 table_step_summaries:
   metadata:

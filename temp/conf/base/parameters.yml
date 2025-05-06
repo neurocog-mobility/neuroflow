@@ -1,12 +1,6 @@
 axivity_filepattern:
   dataset: input_axivity_dataset
-  pattern: ''
-bittium_filepattern:
-  dataset: input_bittium_dataset
-  pattern: ''
-plot_ecg:
-  columns:
-  - voltage
+  pattern: '[misc]_[site]_[subject]_[session]_[misc]_[sensor].cwa'
 plot_imu:
   columns:
   - accel_x
@@ -21,4 +15,4 @@ step_parameters:
   swing_phase_time: 0.2
 sync_filepattern:
   dataset: input_sync_dataset
-  pattern: ''
+  pattern: '[misc]_[site]_[subject]_[session]_[misc].csv'

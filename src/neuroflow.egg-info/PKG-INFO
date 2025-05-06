@@ -1,4 +1,4 @@
-Metadata-Version: 2.2
+Metadata-Version: 2.4
 Name: neuroflow
 Version: 0.11
 Requires-Python: >=3.9
@@ -25,6 +25,7 @@ Requires-Dist: sphinx_copybutton==0.5.2; extra == "docs"
 Requires-Dist: ipykernel<7.0,>=5.3; extra == "docs"
 Requires-Dist: Jinja2<3.2.0; extra == "docs"
 Requires-Dist: myst-parser<2.1,>=1.0; extra == "docs"
+Dynamic: license-file
 
 # Neuroflow
 Toolbox for building and running multi-modal pipelines

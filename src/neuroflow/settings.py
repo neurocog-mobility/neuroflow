@@ -10,10 +10,10 @@
 
 from pathlib import Path  # noqa: E402
 
-from kedro_viz.integrations.kedro.sqlite_store import SQLiteStore  # noqa: E402
+# from kedro_viz.integrations.kedro.sqlite_store import SQLiteStore  # noqa: E402
 
 # Class that manages storing KedroSession data.
-SESSION_STORE_CLASS = SQLiteStore
+# SESSION_STORE_CLASS = SQLiteStore
 
 # Setup for Experiment Tracking
 # The SQLite DB required for experiment tracking is stored by default
