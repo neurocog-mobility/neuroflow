@@ -190,11 +190,13 @@
 </ul>
 </details></li>
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="neuroflow.nodes.html">neuroflow.nodes package</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="neuroflow.nodes.ecg.html">neuroflow.nodes.ecg package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="neuroflow.nodes.imu.html">neuroflow.nodes.imu package</a></li>
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">neuroflow.nodes.utils package</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="neuroflow.pipes.html">neuroflow.pipes package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuroflow.pipes.ecg.html">neuroflow.pipes.ecg package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="neuroflow.pipes.imu.html">neuroflow.pipes.imu package</a></li>
 </ul>
 </details></li>
@@ -347,8 +349,10 @@
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-neuroflow.nodes.utils.axivity">Submodules</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neuroflow.nodes.utils.axivity.parse_axivity"><code class="docutils literal notranslate"><span class="pre">parse_axivity()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neuroflow.nodes.utils.bittium.parse_bittium"><code class="docutils literal notranslate"><span class="pre">parse_bittium()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neuroflow.nodes.utils.export.export_partitions"><code class="docutils literal notranslate"><span class="pre">export_partitions()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neuroflow.nodes.utils.export.plot_partitions"><code class="docutils literal notranslate"><span class="pre">plot_partitions()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neuroflow.nodes.utils.export.plot_partitions_rr"><code class="docutils literal notranslate"><span class="pre">plot_partitions_rr()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -381,6 +385,21 @@ sync_filepattern: Filepattern for extracting metadata for each sync file.</p>
 </dl>
 </dd></dl>
 
+<dl class="py function" id="module-neuroflow.nodes.utils.bittium">
+<dt class="sig sig-object py" id="neuroflow.nodes.utils.bittium.parse_bittium">
+<span class="sig-prename descclassname"><span class="pre">neuroflow.nodes.utils.bittium.</span></span><span class="sig-name descname"><span class="pre">parse_bittium</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_ecg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_sync</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ecg_filepattern</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sync_filepattern</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/neuroflow/nodes/utils/bittium.html#parse_bittium"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#neuroflow.nodes.utils.bittium.parse_bittium" title="Link to this definition">#</a></dt>
+<dd><p>Splits each axivity session into individual trials based on provided timestamps.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>data_ecg: Raw Bittium files.
+data_sync: Trial sync timestamps.
+ecg_filepattern: Filepattern for extracting metadata for each Bittium file.
+sync_filepattern: Filepattern for extracting metadata for each sync file.</p>
+</dd>
+<dt>Returns:</dt><dd><p>data_processed: Bittium files split by trial.</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py function" id="module-neuroflow.nodes.utils.export">
 <dt class="sig sig-object py" id="neuroflow.nodes.utils.export.export_partitions">
 <span class="sig-prename descclassname"><span class="pre">neuroflow.nodes.utils.export.</span></span><span class="sig-name descname"><span class="pre">export_partitions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_partitions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span></span></span><a class="reference internal" href="../_modules/neuroflow/nodes/utils/export.html#export_partitions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#neuroflow.nodes.utils.export.export_partitions" title="Link to this definition">#</a></dt>
@@ -399,6 +418,19 @@ sync_filepattern: Filepattern for extracting metadata for each sync file.</p>
 <dd><p>Plots raw data for the sensor.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><p>data_partitions: Raw data partitions</p>
+</dd>
+<dt>Returns:</dt><dd><p>dict_plots: Dictionary of plots.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="neuroflow.nodes.utils.export.plot_partitions_rr">
+<span class="sig-prename descclassname"><span class="pre">neuroflow.nodes.utils.export.</span></span><span class="sig-name descname"><span class="pre">plot_partitions_rr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_partitions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_partitions_rr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span></span></span><a class="reference internal" href="../_modules/neuroflow/nodes/utils/export.html#plot_partitions_rr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#neuroflow.nodes.utils.export.plot_partitions_rr" title="Link to this definition">#</a></dt>
+<dd><p>Plots raw data for the sensor.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>data_partitions: Raw data partitions
+data_partitions_rr: Detected RR peaks</p>
 </dd>
 <dt>Returns:</dt><dd><p>dict_plots: Dictionary of plots.</p>
 </dd>
@@ -456,8 +488,10 @@ sync_filepattern: Filepattern for extracting metadata for each sync file.</p>
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-neuroflow.nodes.utils.axivity">Submodules</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neuroflow.nodes.utils.axivity.parse_axivity"><code class="docutils literal notranslate"><span class="pre">parse_axivity()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neuroflow.nodes.utils.bittium.parse_bittium"><code class="docutils literal notranslate"><span class="pre">parse_bittium()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neuroflow.nodes.utils.export.export_partitions"><code class="docutils literal notranslate"><span class="pre">export_partitions()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neuroflow.nodes.utils.export.plot_partitions"><code class="docutils literal notranslate"><span class="pre">plot_partitions()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neuroflow.nodes.utils.export.plot_partitions_rr"><code class="docutils literal notranslate"><span class="pre">plot_partitions_rr()</span></code></a></li>
 </ul>
 </li>
 </ul>

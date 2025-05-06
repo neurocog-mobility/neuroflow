@@ -189,11 +189,13 @@
 </ul>
 </details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../../source/neuroflow.nodes.html">neuroflow.nodes package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../source/neuroflow.nodes.ecg.html">neuroflow.nodes.ecg package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../source/neuroflow.nodes.imu.html">neuroflow.nodes.imu package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../source/neuroflow.nodes.utils.html">neuroflow.nodes.utils package</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../../source/neuroflow.pipes.html">neuroflow.pipes package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../source/neuroflow.pipes.ecg.html">neuroflow.pipes.ecg package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../source/neuroflow.pipes.imu.html">neuroflow.pipes.imu package</a></li>
 </ul>
 </details></li>
@@ -326,6 +328,25 @@
     <span class="p">}</span></div>
 
 
+<div class="viewcode-block" id="input_bittium_dataset">
+<a class="viewcode-back" href="../../../../source/neuroflow.catalog.inputs.html#neuroflow.catalog.inputs.input_registry.input_bittium_dataset">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">input_bittium_dataset</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Bittium dataset.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;requires_input&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s2">&quot;pathtype&quot;</span><span class="p">:</span> <span class="s2">&quot;directory&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;modality&quot;</span><span class="p">:</span> <span class="s2">&quot;bittium&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;filepattern&quot;</span><span class="p">:</span> <span class="s2">&quot;*.EDF&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;catalog&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;partitions.IncrementalDataset&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;neuroflow.datasets.bittium_dataset.BittiumDataset&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="s2">&quot;kedro-viz&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;layer&quot;</span><span class="p">:</span> <span class="s2">&quot;input&quot;</span><span class="p">}</span> <span class="p">}</span>
+        <span class="p">},</span>
+    <span class="p">}</span></div>
+
+
 <div class="viewcode-block" id="input_sync_dataset">
 <a class="viewcode-back" href="../../../../source/neuroflow.catalog.inputs.html#neuroflow.catalog.inputs.input_registry.input_sync_dataset">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">input_sync_dataset</span><span class="p">():</span>
@@ -363,6 +384,7 @@
 <span class="k">def</span><span class="w"> </span><span class="nf">_get_input_registry</span><span class="p">(</span><span class="n">pipeline_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
     <span class="n">dict_inputs</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s2">&quot;input_axivity_dataset&quot;</span><span class="p">:</span> <span class="n">input_axivity_dataset</span><span class="p">(),</span>
+        <span class="s2">&quot;input_bittium_dataset&quot;</span><span class="p">:</span> <span class="n">input_bittium_dataset</span><span class="p">(),</span>
         <span class="s2">&quot;input_sync_dataset&quot;</span><span class="p">:</span> <span class="n">input_sync_dataset</span><span class="p">(),</span>
         <span class="s2">&quot;input_nimbal_pushoff&quot;</span><span class="p">:</span> <span class="n">input_nimbal_pushoff</span><span class="p">(),</span>
     <span class="p">}</span>

@@ -189,11 +189,13 @@
 </ul>
 </details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../../source/neuroflow.nodes.html">neuroflow.nodes package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../source/neuroflow.nodes.ecg.html">neuroflow.nodes.ecg package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../source/neuroflow.nodes.imu.html">neuroflow.nodes.imu package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../source/neuroflow.nodes.utils.html">neuroflow.nodes.utils package</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../../source/neuroflow.pipes.html">neuroflow.pipes package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../source/neuroflow.pipes.ecg.html">neuroflow.pipes.ecg package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../source/neuroflow.pipes.imu.html">neuroflow.pipes.imu package</a></li>
 </ul>
 </details></li>
@@ -336,6 +338,72 @@
     <span class="p">}</span></div>
 
 
+<div class="viewcode-block" id="output_bittium_rawdata">
+<a class="viewcode-back" href="../../../../source/neuroflow.catalog.outputs.html#neuroflow.catalog.outputs.output_registry.output_bittium_rawdata">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">output_bittium_rawdata</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Raw bittium dataset.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;path&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;catalog&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;partitions.IncrementalDataset&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;pandas.CSVDataset&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;filename_suffix&quot;</span><span class="p">:</span> <span class="s2">&quot;.csv&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="s2">&quot;kedro-viz&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;layer&quot;</span><span class="p">:</span> <span class="s2">&quot;output&quot;</span><span class="p">}</span> <span class="p">}</span>
+        <span class="p">},</span>
+    <span class="p">}</span></div>
+
+
+<div class="viewcode-block" id="output_bittium_rawplots">
+<a class="viewcode-back" href="../../../../source/neuroflow.catalog.outputs.html#neuroflow.catalog.outputs.output_registry.output_bittium_rawplots">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">output_bittium_rawplots</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Raw bittium plots.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;path&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;catalog&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;matplotlib.MatplotlibWriter&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;filepath&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;save_args&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="s2">&quot;format&quot;</span><span class="p">:</span> <span class="s2">&quot;png&quot;</span> <span class="p">},</span>
+            <span class="s2">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="s2">&quot;kedro-viz&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;layer&quot;</span><span class="p">:</span> <span class="s2">&quot;output&quot;</span><span class="p">}</span> <span class="p">}</span>
+        <span class="p">},</span>
+    <span class="p">}</span></div>
+
+
+<div class="viewcode-block" id="output_rr_data">
+<a class="viewcode-back" href="../../../../source/neuroflow.catalog.outputs.html#neuroflow.catalog.outputs.output_registry.output_rr_data">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">output_rr_data</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Bittium RR dataset.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;path&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;catalog&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;partitions.IncrementalDataset&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;pandas.CSVDataset&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;filename_suffix&quot;</span><span class="p">:</span> <span class="s2">&quot;.csv&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="s2">&quot;kedro-viz&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;layer&quot;</span><span class="p">:</span> <span class="s2">&quot;output&quot;</span><span class="p">}</span> <span class="p">}</span>
+        <span class="p">},</span>
+    <span class="p">}</span></div>
+
+
+<div class="viewcode-block" id="output_rr_plots">
+<a class="viewcode-back" href="../../../../source/neuroflow.catalog.outputs.html#neuroflow.catalog.outputs.output_registry.output_rr_plots">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">output_rr_plots</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Bittium RR plots.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;path&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;catalog&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;matplotlib.MatplotlibWriter&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;filepath&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;save_args&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="s2">&quot;format&quot;</span><span class="p">:</span> <span class="s2">&quot;png&quot;</span> <span class="p">},</span>
+            <span class="s2">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="s2">&quot;kedro-viz&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;layer&quot;</span><span class="p">:</span> <span class="s2">&quot;output&quot;</span><span class="p">}</span> <span class="p">}</span>
+        <span class="p">},</span>
+    <span class="p">}</span></div>
+
+
 <div class="viewcode-block" id="output_axivity_stepdata">
 <a class="viewcode-back" href="../../../../source/neuroflow.catalog.outputs.html#neuroflow.catalog.outputs.output_registry.output_axivity_stepdata">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">output_axivity_stepdata</span><span class="p">():</span>
@@ -405,6 +473,10 @@
     <span class="n">dict_outputs</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s2">&quot;output_axivity_rawdata&quot;</span><span class="p">:</span> <span class="n">output_axivity_rawdata</span><span class="p">(),</span>
         <span class="s2">&quot;output_axivity_rawplots&quot;</span><span class="p">:</span> <span class="n">output_axivity_rawplots</span><span class="p">(),</span>
+        <span class="s2">&quot;output_bittium_rawdata&quot;</span><span class="p">:</span> <span class="n">output_bittium_rawdata</span><span class="p">(),</span>
+        <span class="s2">&quot;output_bittium_rawplots&quot;</span><span class="p">:</span> <span class="n">output_bittium_rawplots</span><span class="p">(),</span>
+        <span class="s2">&quot;output_rr_data&quot;</span><span class="p">:</span> <span class="n">output_rr_data</span><span class="p">(),</span>
+        <span class="s2">&quot;output_rr_plots&quot;</span><span class="p">:</span> <span class="n">output_rr_plots</span><span class="p">(),</span>
         <span class="s2">&quot;output_axivity_stepdata&quot;</span><span class="p">:</span> <span class="n">output_axivity_stepdata</span><span class="p">(),</span>
         <span class="s2">&quot;output_axivity_stepplots&quot;</span><span class="p">:</span> <span class="n">output_axivity_stepplots</span><span class="p">(),</span>
         <span class="s2">&quot;output_axivity_stepprofiles&quot;</span><span class="p">:</span> <span class="n">output_axivity_stepprofiles</span><span class="p">(),</span>

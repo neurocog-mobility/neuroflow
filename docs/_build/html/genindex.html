@@ -189,11 +189,13 @@
 </ul>
 </details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="source/neuroflow.nodes.html">neuroflow.nodes package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="source/neuroflow.nodes.ecg.html">neuroflow.nodes.ecg package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="source/neuroflow.nodes.imu.html">neuroflow.nodes.imu package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="source/neuroflow.nodes.utils.html">neuroflow.nodes.utils package</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="source/neuroflow.pipes.html">neuroflow.pipes package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="source/neuroflow.pipes.ecg.html">neuroflow.pipes.ecg package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="source/neuroflow.pipes.imu.html">neuroflow.pipes.imu package</a></li>
 </ul>
 </details></li>
@@ -305,6 +307,7 @@
  <a href="#C"><strong>C</strong></a>
  | <a href="#D"><strong>D</strong></a>
  | <a href="#E"><strong>E</strong></a>
+ | <a href="#F"><strong>F</strong></a>
  | <a href="#I"><strong>I</strong></a>
  | <a href="#M"><strong>M</strong></a>
  | <a href="#N"><strong>N</strong></a>
@@ -328,6 +331,10 @@
 <h2 id="D">D</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="source/neuroflow.nodes.ecg.html#neuroflow.nodes.ecg.detect_rr.detect_rr_peaks">detect_rr_peaks() (in module neuroflow.nodes.ecg.detect_rr)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="source/neuroflow.nodes.imu.html#neuroflow.nodes.imu.step_detection.detect_steps_nimbal">detect_steps_nimbal() (in module neuroflow.nodes.imu.step_detection)</a>
 </li>
   </ul></td>
@@ -345,10 +352,20 @@
   </ul></td>
 </tr></table>
 
+<h2 id="F">F</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="source/neuroflow.nodes.ecg.html#neuroflow.nodes.ecg.detect_rr.filter_ecg">filter_ecg() (in module neuroflow.nodes.ecg.detect_rr)</a>
+</li>
+  </ul></td>
+</tr></table>
+
 <h2 id="I">I</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="source/neuroflow.catalog.inputs.html#neuroflow.catalog.inputs.input_registry.input_axivity_dataset">input_axivity_dataset() (in module neuroflow.catalog.inputs.input_registry)</a>
+</li>
+      <li><a href="source/neuroflow.catalog.inputs.html#neuroflow.catalog.inputs.input_registry.input_bittium_dataset">input_bittium_dataset() (in module neuroflow.catalog.inputs.input_registry)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -388,6 +405,10 @@
 </li>
         <li><a href="source/neuroflow.nodes.html#module-neuroflow.nodes">neuroflow.nodes</a>
 </li>
+        <li><a href="source/neuroflow.nodes.ecg.html#module-neuroflow.nodes.ecg">neuroflow.nodes.ecg</a>
+</li>
+        <li><a href="source/neuroflow.nodes.ecg.html#module-neuroflow.nodes.ecg.detect_rr">neuroflow.nodes.ecg.detect_rr</a>
+</li>
         <li><a href="source/neuroflow.nodes.imu.html#module-neuroflow.nodes.imu">neuroflow.nodes.imu</a>
 </li>
         <li><a href="source/neuroflow.nodes.imu.html#module-neuroflow.nodes.imu.gait_analysis">neuroflow.nodes.imu.gait_analysis</a>
@@ -400,6 +421,8 @@
 </li>
         <li><a href="source/neuroflow.nodes.utils.html#module-neuroflow.nodes.utils.axivity">neuroflow.nodes.utils.axivity</a>
 </li>
+        <li><a href="source/neuroflow.nodes.utils.html#module-neuroflow.nodes.utils.bittium">neuroflow.nodes.utils.bittium</a>
+</li>
         <li><a href="source/neuroflow.nodes.utils.html#module-neuroflow.nodes.utils.export">neuroflow.nodes.utils.export</a>
 </li>
         <li><a href="source/neuroflow.nodes.utils.html#module-neuroflow.nodes.utils.parse">neuroflow.nodes.utils.parse</a>
@@ -407,6 +430,10 @@
         <li><a href="source/neuroflow.html#module-neuroflow.pipeline_registry">neuroflow.pipeline_registry</a>
 </li>
         <li><a href="source/neuroflow.pipes.html#module-neuroflow.pipes">neuroflow.pipes</a>
+</li>
+        <li><a href="source/neuroflow.pipes.ecg.html#module-neuroflow.pipes.ecg">neuroflow.pipes.ecg</a>
+</li>
+        <li><a href="source/neuroflow.pipes.ecg.html#module-neuroflow.pipes.ecg.ppl_ecg">neuroflow.pipes.ecg.ppl_ecg</a>
 </li>
         <li><a href="source/neuroflow.pipes.imu.html#module-neuroflow.pipes.imu">neuroflow.pipes.imu</a>
 </li>
@@ -417,6 +444,10 @@
         <li><a href="source/neuroflow.html#module-neuroflow.settings">neuroflow.settings</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="source/neuroflow.nodes.ecg.html#neuroflow.nodes.ecg.detect_rr.moving_window_average">moving_window_average() (in module neuroflow.nodes.ecg.detect_rr)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -501,6 +532,20 @@
 </li>
       </ul></li>
       <li>
+    neuroflow.nodes.ecg
+
+      <ul>
+        <li><a href="source/neuroflow.nodes.ecg.html#module-neuroflow.nodes.ecg">module</a>
+</li>
+      </ul></li>
+      <li>
+    neuroflow.nodes.ecg.detect_rr
+
+      <ul>
+        <li><a href="source/neuroflow.nodes.ecg.html#module-neuroflow.nodes.ecg.detect_rr">module</a>
+</li>
+      </ul></li>
+      <li>
     neuroflow.nodes.imu
 
       <ul>
@@ -545,6 +590,13 @@
 </li>
       </ul></li>
       <li>
+    neuroflow.nodes.utils.bittium
+
+      <ul>
+        <li><a href="source/neuroflow.nodes.utils.html#module-neuroflow.nodes.utils.bittium">module</a>
+</li>
+      </ul></li>
+      <li>
     neuroflow.nodes.utils.export
 
       <ul>
@@ -570,6 +622,20 @@
 
       <ul>
         <li><a href="source/neuroflow.pipes.html#module-neuroflow.pipes">module</a>
+</li>
+      </ul></li>
+      <li>
+    neuroflow.pipes.ecg
+
+      <ul>
+        <li><a href="source/neuroflow.pipes.ecg.html#module-neuroflow.pipes.ecg">module</a>
+</li>
+      </ul></li>
+      <li>
+    neuroflow.pipes.ecg.ppl_ecg
+
+      <ul>
+        <li><a href="source/neuroflow.pipes.ecg.html#module-neuroflow.pipes.ecg.ppl_ecg">module</a>
 </li>
       </ul></li>
       <li>
@@ -612,13 +678,21 @@
 </li>
       <li><a href="source/neuroflow.catalog.outputs.html#neuroflow.catalog.outputs.output_registry.output_axivity_stepdata">output_axivity_stepdata() (in module neuroflow.catalog.outputs.output_registry)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="source/neuroflow.catalog.outputs.html#neuroflow.catalog.outputs.output_registry.output_axivity_stepplots">output_axivity_stepplots() (in module neuroflow.catalog.outputs.output_registry)</a>
 </li>
       <li><a href="source/neuroflow.catalog.outputs.html#neuroflow.catalog.outputs.output_registry.output_axivity_stepprofiles">output_axivity_stepprofiles() (in module neuroflow.catalog.outputs.output_registry)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="source/neuroflow.catalog.outputs.html#neuroflow.catalog.outputs.output_registry.output_axivity_stepsummary">output_axivity_stepsummary() (in module neuroflow.catalog.outputs.output_registry)</a>
+</li>
+      <li><a href="source/neuroflow.catalog.outputs.html#neuroflow.catalog.outputs.output_registry.output_bittium_rawdata">output_bittium_rawdata() (in module neuroflow.catalog.outputs.output_registry)</a>
+</li>
+      <li><a href="source/neuroflow.catalog.outputs.html#neuroflow.catalog.outputs.output_registry.output_bittium_rawplots">output_bittium_rawplots() (in module neuroflow.catalog.outputs.output_registry)</a>
+</li>
+      <li><a href="source/neuroflow.catalog.outputs.html#neuroflow.catalog.outputs.output_registry.output_rr_data">output_rr_data() (in module neuroflow.catalog.outputs.output_registry)</a>
+</li>
+      <li><a href="source/neuroflow.catalog.outputs.html#neuroflow.catalog.outputs.output_registry.output_rr_plots">output_rr_plots() (in module neuroflow.catalog.outputs.output_registry)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -626,17 +700,27 @@
 <h2 id="P">P</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="source/neuroflow.nodes.ecg.html#neuroflow.nodes.ecg.detect_rr.pan_tompkins_detector">pan_tompkins_detector() (in module neuroflow.nodes.ecg.detect_rr)</a>
+</li>
       <li><a href="source/neuroflow.catalog.parameters.html#neuroflow.catalog.parameters.param_registry.params_step_parameters">params_step_parameters() (in module neuroflow.catalog.parameters.param_registry)</a>
 </li>
       <li><a href="source/neuroflow.nodes.utils.html#neuroflow.nodes.utils.axivity.parse_axivity">parse_axivity() (in module neuroflow.nodes.utils.axivity)</a>
 </li>
+      <li><a href="source/neuroflow.nodes.utils.html#neuroflow.nodes.utils.bittium.parse_bittium">parse_bittium() (in module neuroflow.nodes.utils.bittium)</a>
+</li>
       <li><a href="source/neuroflow.nodes.utils.html#neuroflow.nodes.utils.export.plot_partitions">plot_partitions() (in module neuroflow.nodes.utils.export)</a>
+</li>
+      <li><a href="source/neuroflow.nodes.utils.html#neuroflow.nodes.utils.export.plot_partitions_rr">plot_partitions_rr() (in module neuroflow.nodes.utils.export)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="source/neuroflow.pipes.ecg.html#neuroflow.pipes.ecg.ppl_ecg.ppl_detect_rr">ppl_detect_rr() (in module neuroflow.pipes.ecg.ppl_ecg)</a>
+</li>
       <li><a href="source/neuroflow.pipes.imu.html#neuroflow.pipes.imu.ppl_imu.ppl_detect_steps_axivity">ppl_detect_steps_axivity() (in module neuroflow.pipes.imu.ppl_imu)</a>
 </li>
       <li><a href="source/neuroflow.pipes.imu.html#neuroflow.pipes.imu.ppl_imu.ppl_export_raw_axivity">ppl_export_raw_axivity() (in module neuroflow.pipes.imu.ppl_imu)</a>
+</li>
+      <li><a href="source/neuroflow.pipes.ecg.html#neuroflow.pipes.ecg.ppl_ecg.ppl_export_raw_bittium">ppl_export_raw_bittium() (in module neuroflow.pipes.ecg.ppl_ecg)</a>
 </li>
       <li><a href="source/neuroflow.pipes.imu.html#neuroflow.pipes.imu.ppl_imu.ppl_process_steps_axivity">ppl_process_steps_axivity() (in module neuroflow.pipes.imu.ppl_imu)</a>
 </li>

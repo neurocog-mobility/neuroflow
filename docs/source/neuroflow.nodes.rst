@@ -12,6 +12,7 @@ Subpackages
 .. toctree::
    :maxdepth: 1
 
+   neuroflow.nodes.ecg
    neuroflow.nodes.imu
    neuroflow.nodes.utils
 

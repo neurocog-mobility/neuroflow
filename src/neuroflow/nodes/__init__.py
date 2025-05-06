@@ -5,6 +5,7 @@ Subpackages
 -----------
 
 *   :py:mod:`neuroflow.nodes.imu`:  Definitions IMU processing nodes.
-*   :py:mod:`neuroflow.catalog.utils`:  Definitions for general processing nodes.
+*   :py:mod:`neuroflow.nodes.ecg`:  Definitions ECG processing nodes.
+*   :py:mod:`neuroflow.nodes.utils`:  Definitions for general processing nodes.
 
 """

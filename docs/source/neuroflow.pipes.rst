@@ -12,6 +12,7 @@ Subpackages
 .. toctree::
    :maxdepth: 1
 
+   neuroflow.pipes.ecg
    neuroflow.pipes.imu
 
 Submodules

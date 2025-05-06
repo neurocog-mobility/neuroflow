@@ -16,6 +16,12 @@ Submodules
    :show-inheritance:
 
 
+.. automodule:: neuroflow.nodes.utils.bittium
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
 .. automodule:: neuroflow.nodes.utils.export
    :members:
    :undoc-members:
