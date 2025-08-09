@@ -8,7 +8,7 @@ from neuroflow.utils.utils import _format_text
 
 def register_pipelines() -> dict[str, Pipeline]:
     """
-    
+
     :meta private:
 
     Register the project's pipelines.
@@ -17,11 +17,11 @@ def register_pipelines() -> dict[str, Pipeline]:
         A mapping from pipeline names to ``Pipeline`` objects.
     """
     pipeline_registry = _get_pipeline_registry()
-    pipeline_functions = {key: pipe["pipeline"] for key, pipe in pipeline_registry.items()}
-
-    return {
-        "__default__": ppl.ppl_default(), **pipeline_functions
+    pipeline_functions = {
+        key: pipe["pipeline"] for key, pipe in pipeline_registry.items()
     }
+
+    return {"__default__": ppl.ppl_default(), **pipeline_functions}
 
 
 def _get_pipeline_registry():
@@ -32,43 +32,86 @@ def _get_pipeline_registry():
             "input": ["input_axivity_dataset", "input_sync_dataset"],
             "params": ["axivity_filepattern", "sync_filepattern", "plot_imu"],
             "output": ["output_axivity_rawdata", "output_axivity_rawplots"],
-            "intermed": ["axivity_data_trials"]
+            "intermed": ["axivity_data_trials"],
         },
         "process_step_data": {
             "description": "Exports raw step data from Axivity IMU data.",
-            "pipeline": ppl_imu.ppl_detect_steps_axivity() +\
-            ppl_imu.ppl_process_steps_axivity(),
-            "input": ["input_axivity_dataset", "input_sync_dataset", "input_nimbal_pushoff"],
-            "params": ["axivity_filepattern", "sync_filepattern", "step_parameters", "plot_imu"],
-            "output": ["output_axivity_stepdata", "output_axivity_stepplots", "output_axivity_stepprofiles"],
-            "intermed": ["axivity_data_trials",
-                         "step_state_data", "table_step_times", "axivity_data_steps"]
+            "pipeline": ppl_imu.ppl_detect_steps_axivity()
+            + ppl_imu.ppl_process_steps_axivity(),
+            "input": [
+                "input_axivity_dataset",
+                "input_sync_dataset",
+                "input_nimbal_pushoff",
+            ],
+            "params": [
+                "axivity_filepattern",
+                "sync_filepattern",
+                "step_parameters",
+                "plot_imu",
+            ],
+            "output": [
+                "output_axivity_stepdata",
+                "output_axivity_stepplots",
+                "output_axivity_stepprofiles",
+            ],
+            "intermed": [
+                "axivity_data_trials",
+                "step_state_data",
+                "table_step_times",
+                "axivity_data_steps",
+            ],
         },
         "summarize_step_data": {
             "description": "Creates a step summary from Axivity IMU data.",
-            "pipeline": ppl_imu.ppl_detect_steps_axivity() +\
-            ppl_imu.ppl_summarize_steps_axivity(),
-            "input": ["input_axivity_dataset", "input_sync_dataset", "input_nimbal_pushoff"],
+            "pipeline": ppl_imu.ppl_detect_steps_axivity()
+            + ppl_imu.ppl_summarize_steps_axivity(),
+            "input": [
+                "input_axivity_dataset",
+                "input_sync_dataset",
+                "input_nimbal_pushoff",
+            ],
             "params": ["axivity_filepattern", "sync_filepattern", "step_parameters"],
             "output": ["output_axivity_stepsummary"],
-            "intermed": ["axivity_data_trials",
-                         "step_state_data", "table_step_times", "axivity_data_steps",
-                         "table_step_summaries"]
+            "intermed": [
+                "axivity_data_trials",
+                "step_state_data",
+                "table_step_times",
+                "axivity_data_steps",
+                "table_step_summaries",
+            ],
         },
         "project_naps": {
             "description": "NAPS project pipeline.\n\tProcesses Axivity IMU data, extracts steps, and creates a step summary.",
-            "pipeline": ppl_imu.ppl_export_raw_axivity() + \
-            ppl_imu.ppl_detect_steps_axivity() + \
-            ppl_imu.ppl_process_steps_axivity() + \
-            ppl_imu.ppl_summarize_steps_axivity(),
-            "input": ["input_axivity_dataset", "input_sync_dataset", "input_nimbal_pushoff"],
-            "params": ["axivity_filepattern", "sync_filepattern", "step_parameters", "plot_imu"],
-            "output": ["output_axivity_rawdata", "output_axivity_rawplots",
-                       "output_axivity_stepdata", "output_axivity_stepplots", "output_axivity_stepprofiles",
-                       "output_axivity_stepsummary"],
-            "intermed": ["axivity_data_trials",
-                         "step_state_data", "table_step_times", "axivity_data_steps",
-                         "table_step_summaries"]
+            "pipeline": ppl_imu.ppl_export_raw_axivity()
+            + ppl_imu.ppl_detect_steps_axivity()
+            + ppl_imu.ppl_process_steps_axivity()
+            + ppl_imu.ppl_summarize_steps_axivity(),
+            "input": [
+                "input_axivity_dataset",
+                "input_sync_dataset",
+                "input_nimbal_pushoff",
+            ],
+            "params": [
+                "axivity_filepattern",
+                "sync_filepattern",
+                "step_parameters",
+                "plot_imu",
+            ],
+            "output": [
+                "output_axivity_rawdata",
+                "output_axivity_rawplots",
+                "output_axivity_stepdata",
+                "output_axivity_stepplots",
+                "output_axivity_stepprofiles",
+                "output_axivity_stepsummary",
+            ],
+            "intermed": [
+                "axivity_data_trials",
+                "step_state_data",
+                "table_step_times",
+                "axivity_data_steps",
+                "table_step_summaries",
+            ],
         },
         "process_raw_bittium": {
             "description": "Exports raw data from Bittium ECG data.",
@@ -76,7 +119,7 @@ def _get_pipeline_registry():
             "input": ["input_bittium_dataset", "input_sync_dataset"],
             "params": ["bittium_filepattern", "sync_filepattern", "plot_ecg"],
             "output": ["output_bittium_rawdata", "output_bittium_rawplots"],
-            "intermed": ["bittium_data_trials"]
+            "intermed": ["bittium_data_trials"],
         },
         "detect_rr": {
             "description": "Exports RR data from Bittium ECG data.",
@@ -84,7 +127,27 @@ def _get_pipeline_registry():
             "input": ["input_bittium_dataset", "input_sync_dataset"],
             "params": ["bittium_filepattern", "sync_filepattern"],
             "output": ["output_rr_data", "output_rr_plots"],
-            "intermed": ["bittium_data_trials", "bittium_processed_trials", "table_rr_peaks"]
+            "intermed": [
+                "bittium_data_trials",
+                "bittium_processed_trials",
+                "table_rr_peaks",
+            ],
+        },
+        "detect_armswing": {
+            "description": "Detects and extracts armswing metrics from wrist IMUs.",
+            "pipeline": ppl_imu.ppl_process_armswing(),
+            "input": ["input_axivity_dataset", "input_sync_dataset"],
+            "params": ["axivity_filepattern", "sync_filepattern"],
+            "output": [
+                "output_axivity_rawdata",
+                "output_swing_data",
+                "output_axivity_rawplots",
+            ],
+            "intermed": [
+                "axivity_data_trials",
+                "axivity_data_swing",
+                "table_swing_summaries",
+            ],
         },
     }
 

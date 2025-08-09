@@ -14,6 +14,8 @@ Requires-Dist: kedro-viz>=6.7.0
 Requires-Dist: scikit-learn~=1.5.1
 Requires-Dist: seaborn~=0.12.1
 Requires-Dist: h5py
+Requires-Dist: mne
+Requires-Dist: paradigma
 Requires-Dist: openmovement@ git+https://github.com/digitalinteraction/openmovement-python.git#egg=openmovement
 Provides-Extra: docs
 Requires-Dist: docutils<0.21; extra == "docs"

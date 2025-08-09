@@ -1,49 +1,26 @@
-axivity_data_steps:
+axivity_data_swing:
   metadata:
     kedro-viz:
-      layer: process-steps
+      layer: process-swing
   type: MemoryDataset
 axivity_data_trials:
   metadata:
     kedro-viz:
       layer: process-raw
   type: MemoryDataset
-bittium_data_trials:
-  metadata:
-    kedro-viz:
-      layer: process-raw
-  type: MemoryDataset
-bittium_processed_trials:
-  metadata:
-    kedro-viz:
-      layer: process-rr
-  type: MemoryDataset
 input_axivity_dataset:
   dataset: neuroflow.datasets.axivity_dataset.AxivityDataset
   metadata:
     kedro-viz:
       layer: input
-  path: ''
+  path: /home/abdulzaf/github/development/neurocog-lab/neuroflow-env/test/data/raw/axivity
   type: partitions.IncrementalDataset
-input_bittium_dataset:
-  dataset: neuroflow.datasets.bittium_dataset.BittiumDataset
-  metadata:
-    kedro-viz:
-      layer: input
-  path: ''
-  type: partitions.IncrementalDataset
-input_nimbal_pushoff:
-  filepath: data/nimbal_pushoff.csv
-  metadata:
-    kedro-viz:
-      layer: detect-steps
-  type: kedro_datasets.pandas.CSVDataset
 input_sync_dataset:
   dataset: kedro_datasets.pandas.CSVDataset
   metadata:
     kedro-viz:
       layer: input
-  path: ''
+  path: /home/abdulzaf/github/development/neurocog-lab/neuroflow-env/test/data/raw/sync
   type: partitions.IncrementalDataset
 output_axivity_rawdata:
   dataset: pandas.CSVDataset
@@ -51,95 +28,26 @@ output_axivity_rawdata:
   metadata:
     kedro-viz:
       layer: output
-  path: ''
+  path: /home/abdulzaf/github/development/neurocog-lab/neuroflow-env/test/data/processed/output_axivity_rawdata
   type: partitions.IncrementalDataset
 output_axivity_rawplots:
-  filepath: ''
+  filepath: /home/abdulzaf/github/development/neurocog-lab/neuroflow-env/test/data/processed/output_axivity_rawplots
   metadata:
     kedro-viz:
       layer: output
   save_args:
     format: png
   type: matplotlib.MatplotlibWriter
-output_axivity_stepdata:
+output_swing_data:
   dataset: pandas.CSVDataset
   filename_suffix: .csv
   metadata:
     kedro-viz:
       layer: output
-  path: ''
+  path: /home/abdulzaf/github/development/neurocog-lab/neuroflow-env/test/data/processed/output_swing_data
   type: partitions.IncrementalDataset
-output_axivity_stepplots:
-  filepath: ''
+table_swing_summaries:
   metadata:
     kedro-viz:
-      layer: output
-  save_args:
-    format: png
-  type: matplotlib.MatplotlibWriter
-output_axivity_stepprofiles:
-  filepath: ''
-  metadata:
-    kedro-viz:
-      layer: output
-  save_args:
-    format: png
-  type: matplotlib.MatplotlibWriter
-output_axivity_stepsummary:
-  filepath: ''
-  metadata:
-    kedro-viz:
-      layer: output
-  type: kedro_datasets.pandas.CSVDataset
-output_bittium_rawdata:
-  dataset: pandas.CSVDataset
-  filename_suffix: .csv
-  metadata:
-    kedro-viz:
-      layer: output
-  path: ''
-  type: partitions.IncrementalDataset
-output_bittium_rawplots:
-  filepath: ''
-  metadata:
-    kedro-viz:
-      layer: output
-  save_args:
-    format: png
-  type: matplotlib.MatplotlibWriter
-output_rr_data:
-  dataset: pandas.CSVDataset
-  filename_suffix: .csv
-  metadata:
-    kedro-viz:
-      layer: output
-  path: ''
-  type: partitions.IncrementalDataset
-output_rr_plots:
-  filepath: ''
-  metadata:
-    kedro-viz:
-      layer: output
-  save_args:
-    format: png
-  type: matplotlib.MatplotlibWriter
-step_state_data:
-  metadata:
-    kedro-viz:
-      layer: detect-steps
-  type: MemoryDataset
-table_rr_peaks:
-  metadata:
-    kedro-viz:
-      layer: process-rr
-  type: MemoryDataset
-table_step_summaries:
-  metadata:
-    kedro-viz:
-      layer: process-steps
-  type: MemoryDataset
-table_step_times:
-  metadata:
-    kedro-viz:
-      layer: detect-steps
+      layer: process-swing
   type: MemoryDataset

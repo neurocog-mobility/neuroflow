@@ -61,6 +61,16 @@ def _inter_axivity_data_steps():
         },
     }
 
+def _inter_axivity_data_swing():
+    """ Nimbal pushoff data.
+    """
+    return {
+        "catalog": {
+            "type": "MemoryDataset",
+            "metadata": { "kedro-viz": {"layer": "process-swing"} }
+        },
+    }
+
 def _inter_table_step_summaries():
     """ Nimbal pushoff data.
     """
@@ -68,6 +78,16 @@ def _inter_table_step_summaries():
         "catalog": {
             "type": "MemoryDataset",
             "metadata": { "kedro-viz": {"layer": "process-steps"} }
+        },
+    }
+
+def _inter_table_swing_summaries():
+    """ Nimbal pushoff data.
+    """
+    return {
+        "catalog": {
+            "type": "MemoryDataset",
+            "metadata": { "kedro-viz": {"layer": "process-swing"} }
         },
     }
 
@@ -89,7 +109,9 @@ def _get_inter_registry(pipeline_name: str = None):
         "step_state_data": _inter_step_state_data(),
         "table_step_times": _inter_table_step_times(),
         "axivity_data_steps": _inter_axivity_data_steps(),
+        "axivity_data_swing": _inter_axivity_data_swing(),
         "table_step_summaries": _inter_table_step_summaries(),
+        "table_swing_summaries": _inter_table_swing_summaries(),
         "table_rr_peaks": _inter_table_rr_peaks(),
     }
 

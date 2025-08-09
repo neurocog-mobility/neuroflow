@@ -7,7 +7,7 @@ import pandas as pd
 import numpy as np
 from scipy.signal import find_peaks, peak_widths
 from scipy import ndimage
-from neuroflow.nodes.utils.parse import _get_sample_rate
+from neuroflow.nodes.utils.parse import get_sample_rate
 
 
 def _window_correlate(sig1, sig2):
@@ -115,7 +115,7 @@ def detect_steps_nimbal(data_axivity: Dict[str, Callable[[], Any]],
             # print(partition_key)
 
             vertical_accel = _get_vertical_acceleration(partition_data)
-            sample_rate = _get_sample_rate(partition_data)
+            sample_rate = get_sample_rate(partition_data)
 
             # Detect pushoff
             pushoff_ind = _push_off_detection(vertical_accel,

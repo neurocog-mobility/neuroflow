@@ -1,24 +1,6 @@
 axivity_filepattern:
   dataset: input_axivity_dataset
-  pattern: ''
-bittium_filepattern:
-  dataset: input_bittium_dataset
-  pattern: ''
-plot_ecg:
-  columns:
-  - voltage
-plot_imu:
-  columns:
-  - accel_x
-  - accel_y
-  - accel_z
-step_parameters:
-  foot_down_time: 0.05
-  heel_strike_detect_time: 0.5
-  heel_strike_threshold: -5
-  pushoff_threshold: 0.75
-  pushoff_time: 0.4
-  swing_phase_time: 0.2
+  pattern: '[misc]_[site]_[subject]_[session]_[misc]_[sensor].cwa'
 sync_filepattern:
   dataset: input_sync_dataset
-  pattern: ''
+  pattern: '[misc]_[site]_[subject]_[session]_[misc].csv'

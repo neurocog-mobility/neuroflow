@@ -93,3 +93,33 @@ def plot_partitions_rr(
     plt.close("all")
     print("Data plotting complete.")
     return plots_dict
+
+
+def plot_partitions_swing(
+    data_partitions: Dict[str, Callable[[], Any]],
+) -> Dict:
+    """Plots raw data for the sensor.
+
+    Args:
+        data_partitions: Raw data partitions
+    Returns:
+        dict_plots: Dictionary of plots.
+    """
+    plots_dict = {}
+
+    for partition_key, partition_value in sorted(data_partitions.items()):
+        partition_data = partition_value["data"]
+
+        fig, ax = plt.subplots()
+        plots_dict[f"{Path(partition_key).stem}_swing.png"] = fig
+
+        # plot ecg
+        ax.plot(partition_data["time"], partition_data["arm_angle"])
+        
+        ax.set_title(partition_key)
+        ax.set_xlabel("time (seconds)")
+        ax.set_ylabel("arm angle (degrees)")
+
+    plt.close("all")
+    print("Data plotting complete.")
+    return plots_dict

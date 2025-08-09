@@ -70,6 +70,20 @@ def output_rr_data():
         },
     }
 
+def output_swing_data():
+    """ Axivity IMU dataset.
+    """
+    return {
+        "type": "path",
+        "catalog": {
+            "type": "partitions.IncrementalDataset",
+            "path": "",
+            "dataset": "pandas.CSVDataset",
+            "filename_suffix": ".csv",
+            "metadata": { "kedro-viz": {"layer": "output"} }
+        },
+    }
+
 def output_rr_plots():
     """ Bittium RR plots.
     """
@@ -136,6 +150,7 @@ def output_axivity_stepsummary():
         },
     }
 
+
 def _get_output_registry(pipeline_name: str = None):
     dict_outputs = {
         "output_axivity_rawdata": output_axivity_rawdata(),
@@ -143,6 +158,7 @@ def _get_output_registry(pipeline_name: str = None):
         "output_bittium_rawdata": output_bittium_rawdata(),
         "output_bittium_rawplots": output_bittium_rawplots(),
         "output_rr_data": output_rr_data(),
+        "output_swing_data": output_swing_data(),
         "output_rr_plots": output_rr_plots(),
         "output_axivity_stepdata": output_axivity_stepdata(),
         "output_axivity_stepplots": output_axivity_stepplots(),

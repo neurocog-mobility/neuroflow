@@ -3,7 +3,7 @@ import pandas as pd
 from datetime import datetime
 import numpy as np
 from pathlib import Path
-from neuroflow.nodes.utils.parse import (_get_metadata_from_filename, _get_metadata_indices_from_filepattern)
+from neuroflow.nodes.utils.parse import (get_metadata_from_filename, get_metadata_indices_from_filepattern)
 
 
 def _timestring_to_datetime(timestring: str):
@@ -27,20 +27,20 @@ def parse_axivity(data_axivity: Dict[str, Callable[[], Any]],
         data_processed: Axivity files split by trial.
     """
 
-    metadata_index = _get_metadata_indices_from_filepattern(axivity_filepattern["pattern"])
+    metadata_index = get_metadata_indices_from_filepattern(axivity_filepattern["pattern"])
     
     data_processed = {}
     for p, (partition_key, partition_data) in enumerate(sorted(data_axivity.items())):
     
         # get partition metadata
-        partition_metadata = _get_metadata_from_filename(partition_key, metadata_index)
+        partition_metadata = get_metadata_from_filename(partition_key, metadata_index)
 
         if data_sync:
             # get corresponding sync file
             found_sync_file = False
             for s, (sync_key, sync_data) in enumerate(sorted(data_sync.items())):
-                sync_metadata_index = _get_metadata_indices_from_filepattern(sync_filepattern["pattern"])
-                sync_metadata = _get_metadata_from_filename(sync_key, sync_metadata_index)
+                sync_metadata_index = get_metadata_indices_from_filepattern(sync_filepattern["pattern"])
+                sync_metadata = get_metadata_from_filename(sync_key, sync_metadata_index)
                 subset_partition_meta = {k: partition_metadata[k] for k in list(sync_metadata.keys())}
         
                 if sync_metadata == subset_partition_meta:

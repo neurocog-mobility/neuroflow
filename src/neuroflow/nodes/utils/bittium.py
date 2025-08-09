@@ -1,7 +1,7 @@
 from typing import Any, Callable, Dict, List
 from neuroflow.nodes.utils.parse import (
-    _get_metadata_from_filename,
-    _get_metadata_indices_from_filepattern,
+    get_metadata_from_filename,
+    get_metadata_indices_from_filepattern,
 )
 from pathlib import Path
 from datetime import datetime
@@ -33,14 +33,14 @@ def parse_bittium(
         data_processed: Bittium files split by trial.
     """
 
-    metadata_index = _get_metadata_indices_from_filepattern(ecg_filepattern["pattern"])
+    metadata_index = get_metadata_indices_from_filepattern(ecg_filepattern["pattern"])
 
     data_processed = {}
     for p, (partition_key, partition_data) in enumerate(sorted(data_ecg.items())[:]):
         print(partition_key)
 
         # get partition metadata
-        partition_metadata = _get_metadata_from_filename(partition_key, metadata_index)
+        partition_metadata = get_metadata_from_filename(partition_key, metadata_index)
         # get edf time info
         session_start = partition_data.info["meas_date"]
         sampling_freq = partition_data.info["sfreq"]
@@ -50,10 +50,10 @@ def parse_bittium(
             # get corresponding sync file
             found_sync_file = False
             for s, (sync_key, sync_data) in enumerate(sorted(data_sync.items())):
-                sync_metadata_index = _get_metadata_indices_from_filepattern(
+                sync_metadata_index = get_metadata_indices_from_filepattern(
                     sync_filepattern["pattern"]
                 )
-                sync_metadata = _get_metadata_from_filename(
+                sync_metadata = get_metadata_from_filename(
                     sync_key, sync_metadata_index
                 )
                 subset_partition_meta = {

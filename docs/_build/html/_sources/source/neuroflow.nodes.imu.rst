@@ -10,6 +10,12 @@ Submodules
 ----------
 
 
+.. automodule:: neuroflow.nodes.imu.arm_swing
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
 .. automodule:: neuroflow.nodes.imu.gait_analysis
    :members:
    :undoc-members:
