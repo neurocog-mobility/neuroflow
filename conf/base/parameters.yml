@@ -1,6 +1,0 @@
-axivity_filepattern:
-  dataset: input_axivity_dataset
-  pattern: '[misc]_[site]_[subject]_[session]_[misc]_[sensor].cwa'
-sync_filepattern:
-  dataset: input_sync_dataset
-  pattern: '[misc]_[site]_[subject]_[session]_[misc].csv'

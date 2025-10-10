@@ -1,2 +1,0 @@
-Developing using NeuroFlow
-============================
