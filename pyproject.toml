@@ -27,9 +27,6 @@ neuroflow = "neuroflow.cli:main"
 requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
-[tool.setuptools]
-packages = ["neuroflow"]
-
 [tool.setuptools.packages.find]
 where = ["."]
 
