@@ -1,0 +1,31 @@
+[project]
+name = "neuroflow"
+version = "1.0.0"
+description = "Analytics tools and pipelines for the Neurocognition and Mobility Lab"
+authors = [{name="Abdullah Zafar", email="abdullah.zafar@umontreal.ca"}]
+license = { text="MIT" }
+requires-python = ">=3.8"
+dependencies = [
+    "matplotlib==3.8.4",
+    "nimbalwear @ git+https://github.com/nimbal/nimbalwear@9e1be7b82deaac39d794916104123309f3868bb8",
+    "numpy==1.26.4",
+    "openmovement @ git+https://github.com/digitalinteraction/openmovement-python.git@087ac7b5a80b866c400d8021b7a2716d247fc034",    
+    "pandas==2.3.1",
+    "paradigma==1.0.2",
+    "plotly==6.3.0",
+    "pyEDFlib==0.1.42",
+    "scipy==1.16.1",
+    "streamlit==1.49.1",
+    "ttkbootstrap==1.14.2"
+]
+
+
+[project.scripts]
+neuroflow = "neuroflow.cli:main"
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["neuroflow"]
