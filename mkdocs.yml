@@ -1,0 +1,37 @@
+site_name: NeuroFlow
+site_url: https://neurocog-mobility.github.io/neuroflow/
+repo_url: https://github.com/neurocog-mobility/neuroflow
+
+theme:
+  name: "readthedocs"
+
+nav:
+  - Home: index.md
+  - Setup:
+    - Installation: setup/install.md
+    - Useful Info: setup/useful-info.md
+  - Tutorials:
+    - Overview: tutorials/index.md 
+    - GUI:
+      - tutorials/tutorial-cwa.md
+      - tutorials/tutorial-ecg.md
+      - tutorials/tutorial-freeliving.md 
+    - Scripting:
+      - tutorials/tutorial-custom-ecg.md
+  - API:
+    - API Reference: api.md
+
+markdown_extensions:
+  - admonition
+
+plugins:
+  - search
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          paths:
+            - neuroflow
+          options:
+            docstring_style: google
+            show_source: true
