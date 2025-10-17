@@ -2,38 +2,54 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://neurocog-mobility.github.io/neuroflow/</loc>
-         <lastmod>2025-10-13</lastmod>
+         <lastmod>2025-10-17</lastmod>
+    </url>
+    <url>
+         <loc>https://neurocog-mobility.github.io/neuroflow/analysis/</loc>
+         <lastmod>2025-10-17</lastmod>
     </url>
     <url>
          <loc>https://neurocog-mobility.github.io/neuroflow/api/</loc>
-         <lastmod>2025-10-13</lastmod>
+         <lastmod>2025-10-17</lastmod>
     </url>
     <url>
          <loc>https://neurocog-mobility.github.io/neuroflow/setup/install/</loc>
-         <lastmod>2025-10-13</lastmod>
+         <lastmod>2025-10-17</lastmod>
     </url>
     <url>
          <loc>https://neurocog-mobility.github.io/neuroflow/setup/useful-info/</loc>
-         <lastmod>2025-10-13</lastmod>
+         <lastmod>2025-10-17</lastmod>
     </url>
     <url>
          <loc>https://neurocog-mobility.github.io/neuroflow/tutorials/</loc>
-         <lastmod>2025-10-13</lastmod>
+         <lastmod>2025-10-17</lastmod>
     </url>
     <url>
-         <loc>https://neurocog-mobility.github.io/neuroflow/tutorials/tutorial-custom-ecg/</loc>
-         <lastmod>2025-10-13</lastmod>
+         <loc>https://neurocog-mobility.github.io/neuroflow/tutorials/gui/event-ecg/</loc>
+         <lastmod>2025-10-17</lastmod>
     </url>
     <url>
-         <loc>https://neurocog-mobility.github.io/neuroflow/tutorials/tutorial-cwa/</loc>
-         <lastmod>2025-10-13</lastmod>
+         <loc>https://neurocog-mobility.github.io/neuroflow/tutorials/gui/event-gait/</loc>
+         <lastmod>2025-10-17</lastmod>
     </url>
     <url>
-         <loc>https://neurocog-mobility.github.io/neuroflow/tutorials/tutorial-ecg/</loc>
-         <lastmod>2025-10-13</lastmod>
+         <loc>https://neurocog-mobility.github.io/neuroflow/tutorials/gui/event-validate/</loc>
+         <lastmod>2025-10-17</lastmod>
     </url>
     <url>
-         <loc>https://neurocog-mobility.github.io/neuroflow/tutorials/tutorial-freeliving/</loc>
-         <lastmod>2025-10-13</lastmod>
+         <loc>https://neurocog-mobility.github.io/neuroflow/tutorials/gui/feature-metrics/</loc>
+         <lastmod>2025-10-17</lastmod>
+    </url>
+    <url>
+         <loc>https://neurocog-mobility.github.io/neuroflow/tutorials/gui/pre-convert/</loc>
+         <lastmod>2025-10-17</lastmod>
+    </url>
+    <url>
+         <loc>https://neurocog-mobility.github.io/neuroflow/tutorials/gui/pre-sync/</loc>
+         <lastmod>2025-10-17</lastmod>
+    </url>
+    <url>
+         <loc>https://neurocog-mobility.github.io/neuroflow/tutorials/gui/pre-window/</loc>
+         <lastmod>2025-10-17</lastmod>
     </url>
 </urlset>

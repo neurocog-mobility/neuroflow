@@ -12,7 +12,7 @@ The NeuroFlow documentation serves to:
 
 ## Quickstart
 
-If you’re already familiar with NeuroFlow (and have Github setup on your system), you can quickly start using NeuroFlow using the instructions below.
+If you’re already familiar with NeuroFlow (and have Python setup on your system), you can quickly start using NeuroFlow using the instructions below.
 
 For more detailed instructions on getting set up, see the [Setup](./setup/install.md) section.
 
