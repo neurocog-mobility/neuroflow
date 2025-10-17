@@ -49,6 +49,10 @@
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">Installation</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#neuroflow">NeuroFlow</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#upgrading-neuroflow">Upgrading NeuroFlow</a>
+    </li>
+        </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#python">Python</a>
         <ul>
@@ -69,24 +73,40 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >GUI</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/tutorial-cwa/">Tutorial cwa</a>
+                <li class="toctree-l2"><a class="reference internal" >Pre-process</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../tutorials/gui/pre-convert/">convert</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/tutorial-ecg/">Tutorial ecg</a>
+                <li class="toctree-l3"><a class="reference internal" href="../../tutorials/gui/pre-sync/">sync</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/tutorial-freeliving/">Tutorial freeliving</a>
+                <li class="toctree-l3"><a class="reference internal" href="../../tutorials/gui/pre-window/">window</a>
                 </li>
     </ul>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" >Scripting</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" >Event detection</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/tutorial-custom-ecg/">Tutorial custom ecg</a>
+                <li class="toctree-l3"><a class="reference internal" href="../../tutorials/gui/event-gait/">gait</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../tutorials/gui/event-ecg/">ecg</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../tutorials/gui/event-validate/">validate</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" >Feature extraction</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../tutorials/gui/feature-metrics/">metrics</a>
+                </li>
+    </ul>
                 </li>
     </ul>
                   </li>
               </ul>
-              <p class="caption"><span class="caption-text">API</span></p>
+              <p class="caption"><span class="caption-text">Reference</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../api/">API Reference</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../analysis/">Analysis</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/">API</a>
                   </li>
               </ul>
       </div>
@@ -124,15 +144,14 @@
 </ol>
 <pre><code>pip install git+https://github.com/neurocog-mobility/neuroflow.git
 </code></pre>
-<div class="admonition note">
-<p class="admonition-title">Tip</p>
-<p>If you already have NeuroFlow installed and simply want to upgrade to the newer version, add the <code>--upgrade</code> flag:</p>
-<p><code>pip install --upgrade git+https://github.com/neurocog-mobility/neuroflow.git</code> </p>
-</div>
 <ol>
 <li>Test the installation and view all available commands:</li>
 </ol>
 <pre><code>neuroflow --help
+</code></pre>
+<h3 id="upgrading-neuroflow">Upgrading NeuroFlow</h3>
+<p>Once installed, to upgrade to a newer release add the <code>--upgrade</code> flag:</p>
+<pre><code>pip install --upgrade git+https://github.com/neurocog-mobility/neuroflow.git
 </code></pre>
 <h2 id="python">Python</h2>
 <div class="admonition note">
