@@ -1,6 +1,6 @@
 [project]
 name = "neuroflow"
-version = "1.0.0"
+version = "1.0.1"
 description = "Analytics tools and pipelines for the Neurocognition and Mobility Lab"
 authors = [{name="Abdullah Zafar", email="abdullah.zafar@umontreal.ca"}]
 license = { text="MIT" }

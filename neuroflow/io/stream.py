@@ -130,12 +130,12 @@ def _blocks2dataframe(data_blocks):
             data_arr,
             columns=[
                 "time",
-                "accel_x",
-                "accel_y",
-                "accel_z",
-                "gyro_x",
-                "gyro_y",
-                "gyro_z",
+                "ax",
+                "ay",
+                "az",
+                "gx",
+                "gy",
+                "gz",
             ],
         )
 

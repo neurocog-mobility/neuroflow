@@ -11,7 +11,7 @@ def get_icon_path():
 def main(file_path):
     st.set_page_config(
         page_title="NeuroFlow Validator",
-        page_icon=get_icon_path(),
+        # page_icon=get_icon_path(),
         layout="wide"
     )
     # CSS injection to hide Streamlit branding/footer/deploy button

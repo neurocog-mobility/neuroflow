@@ -54,6 +54,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#checking-python-version">Checking Python version</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#using-virtual-environments">Using virtual environments</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#launching-jupyter-on-windows">Launching Jupyter on Windows</a>
     </li>
     </ul>
@@ -63,9 +65,21 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../../tutorials/">Overview</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tutorials/tutorial-a/">Getting Started</a>
+                  <li class="toctree-l1"><a class="reference internal" >GUI</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/tutorial-cwa/">Tutorial cwa</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/tutorial-ecg/">Tutorial ecg</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/tutorial-freeliving/">Tutorial freeliving</a>
+                </li>
+    </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tutorials/tutorial-b/">Advanced Setup</a>
+                  <li class="toctree-l1"><a class="reference internal" >Scripting</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/tutorial-custom-ecg/">Tutorial custom ecg</a>
+                </li>
+    </ul>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">API</span></p>
@@ -119,19 +133,39 @@ Closing the terminal window will also stop any processes currently running in th
 <p>When copying/pasting text into the terminal, you can use the keyboard shortcuts
 <code>Ctrl + Shift + C</code> / <code>Ctrl + Shift + V</code> for copy/paste, respectively.</p>
 <h2 id="checking-python-version">Checking Python version</h2>
-<p>You can check which version of Python is installed by opening a :ref:<code>Terminal &lt;using-terminal&gt;</code> and entering
+<p>You can check which version of Python is installed by opening a <a href="#using-the-terminal">Terminal</a> and entering
 the command <code>python -V</code>.</p>
-<p>.. note::</p>
-<pre><code>Some systems may use ``python3`` instead of ``python``. If you get a message ``Command 'python' not found.``
-then try again using: ``python3 -V``.
+<div class="admonition note">
+<p class="admonition-title">Important</p>
+<p>Some systems may use <code>python3</code> instead of <code>python</code>. If you get a message <code>Command 'python' not found.</code>
+then try again using: <code>python3 -V</code>.</p>
+</div>
+<h2 id="using-virtual-environments">Using virtual environments</h2>
+<p>Creating and using a virtual environment in Python is a crucial step for managing project dependencies. It ensures that each project has its own isolated set of packages, preventing conflicts between different projects.</p>
+<ol>
+<li>
+<p><strong>Create</strong>: First, navigate to your project's root directory in your terminal. We'll name the virtual environment folder <code>.venv</code> (this is a common convention).</p>
+<p><code>python -m venv .venv</code></p>
+</li>
+<li>
+<p><strong>Activate</strong>: Before installing any packages for your project, you must activate the virtual environment. Activation changes your terminal's shell so that the <code>python</code> command points to the version inside the <code>.venv</code> folder, and <code>pip</code> installs packages there.</p>
+<ul>
+<li>Windows (Powershell): <code>.\.venv\Scripts\Activate.ps1</code></li>
+<li>Windows (Command Prompt): <code>.\.venv\Scripts\activate.bat</code></li>
+<li>Mac/Linux: <code>source .venv/bin/activate</code></li>
+</ul>
+</li>
+</ol>
+<p>Once activated, your terminal prompt will usually be prefixed with the name of the environment (e.g., (.venv)):</p>
+<pre><code>(.venv) $
 </code></pre>
-<p>.. _running-jupyter:</p>
 <h2 id="launching-jupyter-on-windows">Launching Jupyter on Windows</h2>
-<p>.. note::</p>
-<pre><code>The following steps are to setup how Jupyter Notebooks are started on your system.
+<div class="admonition note">
+<p class="admonition-title">Important</p>
+<p>The following steps are to setup how Jupyter Notebooks are started on your system.
 If you can already open Jupyter Notebooks on your system
-(by double-clicking **.ipynb** files or by using the terminal), you can skip these steps!
-</code></pre>
+(by double-clicking <strong>.ipynb</strong> files or by using the terminal), you can skip these steps!</p>
+</div>
 <p>If Windows does not recognize the <strong>.ipynb</strong> file type, then you have two options to launch Notebooks:</p>
 <ul>
 <li>
@@ -139,9 +173,9 @@ If you can already open Jupyter Notebooks on your system
     If you want to launch a Notebook by double-clicking on the file:</p>
 <p>1.
     Open a terminal and enter the following command:</p>
-<pre><code>.. code-block:: powershell
-
-    python -m nbopen.install_win
+<pre><code>```
+python -m nbopen.install_win
+```
 </code></pre>
 <p>2.
     You should now be able to double-click on <strong>.ipynb</strong> to open it.</p>
@@ -149,14 +183,12 @@ If you can already open Jupyter Notebooks on your system
 <li>
 <p><strong>Option B:</strong>
     You can also launch Notebooks using terminal commands. Open a terminal in the folder containing the Notebook (in this case the <strong>neuroflow-main</strong> folder) and enter the following command:</p>
-<p>.. code-block:: powershell</p>
-<pre><code>jupyter notebook &lt;notebook.ipynb&gt;
-</code></pre>
+<p><code>jupyter notebook &lt;notebook.ipynb&gt;</code></p>
 <p>In general, replace <code>&lt;notebook.ipynb&gt;</code> with the name of the Notebook you want to open.</p>
 </li>
 </ul>
 <p>When closing a Jupyter Notebook, it is important to also close the Jupyter server being run with the Notebook.
-| The simplest way to do so is to click <code>File &gt; Shut Down</code> from the navigation menu.</p>
+The simplest way to do so is to click <code>File &gt; Shut Down</code> from the navigation menu.</p>
               
             </div>
           </div><footer>

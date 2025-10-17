@@ -1,19 +1,9 @@
 # %%
-from nimbalwear.gait_accel import detect_steps
-from nimbalwear.gait import detect_vert
 import pandas as pd
-import matplotlib.pyplot as plt
-from neuroflow.utils.signals import get_sampling_info, detect_wrist_axes
-from importlib.resources import files
+from neuroflow.utils.signals import get_sampling_info
 from pathlib import Path
 import numpy as np
 from scipy import signal
-from paradigma.feature_extraction import (
-    pca_transform_gyroscope,
-    compute_angle,
-    remove_moving_average_angle,
-)
-
 
 def ecgevents2csv(file_data, detector, detector_params={}, output_file=None):
     df = pd.read_csv(file_data)
@@ -25,7 +15,7 @@ def ecgevents2csv(file_data, detector, detector_params={}, output_file=None):
 
     if output_file is None:
         output_file = (
-            Path(file_data).parent / f"{file_data.stem}_events_ecg_{detector}.csv"
+            Path(file_data).parent / f"{file_data.stem}_events-ecg_detector-{detector}.csv"
         )
     df_events.to_csv(output_file, index=False)
 

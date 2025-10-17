@@ -2,7 +2,6 @@
 from nimbalwear.gait_accel import detect_steps
 from nimbalwear.gait import detect_vert
 import pandas as pd
-import matplotlib.pyplot as plt
 from neuroflow.utils.signals import get_sampling_info, detect_wrist_axes
 from importlib.resources import files
 from pathlib import Path
@@ -26,7 +25,7 @@ def gaitevents2csv(file_data, detector, detector_params={}, output_file=None):
 
     if output_file is None:
         output_file = (
-            Path(file_data).parent / f"{file_data.stem}_events_gait_{detector}.csv"
+            Path(file_data).parent / f"{file_data.stem}_events-gait_detector-{detector}.csv"
         )
     df_events.to_csv(output_file, index=False)
 
@@ -71,6 +70,8 @@ def steps_nimbalwear(df_data, nimbalwear_params={}):
             # check if vertical needs to be flipped to positive
             if np.mean(a_vrt) < 0:
                 a_vrt *= -1
+            # adjust for any nan values
+            a_vrt = pd.Series(a_vrt).interpolate().bfill().values
             # run nimbalwear step detector
             state_arr, _, _, _ = detect_steps(
                 a_vrt, fs, df_pushoff, **nimbalwear_params
@@ -117,6 +118,10 @@ def armswing_paradigma(df_data, paradigma_params={}):
                     ]
                 ]
                 df_arm.columns = ["y", "z"]
+
+            # correct for any nan values
+            df_arm["y"] = pd.Series(df_arm["y"].values).interpolate().bfill().values
+            df_arm["z"] = pd.Series(df_arm["z"].values).interpolate().bfill().values
 
             vel = pca_transform_gyroscope(df_arm, "y", "z")
             fs = get_sampling_info(df_data["time"])["frequency"]

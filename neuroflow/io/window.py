@@ -145,7 +145,6 @@ def window2csv(
             list_trial_data = window_csv(
                 df_data, df_times, duration_window, number_window
             )
-            return False
         case "Axivity (CWA)":
             print(" ... Windowing data.")
             list_trial_data = window_axivity(
@@ -167,7 +166,7 @@ def window2csv(
 
     for t, trial in enumerate(list_trial_data):
         output_file = (
-            Path(output_dir) / f"{file_list[0].stem}_{trial.attrs["label"]}.csv"
+            Path(output_dir) / f"{file_list[0].stem}_window-{trial.attrs["label"]}.csv"
         )
         trial.to_csv(output_file, index=False)
 

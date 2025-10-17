@@ -119,6 +119,11 @@ def get_parser():
     )
     sub_ecg.add_argument("--savefile", type=str, help="Output CSV path")
 
+    # validate
+    sub_validate = subparsers.add_parser("validate", help="Launch validation UI")
+    sub_validate.category = "2. Event detection"
+    sub_validate.add_argument("file", help="Standardized CSV file to validate")
+
     # metrics
     sub_metrics = subparsers.add_parser(
         "metrics",
@@ -132,15 +137,10 @@ def get_parser():
         "--detector",
         type=str,
         required=True,
-        choices=["nimbalwear-ankles", "pan-tompkins"],
+        choices=["nimbalwear-ankles", "paradigma-wrists", "pan-tompkins"],
         help="Detector name",
     )
     sub_metrics.add_argument("--savefile", type=str, help="Output CSV path")
-
-    # validate
-    sub_validate = subparsers.add_parser("validate", help="Launch validation UI")
-    sub_validate.category = "3. Feature extraction"
-    sub_validate.add_argument("file", help="Standardized CSV file to validate")
 
     # # test
     # subparsers.add_parser("test", help="Test function.")

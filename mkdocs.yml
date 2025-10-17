@@ -13,13 +13,19 @@ nav:
   - Tutorials:
     - Overview: tutorials/index.md 
     - GUI:
-      - tutorials/tutorial-cwa.md
-      - tutorials/tutorial-ecg.md
-      - tutorials/tutorial-freeliving.md 
-    - Scripting:
-      - tutorials/tutorial-custom-ecg.md
-  - API:
-    - API Reference: api.md
+      - Pre-process:
+        - tutorials/gui/pre-convert.md
+        - tutorials/gui/pre-sync.md
+        - tutorials/gui/pre-window.md
+      - Event detection:
+        - tutorials/gui/event-gait.md
+        - tutorials/gui/event-ecg.md
+        - tutorials/gui/event-validate.md
+      - Feature extraction:
+        - tutorials/gui/feature-metrics.md
+  - Reference:
+    - Analysis: analysis.md
+    - API: api.md
 
 markdown_extensions:
   - admonition

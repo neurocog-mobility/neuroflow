@@ -20,7 +20,7 @@ def convert2csv(file_list, output_file=None, device=None):
     if output_file is None:
         output_file = (
             Path(file_list[0]).parent
-            / f"nf_standard_{device.lower().split(" (")[0]}.csv"
+            / f"neuroflow-{device.lower().split(" (")[0]}.csv"
         )
     df.to_csv(output_file, index=False)
 
@@ -100,6 +100,14 @@ def _axivity_cwa_files(file_list, sensor_names=None):
                     "gyro_z",
                 ]
             ]
+            # correct gyro signals
+            df["gyro_x"] = np.unwrap(df["gyro_x"].values, period=4000)
+            df["gyro_y"] = np.unwrap(df["gyro_y"].values, period=4000)
+            df["gyro_z"] = np.unwrap(df["gyro_z"].values, period=4000)
+            df["gyro_x"] -= df["gyro_x"].values[0]
+            df["gyro_y"] -= df["gyro_y"].values[0]
+            df["gyro_z"] -= df["gyro_z"].values[0]
+            # correct column names
             df.columns = [
                 "time",
                 f"{name}_ax",
@@ -179,7 +187,7 @@ def _bittium_edf(file: str):
     is_ecg_channel = [i for i in df.columns if "ecg" in i.lower()]
     column_names = (
         ["time"]
-        + [f"ecg_{i}" for i in range(len(is_ecg_channel))]
+        + [f"ecg{i}" for i in range(len(is_ecg_channel))]
         + ["chest_ax", "chest_ay", "chest_az"]
     )
     df.columns = column_names

@@ -141,7 +141,7 @@ def split2csv(file_list, file_sync, source="NeuroFlow (CSV)", output_dir=None):
 
     for t, trial in enumerate(list_trial_data):
         output_file = (
-            Path(output_dir) / f"{file_list[0].stem}_{trial.attrs["label"]}.csv"
+            Path(output_dir) / f"{file_list[0].stem}_event-{trial.attrs["label"]}.csv"
         )
         trial.to_csv(output_file, index=False)
 

@@ -68,52 +68,53 @@ def summarize_steps(df):
             step_foot = "right"
 
         list_step_info = []
-        # step duration
-        for s, step in enumerate(df_steps["step_number"].unique()):
-            df_step = df_steps[df_steps["step_number"] == step].copy()
-            raw_step = df.iloc[
-                df_step["phase_start"].values[0] : df_step["phase_end"].values[0], :
-            ].copy()
+        
+        if len(df_steps) > 0:
+            for s, step in enumerate(df_steps["step_number"].unique()):
+                df_step = df_steps[df_steps["step_number"] == step].copy()
+                raw_step = df.iloc[
+                    df_step["phase_start"].values[0] : df_step["phase_end"].values[0], :
+                ].copy()
 
-            if len(df_step) == 4:  # Ensure step validity
-                step_duration = (
-                    df_step["phase_end"].values[-1] - df_step["phase_start"].values[0]
-                ) * sampling_info["period"]
-                toff_duration = (
-                    df_step["phase_end"].values[0] - df_step["phase_start"].values[0]
-                ) * sampling_info["period"]
-                eswing_duration = (
-                    df_step["phase_end"].values[1] - df_step["phase_start"].values[1]
-                ) * sampling_info["period"]
-                lswing_duration = (
-                    df_step["phase_end"].values[2] - df_step["phase_start"].values[2]
-                ) * sampling_info["period"]
-                hstrike_duration = (
-                    df_step["phase_end"].values[3] - df_step["phase_start"].values[3]
-                ) * sampling_info["period"]
-                accel_mag = np.sqrt(
-                    raw_step[f"{step_foot}ankle_ax"].values ** 2
-                    + raw_step[f"{step_foot}ankle_ay"].values ** 2
-                    + raw_step[f"{step_foot}ankle_az"].values ** 2
-                )
-                accel_avg = np.nanmean(accel_mag)
-                accel_max = np.nanmax(accel_mag)
+                if len(df_step) == 4:  # Ensure step validity
+                    step_duration = (
+                        df_step["phase_end"].values[-1] - df_step["phase_start"].values[0]
+                    ) * sampling_info["period"]
+                    toff_duration = (
+                        df_step["phase_end"].values[0] - df_step["phase_start"].values[0]
+                    ) * sampling_info["period"]
+                    eswing_duration = (
+                        df_step["phase_end"].values[1] - df_step["phase_start"].values[1]
+                    ) * sampling_info["period"]
+                    lswing_duration = (
+                        df_step["phase_end"].values[2] - df_step["phase_start"].values[2]
+                    ) * sampling_info["period"]
+                    hstrike_duration = (
+                        df_step["phase_end"].values[3] - df_step["phase_start"].values[3]
+                    ) * sampling_info["period"]
+                    accel_mag = np.sqrt(
+                        raw_step[f"{step_foot}ankle_ax"].values ** 2
+                        + raw_step[f"{step_foot}ankle_ay"].values ** 2
+                        + raw_step[f"{step_foot}ankle_az"].values ** 2
+                    )
+                    accel_avg = np.nanmean(accel_mag)
+                    accel_max = np.nanmax(accel_mag)
 
-                step_info = {
-                    "step_foot": step_foot,
-                    "step_start": df_step["phase_start"].values[0],
-                    "step_end": df_step["phase_end"].values[-1],
-                    "step_duration": step_duration,
-                    "pushoff_duration": toff_duration,
-                    "early-swing_duration": eswing_duration,
-                    "late-swing_duration": lswing_duration,
-                    "heelstrike_duration": hstrike_duration,
-                    "step_accel_max": accel_max,
-                    "step_accel_avg": accel_avg,
-                }
+                    step_info = {
+                        "step_foot": step_foot,
+                        "step_start": df_step["phase_start"].values[0],
+                        "step_end": df_step["phase_end"].values[-1],
+                        "step_duration": step_duration,
+                        "pushoff_duration": toff_duration,
+                        "early-swing_duration": eswing_duration,
+                        "late-swing_duration": lswing_duration,
+                        "heelstrike_duration": hstrike_duration,
+                        "step_accel_max": accel_max,
+                        "step_accel_avg": accel_avg,
+                    }
 
-                list_step_info.append(step_info)
+                    list_step_info.append(step_info)
 
-        list_step_summaries.append(pd.DataFrame(list_step_info))
+            list_step_summaries.append(pd.DataFrame(list_step_info))
 
     return pd.concat(list_step_summaries).sort_values(by="step_start")

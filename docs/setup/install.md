@@ -13,18 +13,20 @@ To install NeuroFlow:
 ```
 pip install git+https://github.com/neurocog-mobility/neuroflow.git
 ```
-!!! note "Tip"
-    If you already have NeuroFlow installed and simply want to upgrade to the newer version, add the ```--upgrade``` flag:
-
-    ```
-    pip install --upgrade git+https://github.com/neurocog-mobility/neuroflow.git
-    ``` 
 
 2. Test the installation and view all available commands:
 
 ```
 neuroflow --help
 ```
+
+### Upgrading NeuroFlow
+
+Once installed, to upgrade to a newer release add the ```--upgrade``` flag:
+
+```
+pip install --upgrade git+https://github.com/neurocog-mobility/neuroflow.git
+``` 
 
 
 ## Python

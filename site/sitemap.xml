@@ -9,10 +9,6 @@
          <lastmod>2025-10-13</lastmod>
     </url>
     <url>
-         <loc>https://neurocog-mobility.github.io/neuroflow/tutorials/</loc>
-         <lastmod>2025-10-13</lastmod>
-    </url>
-    <url>
          <loc>https://neurocog-mobility.github.io/neuroflow/setup/install/</loc>
          <lastmod>2025-10-13</lastmod>
     </url>
@@ -25,11 +21,19 @@
          <lastmod>2025-10-13</lastmod>
     </url>
     <url>
-         <loc>https://neurocog-mobility.github.io/neuroflow/tutorials/tutorial-a/</loc>
+         <loc>https://neurocog-mobility.github.io/neuroflow/tutorials/tutorial-custom-ecg/</loc>
          <lastmod>2025-10-13</lastmod>
     </url>
     <url>
-         <loc>https://neurocog-mobility.github.io/neuroflow/tutorials/tutorial-b/</loc>
+         <loc>https://neurocog-mobility.github.io/neuroflow/tutorials/tutorial-cwa/</loc>
+         <lastmod>2025-10-13</lastmod>
+    </url>
+    <url>
+         <loc>https://neurocog-mobility.github.io/neuroflow/tutorials/tutorial-ecg/</loc>
+         <lastmod>2025-10-13</lastmod>
+    </url>
+    <url>
+         <loc>https://neurocog-mobility.github.io/neuroflow/tutorials/tutorial-freeliving/</loc>
          <lastmod>2025-10-13</lastmod>
     </url>
 </urlset>
