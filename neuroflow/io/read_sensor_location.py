@@ -4,17 +4,17 @@ def autodetect_sensor_location(filename):
     """
     fname = filename.lower()
     patterns = {
-        "leftankle": ["la", "leftankle", "lankle"],
-        "rightankle": ["ra", "rightankle", "rankle"],
+        "leftankle": ["leftankle", "lankle"],
+        "rightankle": ["rightankle", "rankle"],
         "lumbar": ["l5", "lumbar", "lowerback", "waist"],
-        "leftwrist": ["lw", "leftwrist", "lwrist"],
-        "rightwrist": ["rw", "rightwrist", "rwrist"],
+        "leftwrist": ["leftwrist", "lwrist"],
+        "rightwrist": ["rightwrist", "rwrist"],
         "chest": ["chest", "sternum"],
         "thoracic": ["c7", "upperback"],
     }
 
     for canon_name, keywords in patterns.items():
         for kw in keywords:
-            if kw in fname:
+            if f"sensor-{kw}" in fname:
                 return canon_name
     return None  # could not detect
