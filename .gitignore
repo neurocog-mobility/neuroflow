@@ -2,4 +2,4 @@ notebooks/
 test-data/
 .venv/
 neuroflow.egg-info/
-
+**/__pycache__/

@@ -27,3 +27,5 @@ pip install git+https://github.com/neurocog-mobility/neuroflow.git
 ```
 neuroflow --help
 ```
+
+![truchet-nf](truchet.gif)
